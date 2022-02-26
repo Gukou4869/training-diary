@@ -2,13 +2,13 @@
 import firebase from 'firebase/app';
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyDOYAR7dpHcl7J6h1XxSe1Dp3KII496Ftc',
-    authDomain: 'training-diary-f2f96.firebaseapp.com',
-    projectId: 'training-diary-f2f96',
-    storageBucket: 'training-diary-f2f96.appspot.com',
-    messagingSenderId: '774435497389',
-    appId: '1:774435497389:web:771446c42f673e1cdc6d24',
-    measurementId: 'G-H7PY1DNR6B',
+    apiKey: process.env.NEXT_PUBLIC_API_KEY,
+    authDomain: process.env.AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_MASSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 // Firebaseのインスタンスが存在しない場合にのみ、インスタンスを作成します
 if (!firebase.apps.length) {
