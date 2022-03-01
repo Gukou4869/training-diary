@@ -4,7 +4,12 @@ import styles from '@/styles/components/Header.module.scss';
 interface HeaderProps {}
 
 const Header: React.VFC<HeaderProps> = () => {
-    return <div className={styles.test}>asdfasdfasdfasdfasdfas</div>;
+    return (
+        <div className={styles['tralog-header']}>
+            <div className={styles['tralog-header__title']}>{'トレログ'}</div>
+            <button className={styles['tralog-header__login']}>ログイン</button>
+        </div>
+    );
 };
 
 export default Header;

@@ -1,3 +1,27 @@
-.test {
-    color: red;
+@import '@/styles/variables.scss';
+
+.tralog-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: $header-height;
+    background-color: transparent;
+    width: 100%;
+    background-color: brown;
+}
+
+.tralog-header__title {
+    position: absolute;
+    top: -0.5rem;
+    left: 0;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.tralog-header__login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+    font-weight: bold;
 }
