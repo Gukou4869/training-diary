@@ -1,0 +1,35 @@
+.gukouui-button {
+    cursor: pointer;
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    color: var(--color);
+    background-color: var(--bg-color);
+    display: inline-block;
+    line-height: 1;
+    transition: all 0.1s;
+    &:hover {
+        filter: brightness(110%) !important;
+    }
+}
+
+.gukouui-button--sm {
+    font-size: 12px;
+    padding: 10px 16px;
+}
+.gukouui-button--md {
+    font-size: 14px;
+    padding: 11px 20px;
+}
+.gukouui-button--lg {
+    font-size: 16px;
+    padding: 12px 24px;
+}
+
+.gukouui-button--float {
+    &:hover {
+        transform: translate3d((0, -2px, 0));
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+}
