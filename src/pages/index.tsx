@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+import { AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import { useState } from 'react';
 import Head from 'next/head';
@@ -9,13 +10,18 @@ import Modal from '@/components/modal/Modal';
 
 const Home: NextPage = () => {
     const [open, setOpen] = useState(false);
-    console.log('🚀 ~ file: index.tsx ~ line 12 ~ open', open);
     const handleToggle = (): void => {
         setOpen(prevState => !prevState);
     };
     return (
         <>
-            {open && <Modal open={open} handleClose={handleToggle} />}
+            <AnimatePresence
+                initial={false}
+                exitBeforeEnter={true}
+                onExitComplete={() => null}
+            >
+                {open && <Modal open={open} handleClose={handleToggle} />}
+            </AnimatePresence>
             <Header handleToggleOpen={handleToggle}></Header>
             <div className={styles.container}>
                 <Head>
