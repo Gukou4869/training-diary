@@ -9,13 +9,14 @@ import Modal from '@/components/modal/Modal';
 
 const Home: NextPage = () => {
     const [open, setOpen] = useState(false);
+    console.log('🚀 ~ file: index.tsx ~ line 12 ~ open', open);
     const handleToggle = (): void => {
         setOpen(prevState => !prevState);
     };
     return (
         <>
-            {open && <Modal open={open} />}
-            <Header></Header>
+            {open && <Modal open={open} handleClose={handleToggle} />}
+            <Header handleToggleOpen={handleToggle}></Header>
             <div className={styles.container}>
                 <Head>
                     <title>Tralog</title>

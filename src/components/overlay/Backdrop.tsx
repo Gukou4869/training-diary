@@ -11,9 +11,9 @@ const Backdrop: React.VFC<BackdropProps> = ({ children, onClick }) => {
     return (
         <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={styles['backdrop']}
+            className={styles.backdrop}
             onClick={onClick}
         >
             {children}

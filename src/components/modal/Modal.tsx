@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import Overlay from '../overlay/Backdrop';
+import { motion } from 'framer-motion';
+import Backdrop from '../overlay/Backdrop';
 import styles from '@/styles/components/Modal.module.scss';
 
 interface ModalProps {
@@ -11,59 +12,47 @@ interface ModalProps {
     open?: boolean;
     title?: string;
     toggleModal?: (event: React.MouseEvent) => void;
+    handleClose?: () => void;
 }
 
 const Modal: React.VFC<ModalProps> = props => {
-    const { children, clickOutside, maxWidth, open, title, toggleModal } =
-        props;
-    const node = useRef<HTMLDivElement>(null);
-    useEffect(() => {
-        if (clickOutside) {
-            const handleClickOutside = (event: any) => {
-                if (node.current.contains(event.currentTarget)) {
-                    // inside click
-                    return;
-                }
-                // outside click
-                toggleModal(event);
-            };
-            if (open) {
-                document.addEventListener('mousedown', handleClickOutside);
-            } else {
-                document.removeEventListener('mousedown', handleClickOutside);
-            }
+    const {
+        children,
+        clickOutside,
+        maxWidth,
+        open,
+        title,
+        toggleModal,
+        handleClose,
+    } = props;
 
-            return () => {
-                document.removeEventListener('mousedown', handleClickOutside);
-            };
-        }
-    }, [clickOutside, open, toggleModal]);
+    const dropIn = {
+        hidden: { y: '-100vh', opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: {
+                duration: 0.1,
+                type: 'spring',
+                damping: 25,
+                stiffness: 500,
+            },
+        },
+        exit: { y: '100vh', opacity: 0 },
+    };
     return (
-        <Overlay>
-            <div
-                className={`${styles['tralog-modal']} ${
-                    open ? `${styles['tralog-modal--open']}` : ''
-                }`}
-                style={{ maxWidth: maxWidth ? maxWidth : '30rem' }}
-                ref={node}
-            >
-                {title ? (
-                    <div className="modal__container__header">
-                        <div className="modal__container__header__title">
-                            {title}
-                        </div>
-                    </div>
-                ) : null}
-                <button
-                    className={styles['tralog-modal__container__close']}
-                    onClick={toggleModal}
-                    aria-label="close"
-                >
-                    <FaTimes />
-                </button>
-                <div className="modal__container__content">{children}</div>
-            </div>
-        </Overlay>
+        <Backdrop onClick={handleClose}>
+            <motion.div
+                className={styles.modal}
+                onClick={e => {
+                    e.stopPropagation();
+                }}
+                variants={dropIn}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+            ></motion.div>
+        </Backdrop>
     );
 };
 
