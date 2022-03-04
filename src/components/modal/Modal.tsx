@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import Overlay from '../overlay/Overlay';
+import Overlay from '../overlay/Backdrop';
 import styles from '@/styles/components/Modal.module.scss';
 
 interface ModalProps {

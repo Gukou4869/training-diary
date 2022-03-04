@@ -1,12 +1,20 @@
 import type { NextPage } from 'next';
+import * as React from 'react';
+import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '@/styles/Home.module.css';
 import Header from '@/components/header/Header';
+import Modal from '@/components/modal/Modal';
 
 const Home: NextPage = () => {
+    const [open, setOpen] = useState(false);
+    const handleToggle = (): void => {
+        setOpen(prevState => !prevState);
+    };
     return (
         <>
+            {open && <Modal open={open} />}
             <Header></Header>
             <div className={styles.container}>
                 <Head>
