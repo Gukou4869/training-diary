@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Modal from './Modal';
 
 export default {
@@ -7,4 +7,9 @@ export default {
     component: Modal,
 } as ComponentMeta<typeof Modal>;
 
-export const Default = () => <Modal />;
+const Template: ComponentStory<typeof Modal> = args => <Modal {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+    open: true,
+};

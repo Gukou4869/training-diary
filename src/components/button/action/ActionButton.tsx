@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import styles from '@/styles/components/ActionButton.module.scss';
 
 interface ActionButtonProps {
@@ -26,13 +27,15 @@ const ActionButton: React.VFC<ActionButtonProps> = ({
     const hasFloat = float ? 'gukouui-button--float' : '';
     const buttonSize = size ? `gukouui-button--${size}` : 'gukouui-button--md';
     return (
-        <button
+        <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             type="button"
             className={`${styles['gukouui-button']} ${styles[buttonSize]} ${styles[hasFloat]}`}
             onClick={onClick}
         >
             {label}
-        </button>
+        </motion.button>
     );
 };
 
