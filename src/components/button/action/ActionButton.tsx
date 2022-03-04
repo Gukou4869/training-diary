@@ -18,11 +18,11 @@ const ActionButton: React.VFC<ActionButtonProps> = ({
     size,
     onClick,
 }) => {
-    document.documentElement.style.setProperty('--color', color.toString());
-    document.documentElement.style.setProperty(
-        '--bg-color',
-        backgroundColor.toString(),
-    );
+    // document.documentElement.style.setProperty('--color', color.toString());
+    // document.documentElement.style.setProperty(
+    //     '--bg-color',
+    //     backgroundColor.toString(),
+    // );
     const hasFloat = float ? 'gukouui-button--float' : '';
     const buttonSize = size ? `gukouui-button--${size}` : 'gukouui-button--md';
     return (

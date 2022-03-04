@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 export default {
-    title: 'Atoms/ActionButton',
+    title: 'Button',
     component: ActionButton,
     argTypes: {
         backgroundColor: { control: 'color' },
