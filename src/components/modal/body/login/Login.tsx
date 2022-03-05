@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import Input from '@/components/input/Input';
 import ActionButton from '@/components/button/action/ActionButton';
 import Checkbox from '@/components/checkbox/Checkbox';
+import Row from '@/components/row/Row';
+import Column from '@/components/column/Column';
 import styles from '@/styles/components/Login.module.scss';
 
 interface LoginProps {
@@ -30,12 +32,16 @@ const Login: React.VFC<LoginProps> = props => {
             <div className={styles['login__input']}>
                 <Input type="password" label="Password" />
             </div>
-            <div className={styles['login__password-setting']}>
-                <div className="">
+
+            <Row>
+                <Column xs={6} md={6}>
                     <Checkbox label="Remenber Me" />
-                </div>
-                <div className="">Forget Password?</div>
-            </div>
+                </Column>
+                <Column xs={6} md={6}>
+                    <div className="">Forget Password?</div>
+                </Column>
+            </Row>
+
             <div className="">
                 <ActionButton label="Login to Your Account" size="lg" />
             </div>
