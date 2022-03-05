@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { motion } from 'framer-motion';
 import Input from '@/components/input/Input';
+import ActionButton from '@/components/button/action/ActionButton';
 import styles from '@/styles/components/Login.module.scss';
 
 interface LoginProps {
@@ -27,6 +28,17 @@ const Login: React.VFC<LoginProps> = props => {
             </div>
             <div className={styles['login__input']}>
                 <Input type="password" label="Password" />
+            </div>
+            <div className={styles['login__password-setting']}>
+                <div className="Remenber Me"></div>
+                <div className="">Forget Password?</div>
+            </div>
+            <div className="">
+                <ActionButton label="Login to Your Account" size="lg" />
+            </div>
+            <div className={styles['login__footer']}>
+                Not a member now?
+                <a href=""> Register Now</a>
             </div>
         </div>
     );

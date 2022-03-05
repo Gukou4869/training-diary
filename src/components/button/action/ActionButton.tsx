@@ -3,15 +3,17 @@ import { motion } from 'framer-motion';
 import styles from '@/styles/components/ActionButton.module.scss';
 
 interface ActionButtonProps {
-    backgroundColor: string;
-    color: string;
+    backgroundColor?: string;
+    color?: string;
     float?: boolean;
     label?: string;
     size?: 'sm' | 'md' | 'lg';
+    block?: boolean;
     onClick?: () => void;
 }
 
 const ActionButton: React.VFC<ActionButtonProps> = ({
+    block,
     color,
     backgroundColor,
     float,
@@ -24,14 +26,14 @@ const ActionButton: React.VFC<ActionButtonProps> = ({
     //     '--bg-color',
     //     backgroundColor.toString(),
     // );
-    const hasFloat = float ? 'gukouui-button--float' : '';
-    const buttonSize = size ? `gukouui-button--${size}` : 'gukouui-button--md';
+    const hasFloat = float ? 'button--float' : '';
+    const buttonSize = size ? `button--${size}` : 'button--md';
+    const buttonWidth = block ? 'button--block' : '';
     return (
         <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.99 }}
             type="button"
-            className={`${styles['gukouui-button']} ${styles[buttonSize]} ${styles[hasFloat]}`}
+            className={`${styles['button']} ${styles[buttonSize]} ${styles[hasFloat]} ${styles[buttonWidth]}`}
             onClick={onClick}
         >
             {label}
