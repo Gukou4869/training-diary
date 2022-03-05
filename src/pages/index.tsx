@@ -6,7 +6,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from '@/styles/Home.module.css';
 import Header from '@/components/header/Header';
-import Modal from '@/components/modal/Modal';
+import Modal from '@/components/modal/Box/ModalBox';
+import Login from '@/components/modal/body/login/Login';
 
 const Home: NextPage = () => {
     const [open, setOpen] = useState(false);
@@ -20,7 +21,13 @@ const Home: NextPage = () => {
                 exitBeforeEnter={true}
                 onExitComplete={() => null}
             >
-                {open && <Modal open={open} handleClose={handleToggle} />}
+                {open && (
+                    <Modal
+                        open={open}
+                        handleClose={handleToggle}
+                        children={<Login />}
+                    />
+                )}
             </AnimatePresence>
             <Header handleToggleOpen={handleToggle}></Header>
             <div className={styles.container}>

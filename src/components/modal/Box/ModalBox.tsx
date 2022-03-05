@@ -1,31 +1,17 @@
 import * as React from 'react';
-import { useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import Backdrop from '../overlay/Backdrop';
+import Backdrop from '../../overlay/Backdrop';
 import styles from '@/styles/components/Modal.module.scss';
 
-interface ModalProps {
+interface ModalBoxProps {
     children?: React.ReactElement;
-    clickOutside?: boolean;
-    maxWidth?: string;
     open?: boolean;
-    title?: string;
-    toggleModal?: (event: React.MouseEvent) => void;
     handleClose?: () => void;
 }
 
-const Modal: React.VFC<ModalProps> = props => {
-    const {
-        children,
-        clickOutside,
-        maxWidth,
-        open,
-        title,
-        toggleModal,
-        handleClose,
-    } = props;
-
+const ModalBox: React.VFC<ModalBoxProps> = props => {
+    const { children, handleClose } = props;
     const dropIn = {
         hidden: { y: '-100vh', opacity: 0 },
         visible: {
@@ -43,7 +29,7 @@ const Modal: React.VFC<ModalProps> = props => {
     return (
         <Backdrop onClick={handleClose}>
             <motion.div
-                className={styles.modal}
+                className={styles.modalBox}
                 onClick={e => {
                     e.stopPropagation();
                 }}
@@ -51,9 +37,18 @@ const Modal: React.VFC<ModalProps> = props => {
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-            ></motion.div>
+            >
+                <button
+                    className={styles['modalBox__close']}
+                    onClick={handleClose}
+                    type="button"
+                >
+                    <FaTimes />
+                </button>
+                {children}
+            </motion.div>
         </Backdrop>
     );
 };
 
-export default Modal;
+export default ModalBox;
