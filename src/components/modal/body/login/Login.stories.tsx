@@ -1,7 +1,6 @@
 import React from 'react';
 import Login from './Login';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 export default {
     title: 'Button',
