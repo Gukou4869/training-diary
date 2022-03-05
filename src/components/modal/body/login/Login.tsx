@@ -3,6 +3,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { motion } from 'framer-motion';
 import Input from '@/components/input/Input';
 import ActionButton from '@/components/button/action/ActionButton';
+import Checkbox from '@/components/checkbox/Checkbox';
 import styles from '@/styles/components/Login.module.scss';
 
 interface LoginProps {
@@ -30,7 +31,9 @@ const Login: React.VFC<LoginProps> = props => {
                 <Input type="password" label="Password" />
             </div>
             <div className={styles['login__password-setting']}>
-                <div className="Remenber Me"></div>
+                <div className="">
+                    <Checkbox label="Remenber Me" />
+                </div>
                 <div className="">Forget Password?</div>
             </div>
             <div className="">
