@@ -12,11 +12,13 @@ import styles from '@/styles/components/Login.module.scss';
 interface LoginProps {
     children?: React.ReactElement;
     open?: boolean;
+    checked?: boolean;
+    handleChecked?: () => void;
     handleClose?: () => void;
 }
 
 const Login: React.VFC<LoginProps> = props => {
-    const { children, handleClose } = props;
+    const { children, checked, handleClose, handleChecked } = props;
     return (
         <div className={styles.login}>
             <h1>Login to Your Account</h1>
@@ -37,7 +39,11 @@ const Login: React.VFC<LoginProps> = props => {
             <Row>
                 <Column xs={6} md={6}>
                     <FlexBox align="center" justify="start">
-                        <Checkbox label="Remenber Me" />
+                        <Checkbox
+                            label="Remenber Me"
+                            checked={checked}
+                            onClick={handleChecked}
+                        />
                     </FlexBox>
                 </Column>
                 <Column xs={6} md={6}>

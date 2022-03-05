@@ -11,8 +11,12 @@ import Login from '@/components/modal/body/login/Login';
 
 const Home: NextPage = () => {
     const [open, setOpen] = useState(false);
+    const [checked, setChecked] = useState(false);
     const handleToggle = (): void => {
         setOpen(prevState => !prevState);
+    };
+    const handleToggleChecked = () => {
+        setChecked(prevState => !prevState);
     };
     return (
         <>
@@ -25,7 +29,12 @@ const Home: NextPage = () => {
                     <Modal
                         open={open}
                         handleClose={handleToggle}
-                        children={<Login />}
+                        children={
+                            <Login
+                                checked={checked}
+                                handleChecked={handleToggleChecked}
+                            />
+                        }
                     />
                 )}
             </AnimatePresence>
