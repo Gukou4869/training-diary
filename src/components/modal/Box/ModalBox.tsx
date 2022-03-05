@@ -25,7 +25,7 @@ const ModalBox: React.VFC<ModalBoxProps> = props => {
         exit: { y: '-10vh', opacity: 0 },
     };
     return (
-        <Backdrop onClick={handleClose}>
+        <Backdrop>
             <motion.div
                 className={styles.modalBox}
                 onClick={e => {

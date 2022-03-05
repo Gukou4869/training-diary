@@ -12,9 +12,9 @@ const FlexBox: React.FC<FlexBoxProps> = props => {
     return (
         <div
             className={`${styles['flex-box']} ${
-                direction ? `flex-box--direction-${direction}` : ''
-            } ${justify ? `flex-box--justify-${justify}` : ''} ${
-                align ? `flex-box--align-${align}` : ''
+                direction ? styles[`flex-box--direction-${direction}`] : ''
+            } ${justify ? styles[`flex-box--justify-${justify}`] : ''} ${
+                align ? styles[`flex-box--align-${align}`] : ''
             }`}
         >
             {children}

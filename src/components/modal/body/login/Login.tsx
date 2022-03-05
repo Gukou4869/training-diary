@@ -6,6 +6,7 @@ import ActionButton from '@/components/button/action/ActionButton';
 import Checkbox from '@/components/checkbox/Checkbox';
 import Row from '@/components/row/Row';
 import Column from '@/components/column/Column';
+import FlexBox from '@/components/flexbox/Flexbox';
 import styles from '@/styles/components/Login.module.scss';
 
 interface LoginProps {
@@ -35,10 +36,14 @@ const Login: React.VFC<LoginProps> = props => {
 
             <Row>
                 <Column xs={6} md={6}>
-                    <Checkbox label="Remenber Me" />
+                    <FlexBox align="center" justify="start">
+                        <Checkbox label="Remenber Me" />
+                    </FlexBox>
                 </Column>
                 <Column xs={6} md={6}>
-                    <div className="">Forget Password?</div>
+                    <FlexBox align="center" justify="end">
+                        <p>Forget Password?</p>
+                    </FlexBox>
                 </Column>
             </Row>
 
