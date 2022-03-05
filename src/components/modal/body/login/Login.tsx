@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { FaGoogle } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { motion } from 'framer-motion';
+import Input from '@/components/input/Input';
 import styles from '@/styles/components/Login.module.scss';
 
 interface LoginProps {
@@ -22,6 +22,12 @@ const Login: React.VFC<LoginProps> = props => {
                 Login With Google
             </motion.button>
             <div className={styles['login__divider']}> - OR -</div>
+            <div className={styles['login__input']}>
+                <Input type="email" label="Email" />
+            </div>
+            <div className={styles['login__input']}>
+                <Input type="password" label="Password" />
+            </div>
         </div>
     );
 };

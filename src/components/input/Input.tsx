@@ -9,8 +9,7 @@ interface InputProps {
     label: string;
     size?: string;
     type: 'number' | 'text' | 'password' | 'email';
-    validate?: boolean;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input: React.VFC<InputProps> = ({
