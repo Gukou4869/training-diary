@@ -10,17 +10,13 @@ import FlexBox from '@/components/flexbox/Flexbox';
 import styles from '@/styles/components/Login.module.scss';
 
 interface LoginProps {
-    children?: React.ReactElement;
-    open?: boolean;
     checked?: boolean;
     handleChecked?: () => void;
-    handleClose?: () => void;
     handleGoogleLogin?: () => void;
 }
 
 const Login: React.VFC<LoginProps> = props => {
-    const { children, checked, handleClose, handleChecked, handleGoogleLogin } =
-        props;
+    const { checked, handleChecked, handleGoogleLogin } = props;
     return (
         <div className={styles.login}>
             <h1>Login to Your Account</h1>

@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const config = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -13,3 +13,17 @@ const config = {
 
 export const firebaseApp = initializeApp(config);
 export const auth = getAuth();
+
+//auth observer
+onAuthStateChanged(auth, user => {
+    if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        console.log('🚀 ~ file: firebase.js ~ line 23 ~ uid', uid);
+        // ...
+    } else {
+        // User is signed out
+        // ...
+    }
+});
