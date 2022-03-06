@@ -1,10 +1,11 @@
-import { getAuth, signOut } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../../firebase/firebase';
 
-const auth = getAuth();
 const signout = (): void => {
     signOut(auth)
         .then(() => {
             // Sign-out successful.
+            console.log('logout!!!');
         })
         .catch(error => {
             // An error happened.

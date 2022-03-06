@@ -21,20 +21,24 @@ export interface IAdminInfoSetAction {
 }
 
 //initial state
-const mall_shop_name = sessionStorage.getItem('mall_shop_name')
-    ? sessionStorage.getItem('mall_shop_name')
-    : '';
-const mall_shop_manager_user_name = sessionStorage.getItem(
-    'mall_shop_manager_user_name',
-)
-    ? sessionStorage.getItem('mall_shop_manager_user_name')
-    : '';
+const mall_shop_name = '';
+const mall_shop_manager_user_name = '';
+const mall_shop_manager_user_email = '';
 
-const mall_shop_manager_user_email = sessionStorage.getItem(
-    'mall_shop_manager_user_email',
-)
-    ? sessionStorage.getItem('mall_shop_manager_user_email')
-    : '';
+// const mall_shop_name = sessionStorage.getItem('mall_shop_name')
+//     ? sessionStorage.getItem('mall_shop_name')
+//     : '';
+// const mall_shop_manager_user_name = sessionStorage.getItem(
+//     'mall_shop_manager_user_name',
+// )
+//     ? sessionStorage.getItem('mall_shop_manager_user_name')
+//     : '';
+
+// const mall_shop_manager_user_email = sessionStorage.getItem(
+//     'mall_shop_manager_user_email',
+// )
+//     ? sessionStorage.getItem('mall_shop_manager_user_email')
+//     : '';
 
 export const initialAdminInfoState: IAdminInfo = {
     mall_shop_name,

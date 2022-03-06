@@ -1,4 +1,4 @@
-.modalBox {
+.modal {
     width: min(700px, 90%);
     margin: auto;
     padding: 3rem 5rem;
@@ -9,7 +9,7 @@
     background-color: #fff;
 }
 
-.modalBox__close {
+.modal__close {
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;

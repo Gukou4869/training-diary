@@ -1,7 +1,7 @@
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../firebase/firebase';
 
 const signup = (email: string, password: string): void => {
-    const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
             // Signed in

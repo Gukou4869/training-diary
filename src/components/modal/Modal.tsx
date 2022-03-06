@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import Backdrop from '../../backdrop/Backdrop';
+import Backdrop from '../backdrop/Backdrop';
 import styles from '@/styles/components/Modal.module.scss';
 
-interface ModalBoxProps {
+interface ModalProps {
     children?: React.ReactElement;
     open?: boolean;
     handleClose?: () => void;
 }
 
-const ModalBox: React.VFC<ModalBoxProps> = props => {
+const Modal: React.VFC<ModalProps> = props => {
     const { children, handleClose } = props;
     const dropIn = {
         hidden: { y: '-15vh', opacity: 0 },
@@ -27,7 +27,7 @@ const ModalBox: React.VFC<ModalBoxProps> = props => {
     return (
         <Backdrop>
             <motion.div
-                className={styles.modalBox}
+                className={styles.modal}
                 onClick={e => {
                     e.stopPropagation();
                 }}
@@ -37,7 +37,7 @@ const ModalBox: React.VFC<ModalBoxProps> = props => {
                 exit="exit"
             >
                 <button
-                    className={styles['modalBox__close']}
+                    className={styles['modal__close']}
                     onClick={handleClose}
                     type="button"
                 >
@@ -49,4 +49,4 @@ const ModalBox: React.VFC<ModalBoxProps> = props => {
     );
 };
 
-export default ModalBox;
+export default Modal;

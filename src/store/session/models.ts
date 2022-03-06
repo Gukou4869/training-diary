@@ -76,14 +76,8 @@ export interface ISessionState {
     success: boolean;
 }
 // session storage for initial session state
-const status = localStorage.getItem('status')
-    ? localStorage.getItem('status') === 'true'
-        ? true
-        : false
-    : false;
-const token = localStorage.getItem('token')
-    ? localStorage.getItem('token')
-    : '';
+const status = true;
+const token = '';
 
 export const initialSessionState: ISessionState = {
     token,

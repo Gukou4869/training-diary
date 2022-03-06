@@ -1,8 +1,7 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { StringOptionsWithImporter } from 'sass';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../firebase/firebase';
 
 const login = (email: string, password: string): void => {
-    const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
         .then(userCredential => {
             // Signed in
