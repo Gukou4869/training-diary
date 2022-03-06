@@ -15,14 +15,20 @@ interface LoginProps {
     checked?: boolean;
     handleChecked?: () => void;
     handleClose?: () => void;
+    handleGoogleLogin?: () => void;
 }
 
 const Login: React.VFC<LoginProps> = props => {
-    const { children, checked, handleClose, handleChecked } = props;
+    const { children, checked, handleClose, handleChecked, handleGoogleLogin } =
+        props;
     return (
         <div className={styles.login}>
             <h1>Login to Your Account</h1>
-            <motion.button type="button" className={styles['login__google']}>
+            <motion.button
+                type="button"
+                className={styles['login__google']}
+                onClick={handleGoogleLogin}
+            >
                 <span className={styles['login__google__logo']}>
                     <FcGoogle />
                 </span>
