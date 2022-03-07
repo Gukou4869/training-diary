@@ -120,10 +120,10 @@ $navbar-height: 3.5rem;
     border: 2px solid $gray-300;
     transition: all 0.2s ease-in;
     &:hover {
-        border-color: #e83e8c;
+        border-color: $primary;
     }
     &:focus {
-        border-color: lighten(#e83e8c, 10%);
+        border-color: lighten($primary, 10%);
         outline: none;
     }
 }

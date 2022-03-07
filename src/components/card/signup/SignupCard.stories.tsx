@@ -1,15 +1,17 @@
 import React from 'react';
-import Login from './LoginCard';
+import SignupCard from './SignupCard';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
-    title: 'Login',
-    component: Login,
+    title: 'SignUp',
+    component: SignupCard,
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof Login>;
+} as ComponentMeta<typeof SignupCard>;
 
-const Template: ComponentStory<typeof Login> = args => <Login {...args} />;
+const Template: ComponentStory<typeof SignupCard> = args => (
+    <SignupCard {...args} />
+);
 
 export const Default = Template.bind({});

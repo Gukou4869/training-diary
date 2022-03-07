@@ -1,12 +1,11 @@
-import * as React from "react";
-import Container from "../column/Column";
-import Row from "./Row";
-import Column from "../column/Column";
-import "./storyStyles.scss";
-import { ComponentMeta } from "@storybook/react";
+import * as React from 'react';
+import Container from '../column/Column';
+import Row from './Row';
+import Column from '../column/Column';
+import { ComponentMeta } from '@storybook/react';
 
 export default {
-    title: "Gukou UI/Atoms/Grid/Row",
+    title: 'Gukou UI/Atoms/Grid/Row',
     component: Row,
 } as ComponentMeta<typeof Row>;
 
@@ -28,10 +27,6 @@ const DefaultTwoColumns = () => (
 );
 
 export const TwoColumns = DefaultTwoColumns.bind({});
-
-TwoColumns.parameters = {
-    controls: { hideNoControlsWarning: true },
-};
 
 const DefaultFourColumns = () => (
     <Container>
@@ -63,7 +58,3 @@ const DefaultFourColumns = () => (
 );
 
 export const FourColumns = DefaultFourColumns.bind({});
-
-FourColumns.parameters = {
-    controls: { hideNoControlsWarning: true },
-};
