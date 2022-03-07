@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Input from '@/components/input/Input';
 import ActionButton from '@/components/button/action/ActionButton';
 import Checkbox from '@/components/checkbox/Checkbox';
@@ -20,7 +20,24 @@ interface LoginCardProps {
 const LoginCard: React.VFC<LoginCardProps> = props => {
     const { checked, handleChecked, handleGoogleLogin, moveToSignup } = props;
     return (
-        <div className={styles.loginCard}>
+        <motion.div
+            className={styles.loginCard}
+            exit={{
+                opacity: 0,
+                x: -60,
+                transition: {
+                    duration: 0.5,
+                },
+            }}
+            initial={{ opacity: 0, x: 60 }}
+            animate={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                    duration: 0.5,
+                },
+            }}
+        >
             <h1>Login to Your Account</h1>
             <motion.button
                 type="button"
@@ -39,7 +56,6 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
             <div className={styles['loginCard__input']}>
                 <Input type="password" label="Password" />
             </div>
-
             <Row>
                 <Column xs={6} md={6}>
                     <FlexBox align="center" justify="start">
@@ -70,7 +86,7 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
                     Register Now
                 </span>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

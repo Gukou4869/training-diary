@@ -33,7 +33,7 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
         <>
             <AnimatePresence
                 initial={false}
-                exitBeforeEnter={true}
+                exitBeforeEnter
                 onExitComplete={() => null}
             >
                 {open && (

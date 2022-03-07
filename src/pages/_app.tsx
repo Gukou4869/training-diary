@@ -1,13 +1,16 @@
 import type { AppProps } from 'next/app';
+import { AnimatePresence } from 'framer-motion';
 import { Provider } from 'react-redux';
 import { store } from '../store/index';
 import '@/styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <Provider store={store}>
-            <Component {...pageProps} />;
-        </Provider>
+        <AnimatePresence exitBeforeEnter>
+            <Provider store={store}>
+                <Component {...pageProps} />;
+            </Provider>
+        </AnimatePresence>
     );
 }
 

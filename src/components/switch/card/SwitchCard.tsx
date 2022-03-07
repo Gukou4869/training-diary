@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import { useState } from 'react';
 import LoginCard from '../../card/login/LoginCard';
@@ -18,6 +19,28 @@ const SwitchCard: React.VFC<SwitchCardProps> = props => {
     const handleToggleCard = (): void => {
         setToggleCard(prevState => !prevState);
     };
+    return (
+        <>
+            <AnimatePresence initial={false} exitBeforeEnter>
+                {toggleCard && (
+                    <LoginCard
+                        key={1}
+                        checked={checked}
+                        handleChecked={handleChecked}
+                        handleGoogleLogin={handleGoogleLogin}
+                        moveToSignup={handleToggleCard}
+                    />
+                )}
+                {!toggleCard && (
+                    <SignupCard
+                        key={2}
+                        moveToLogin={handleToggleCard}
+                        handleGoogleLogin={handleGoogleLogin}
+                    />
+                )}
+            </AnimatePresence>
+        </>
+    );
 
     if (toggleCard) {
         return (

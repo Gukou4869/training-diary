@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Input from '@/components/input/Input';
 import ActionButton from '@/components/button/action/ActionButton';
 import styles from '@/styles/components/SignupCard.module.scss';
@@ -14,7 +14,24 @@ interface SignupCardProps {
 const SignUpCard: React.VFC<SignupCardProps> = props => {
     const { handleGoogleLogin, moveToLogin } = props;
     return (
-        <div className={styles.signupCard}>
+        <motion.div
+            className={styles.signupCard}
+            exit={{
+                opacity: 0,
+                x: -60,
+                transition: {
+                    duration: 0.5,
+                },
+            }}
+            initial={{ opacity: 0, x: 60 }}
+            animate={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                    duration: 0.5,
+                },
+            }}
+        >
             <h1>Sing up to Your Account</h1>
             <motion.button
                 type="button"
@@ -46,7 +63,7 @@ const SignUpCard: React.VFC<SignupCardProps> = props => {
                     Login with your account
                 </span>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
