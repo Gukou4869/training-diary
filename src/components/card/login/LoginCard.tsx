@@ -14,10 +14,11 @@ interface LoginCardProps {
     handleChecked?: () => void;
     handleGoogleLogin?: () => void;
     handleSubmit?: () => void;
+    moveToSignup: () => void;
 }
 
 const LoginCard: React.VFC<LoginCardProps> = props => {
-    const { checked, handleChecked, handleGoogleLogin } = props;
+    const { checked, handleChecked, handleGoogleLogin, moveToSignup } = props;
     return (
         <div className={styles.loginCard}>
             <h1>Login to Your Account</h1>
@@ -62,7 +63,12 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
             <ActionButton label="Login to Your Account" size="lg" />
             <div className={styles['loginCard__footer']}>
                 Not a member now?
-                <span className=""> Register Now</span>
+                <span
+                    className={styles['loginCard__footer__goToSignup']}
+                    onClick={moveToSignup}
+                >
+                    Register Now
+                </span>
             </div>
         </div>
     );

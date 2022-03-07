@@ -2,6 +2,7 @@
 
 .loginCard {
     width: 100%;
+    min-height: 550px;
 }
 
 .loginCard__google {
@@ -58,4 +59,13 @@
     align-items: center;
     justify-content: center;
     margin: 1.5rem auto;
+}
+
+.loginCard__footer__goToSignup {
+    margin-left: 0.5rem;
+    cursor: pointer;
+    &:hover {
+        color: $primary;
+        text-decoration: underline 1px $primary;
+    }
 }

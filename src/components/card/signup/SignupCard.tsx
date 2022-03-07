@@ -8,10 +8,11 @@ import styles from '@/styles/components/SignupCard.module.scss';
 interface SignupCardProps {
     handleGoogleLogin?: () => void;
     handleSubmit?: () => void;
+    moveToLogin: () => void;
 }
 
 const SignUpCard: React.VFC<SignupCardProps> = props => {
-    const { handleGoogleLogin } = props;
+    const { handleGoogleLogin, moveToLogin } = props;
     return (
         <div className={styles.signupCard}>
             <h1>Sing up to Your Account</h1>
@@ -38,7 +39,10 @@ const SignUpCard: React.VFC<SignupCardProps> = props => {
             <ActionButton label="Signup to Your Account" size="lg" />
             <div className={styles['signupCard__footer']}>
                 You are already a member?
-                <span className={styles['signupCard__footer__backLogin']}>
+                <span
+                    className={styles['signupCard__footer__backLogin']}
+                    onClick={moveToLogin}
+                >
                     Login with your account
                 </span>
             </div>
