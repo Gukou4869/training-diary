@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Input from '@/components/input/Input';
 import ActionButton from '@/components/button/action/ActionButton';
 import Checkbox from '@/components/checkbox/Checkbox';
@@ -13,12 +13,19 @@ interface LoginCardProps {
     checked?: boolean;
     handleChecked?: () => void;
     handleGoogleLogin?: () => void;
-    handleSubmit?: () => void;
+    handleOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     moveToSignup: () => void;
+    handleSubmit?: () => void;
 }
 
 const LoginCard: React.VFC<LoginCardProps> = props => {
-    const { checked, handleChecked, handleGoogleLogin, moveToSignup } = props;
+    const {
+        checked,
+        handleChecked,
+        handleGoogleLogin,
+        moveToSignup,
+        handleOnChange,
+    } = props;
     return (
         <motion.div
             className={styles.loginCard}
@@ -26,7 +33,7 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
                 opacity: 0,
                 x: -60,
                 transition: {
-                    duration: 0.5,
+                    duration: 0.2,
                 },
             }}
             initial={{ opacity: 0, x: 60 }}
@@ -34,7 +41,7 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
                 opacity: 1,
                 x: 0,
                 transition: {
-                    duration: 0.5,
+                    duration: 0.2,
                 },
             }}
         >
@@ -51,10 +58,20 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
             </motion.button>
             <div className={styles['loginCard__divider']}> - OR -</div>
             <div className={styles['loginCard__input']}>
-                <Input type="email" label="Email" />
+                <Input
+                    type="email"
+                    label="Email"
+                    name="email"
+                    onChange={handleOnChange}
+                />
             </div>
             <div className={styles['loginCard__input']}>
-                <Input type="password" label="Password" />
+                <Input
+                    type="password"
+                    label="Password"
+                    name="password"
+                    onChange={handleOnChange}
+                />
             </div>
             <Row>
                 <Column xs={6} md={6}>

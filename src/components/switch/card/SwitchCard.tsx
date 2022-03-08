@@ -1,18 +1,36 @@
-import { AnimatePresence } from 'framer-motion';
 import * as React from 'react';
 import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import {
+    LoginInputParams,
+    SignupInputParams,
+} from '@/screens/home/Home.Container';
 import LoginCard from '../../card/login/LoginCard';
 import SignupCard from '../../card/signup/SignupCard';
 
 interface SwitchCardProps {
     checked?: boolean;
+    loginInput: LoginInputParams;
+    signupInput: SignupInputParams;
     handleChecked?: () => void;
     handleGoogleLogin?: () => void;
+    handleOnChangeLoginInput: (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) => void;
+    handleOnChangeSignupInput: (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) => void;
     handleSubmit?: () => void;
 }
 
 const SwitchCard: React.VFC<SwitchCardProps> = props => {
-    const { checked, handleChecked, handleGoogleLogin } = props;
+    const {
+        checked,
+        handleChecked,
+        handleOnChangeLoginInput,
+        handleOnChangeSignupInput,
+        handleGoogleLogin,
+    } = props;
     // switch login and sign up
     const [toggleCard, setToggleCard] = useState<boolean>(true);
 
@@ -27,6 +45,7 @@ const SwitchCard: React.VFC<SwitchCardProps> = props => {
                         key={1}
                         checked={checked}
                         handleChecked={handleChecked}
+                        handleOnChange={handleOnChangeLoginInput}
                         handleGoogleLogin={handleGoogleLogin}
                         moveToSignup={handleToggleCard}
                     />
@@ -35,30 +54,13 @@ const SwitchCard: React.VFC<SwitchCardProps> = props => {
                     <SignupCard
                         key={2}
                         moveToLogin={handleToggleCard}
-                        handleGoogleLogin={handleGoogleLogin}
+                        handleGoogleSignup={handleGoogleLogin}
+                        handleOnChange={handleOnChangeSignupInput}
                     />
                 )}
             </AnimatePresence>
         </>
     );
-
-    if (toggleCard) {
-        return (
-            <LoginCard
-                checked={checked}
-                handleChecked={handleChecked}
-                handleGoogleLogin={handleGoogleLogin}
-                moveToSignup={handleToggleCard}
-            />
-        );
-    } else {
-        return (
-            <SignupCard
-                moveToLogin={handleToggleCard}
-                handleGoogleLogin={handleGoogleLogin}
-            />
-        );
-    }
 };
 
 export default SwitchCard;

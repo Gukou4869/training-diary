@@ -15,24 +15,55 @@ export interface LoginInputParams {
     password: string;
 }
 
+export interface SignupInputParams {
+    email: string;
+    password: string;
+    confirmed: string;
+}
+
 const HomeContainer: React.FC<HomeContainerProps> = ({ token }) => {
     //login input params
-    const [inputParams, setInoputParams] = useState<LoginInputParams>({
+    const [loginInput, setLoginInput] = useState<LoginInputParams>({
         email: '',
         password: '',
     });
+    console.log(
+        '🚀 ~ file: Home.Container.tsx ~ line 27 ~ loginInput',
+        loginInput,
+    );
+    //signup input params
+    const [signupInput, setSignupInput] = useState<SignupInputParams>({
+        email: '',
+        password: '',
+        confirmed: '',
+    });
+    console.log(
+        '🚀 ~ file: Home.Container.tsx ~ line 32 ~ signupInput',
+        signupInput,
+    );
     // password memorise state
     const [checked, setChecked] = React.useState(false);
 
-    const handleOnChangeInputParams = (
+    const handleOnChangeLoginInput = (
         event: React.ChangeEvent<HTMLInputElement>,
     ): void => {
         const { name, value } = event.currentTarget;
         const tempParams: LoginInputParams = {
-            ...inputParams,
+            ...loginInput,
             [name]: value,
         };
-        setInoputParams(tempParams);
+        setLoginInput(tempParams);
+    };
+
+    const handleOnChangeSignupInput = (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ): void => {
+        const { name, value } = event.currentTarget;
+        const tempObj: SignupInputParams = {
+            ...signupInput,
+            [name]: value,
+        };
+        setSignupInput(tempObj);
     };
 
     const handleToggleChecked = () => {
@@ -42,8 +73,10 @@ const HomeContainer: React.FC<HomeContainerProps> = ({ token }) => {
     return (
         <HomeView
             checked={checked}
-            inputParams={inputParams}
-            handleOnChangeInputParams={handleOnChangeInputParams}
+            loginInput={loginInput}
+            signupInput={signupInput}
+            handleOnChangeLoginInput={handleOnChangeLoginInput}
+            handleOnChangeSignupInput={handleOnChangeSignupInput}
             handleToggleChecked={handleToggleChecked}
         />
     );

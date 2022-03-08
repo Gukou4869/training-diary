@@ -5,12 +5,16 @@ import googleLogin from '@/services/auth/GoogleLogin';
 import SwitchCard from '@/components/switch/card/SwitchCard';
 import Modal from '@/components/modal/Modal';
 import { AnimatePresence } from 'framer-motion';
-import { LoginInputParams } from './Home.Container';
+import { LoginInputParams, SignupInputParams } from './Home.Container';
 
 interface HomeContainerProps {
     checked: boolean;
-    inputParams: LoginInputParams;
-    handleOnChangeInputParams: (
+    loginInput: LoginInputParams;
+    signupInput: SignupInputParams;
+    handleOnChangeLoginInput: (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) => void;
+    handleOnChangeSignupInput: (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => void;
     handleToggleChecked: () => void;
@@ -18,8 +22,10 @@ interface HomeContainerProps {
 
 const HomeContainer: React.FC<HomeContainerProps> = ({
     checked,
-    inputParams,
-    handleOnChangeInputParams,
+    loginInput,
+    signupInput,
+    handleOnChangeLoginInput,
+    handleOnChangeSignupInput,
     handleToggleChecked,
 }) => {
     // modal open state
@@ -40,6 +46,12 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
                     <Modal open={open} handleClose={handleToggle}>
                         <SwitchCard
                             checked={checked}
+                            loginInput={loginInput}
+                            signupInput={signupInput}
+                            handleOnChangeLoginInput={handleOnChangeLoginInput}
+                            handleOnChangeSignupInput={
+                                handleOnChangeSignupInput
+                            }
                             handleChecked={handleToggleChecked}
                             handleGoogleLogin={googleLogin}
                         />

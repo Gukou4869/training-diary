@@ -50,6 +50,7 @@ export const Input: React.VFC<InputProps> = ({
                 name={name}
                 autoComplete="off"
                 placeholder=" "
+                onChange={onChange}
             />
             <label className={styles['form__label']}>{label}</label>
             {type === 'password' ? (
