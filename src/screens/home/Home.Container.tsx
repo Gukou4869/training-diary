@@ -29,20 +29,12 @@ const HomeContainer: React.FC<HomeContainerProps> = ({ token }) => {
         email: '',
         password: '',
     });
-    console.log(
-        '🚀 ~ file: Home.Container.tsx ~ line 27 ~ loginInput',
-        loginInput,
-    );
     //signup input params
     const [signupInput, setSignupInput] = useState<SignupInputParams>({
         email: '',
         password: '',
         confirmed: '',
     });
-    console.log(
-        '🚀 ~ file: Home.Container.tsx ~ line 32 ~ signupInput',
-        signupInput,
-    );
     // password memorise state
     const [checked, setChecked] = React.useState(false);
 

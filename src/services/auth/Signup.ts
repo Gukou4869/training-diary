@@ -6,7 +6,6 @@ const signup = (email: string, password: string): void => {
         .then(userCredential => {
             // Signed in
             const user = userCredential.user;
-            console.log('🚀 ~ file: Signup.ts ~ line 9 ~ signup ~ user', user);
             // ...
         })
         .catch(error => {
