@@ -22,13 +22,14 @@ function MyApp({ Component, pageProps }: AppProps) {
             } else {
                 // User is signed out
                 // ...
+                router.push('/');
             }
         });
     }, []);
     return (
         <AnimatePresence exitBeforeEnter>
             <Provider store={store}>
-                <Component {...pageProps} />;
+                <Component {...pageProps} />
             </Provider>
         </AnimatePresence>
     );

@@ -2,6 +2,7 @@ import { AnyAction } from 'redux';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { RootState } from '../../store/index';
 import { ThunkAction } from 'redux-thunk';
+import { errorSet } from '@/store/error/actions';
 import { sessionStatus } from '@/store/session/action';
 import login from '@/services/auth/Login';
 import signup from '@/services/auth/Signup';
@@ -18,11 +19,10 @@ export const thunkLogin =
         // show loading bar
         dispatch(showLoading());
         try {
-            //API完成後元に戻す
-            const token = await login(email, password);
+            await login(email, password);
             //dispatch(sessionStatus({ status: true, token }));
         } catch (e) {
-            // dispatch(errorSet(axiosError(e)));
+            console.log('🚀 ~ file: Login.ts ~ line 23 ~ login ~ errorObj', e);
         } finally {
             //hide loading bar
             dispatch(hideLoading());

@@ -7,9 +7,11 @@ import { RootState } from '../../store/index';
 import login from '@/services/auth/Login';
 import HomeView from './Home.View';
 import signup from '@/services/auth/Signup';
+import { thunkLogin } from '@/thunk/auth/thunk';
 
 interface HomeContainerProps {
     token: string;
+    login: (email: string, password: string) => void;
 }
 
 export interface LoginInputParams {
@@ -23,7 +25,7 @@ export interface SignupInputParams {
     confirmed: string;
 }
 
-const HomeContainer: React.FC<HomeContainerProps> = ({ token }) => {
+const HomeContainer: React.FC<HomeContainerProps> = ({ token, login }) => {
     //login input params
     const [loginInput, setLoginInput] = useState<LoginInputParams>({
         email: '',
@@ -96,7 +98,11 @@ const MapStateToProps = (store: RootState) => {
 const MapDispatchToProps = (
     dispatch: ThunkDispatch<RootState, null, AnyAction>,
 ) => {
-    return {};
+    return {
+        login: (email: string, password: string): void => {
+            dispatch(thunkLogin(email, password));
+        },
+    };
 };
 
 export default connect(MapStateToProps, MapDispatchToProps)(HomeContainer);

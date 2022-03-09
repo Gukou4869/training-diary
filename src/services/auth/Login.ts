@@ -1,17 +1,21 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+    signInWithEmailAndPassword,
+    User,
+    UserCredential,
+} from 'firebase/auth';
 import { auth } from '../../../firebase/firebase';
 
-const login = (email: string, password: string): void => {
-    signInWithEmailAndPassword(auth, email, password)
-        .then(userCredential => {
-            // Signed in
-            const user = userCredential.user;
-            return user.uid;
-        })
-        .catch(error => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-        });
-};
+async function login(email: string, password: string): Promise<User> {
+    try {
+        const userCredential: UserCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password,
+        );
+        return userCredential.user;
+    } catch (e) {
+        throw e;
+    }
+}
 
 export default login;
