@@ -18,6 +18,8 @@ interface HomeContainerProps {
         event: React.ChangeEvent<HTMLInputElement>,
     ) => void;
     handleToggleChecked: () => void;
+    handleLogin: () => void;
+    handleSignup: () => void;
 }
 
 const HomeContainer: React.FC<HomeContainerProps> = ({
@@ -27,6 +29,8 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
     handleOnChangeLoginInput,
     handleOnChangeSignupInput,
     handleToggleChecked,
+    handleLogin,
+    handleSignup,
 }) => {
     // modal open state
     const [open, setOpen] = useState<boolean>(false);
@@ -54,6 +58,8 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
                             }
                             handleChecked={handleToggleChecked}
                             handleGoogleLogin={googleLogin}
+                            handleLogin={handleLogin}
+                            handleSignup={handleSignup}
                         />
                     </Modal>
                 )}

@@ -20,7 +20,8 @@ interface SwitchCardProps {
     handleOnChangeSignupInput: (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => void;
-    handleSubmit?: () => void;
+    handleLogin?: () => void;
+    handleSignup?: () => void;
 }
 
 const SwitchCard: React.VFC<SwitchCardProps> = props => {
@@ -30,6 +31,8 @@ const SwitchCard: React.VFC<SwitchCardProps> = props => {
         handleOnChangeLoginInput,
         handleOnChangeSignupInput,
         handleGoogleLogin,
+        handleLogin,
+        handleSignup,
     } = props;
     // switch login and sign up
     const [toggleCard, setToggleCard] = useState<boolean>(true);
@@ -48,6 +51,7 @@ const SwitchCard: React.VFC<SwitchCardProps> = props => {
                         handleOnChange={handleOnChangeLoginInput}
                         handleGoogleLogin={handleGoogleLogin}
                         moveToSignup={handleToggleCard}
+                        handleSubmit={handleLogin}
                     />
                 )}
                 {!toggleCard && (
@@ -56,6 +60,7 @@ const SwitchCard: React.VFC<SwitchCardProps> = props => {
                         moveToLogin={handleToggleCard}
                         handleGoogleSignup={handleGoogleLogin}
                         handleOnChange={handleOnChangeSignupInput}
+                        handleSubmit={handleSignup}
                     />
                 )}
             </AnimatePresence>

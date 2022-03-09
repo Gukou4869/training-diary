@@ -6,8 +6,7 @@ const login = (email: string, password: string): void => {
         .then(userCredential => {
             // Signed in
             const user = userCredential.user;
-            console.log('🚀 ~ file: login.ts ~ line 10 ~ login ~ user', user);
-            // ...
+            return user.uid;
         })
         .catch(error => {
             const errorCode = error.code;

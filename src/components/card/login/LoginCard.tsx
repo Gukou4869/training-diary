@@ -25,6 +25,7 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
         handleGoogleLogin,
         moveToSignup,
         handleOnChange,
+        handleSubmit,
     } = props;
     return (
         <motion.div
@@ -60,16 +61,16 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
             <div className={styles['loginCard__input']}>
                 <Input
                     type="email"
-                    label="Email"
                     name="email"
+                    label="Email"
                     onChange={handleOnChange}
                 />
             </div>
             <div className={styles['loginCard__input']}>
                 <Input
                     type="password"
-                    label="Password"
                     name="password"
+                    label="Password"
                     onChange={handleOnChange}
                 />
             </div>
@@ -85,15 +86,17 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
                 </Column>
                 <Column xs={6} md={6}>
                     <FlexBox align="center" justify="end">
-                        <motion.p
-                            className={styles['loginCard__password-reset']}
-                        >
+                        <p className={styles['loginCard__password-reset']}>
                             Forget Password?
-                        </motion.p>
+                        </p>
                     </FlexBox>
                 </Column>
             </Row>
-            <ActionButton label="Login to Your Account" size="lg" />
+            <ActionButton
+                label="Login to Your Account"
+                size="lg"
+                onClick={handleSubmit}
+            />
             <div className={styles['loginCard__footer']}>
                 Not a member now?
                 <span

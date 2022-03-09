@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../store/index';
+import login from '@/services/auth/Login';
 import HomeView from './Home.View';
+import signup from '@/services/auth/Signup';
 
 interface HomeContainerProps {
     token: string;
@@ -70,6 +72,16 @@ const HomeContainer: React.FC<HomeContainerProps> = ({ token }) => {
         setChecked(prevState => !prevState);
     };
 
+    const handleLogin = () => {
+        login(loginInput.email, loginInput.password);
+    };
+
+    const handleSignup = () => {
+        if (signupInput.password === signupInput.confirmed) {
+            signup(signupInput.email, signupInput.password);
+        }
+    };
+
     return (
         <HomeView
             checked={checked}
@@ -78,6 +90,8 @@ const HomeContainer: React.FC<HomeContainerProps> = ({ token }) => {
             handleOnChangeLoginInput={handleOnChangeLoginInput}
             handleOnChangeSignupInput={handleOnChangeSignupInput}
             handleToggleChecked={handleToggleChecked}
+            handleLogin={handleLogin}
+            handleSignup={handleSignup}
         />
     );
 };

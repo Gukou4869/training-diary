@@ -13,7 +13,8 @@ interface SignupCardProps {
 }
 
 const SignUpCard: React.VFC<SignupCardProps> = props => {
-    const { handleGoogleSignup, moveToLogin, handleOnChange } = props;
+    const { handleGoogleSignup, moveToLogin, handleOnChange, handleSubmit } =
+        props;
     return (
         <motion.div
             className={styles.signupCard}
@@ -69,7 +70,11 @@ const SignUpCard: React.VFC<SignupCardProps> = props => {
                     onChange={handleOnChange}
                 />
             </div>
-            <ActionButton label="Signup to Your Account" size="lg" />
+            <ActionButton
+                label="Signup to Your Account"
+                size="lg"
+                onClick={handleSubmit}
+            />
             <div className={styles['signupCard__footer']}>
                 You are already a member?
                 <span
