@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+.alert {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: #fff;
+    padding: 1rem 0.5rem;
+    border-radius: 5px;
+}
+
+.alert--error {
+    background-color: $error;
+}
+
+.alert--success {
+    background-color: $success;
+}
+
+.alert--warning {
+    background-color: $warning;
+}
+
+.alert__close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+.alert__icon {
+    position: absolute;
+    top: 1.3rem;
+    left: 2rem;
+    font-size: 1.75rem;
+}
