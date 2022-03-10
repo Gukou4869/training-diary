@@ -6,6 +6,7 @@ import { errorSet } from '@/store/error/actions';
 import { sessionStatus } from '@/store/session/action';
 import login from '@/services/auth/Login';
 import signup from '@/services/auth/Signup';
+import { IError, IFirebaseError } from '@/store/error/models';
 
 // session login
 // @param email: string
@@ -22,7 +23,14 @@ export const thunkLogin =
             await login(email, password);
             //dispatch(sessionStatus({ status: true, token }));
         } catch (e) {
-            console.log('🚀 ~ file: Login.ts ~ line 23 ~ login ~ errorObj', e);
+            const error = e as IFirebaseError;
+            const errorObj: IError = {
+                hasError: true,
+                errorType: error.code,
+                errorMessage: error.message,
+            };
+            console.log('🚀 ~ file: thunk.ts ~ line 27 ~ error', error);
+            dispatch(errorSet(errorObj));
         } finally {
             //hide loading bar
             dispatch(hideLoading());
