@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import { LoginInputParams, SignupInputParams } from './Home.Container';
+import { IError } from '@/store/error/models';
 import Header from '@/components/header/Header';
 import googleLogin from '@/services/auth/GoogleLogin';
 import SwitchCard from '@/components/switch/card/SwitchCard';
 import Modal from '@/components/modal/Modal';
-import { AnimatePresence } from 'framer-motion';
-import { LoginInputParams, SignupInputParams } from './Home.Container';
 
 interface HomeContainerProps {
+    error: IError;
     checked: boolean;
     loginInput: LoginInputParams;
     signupInput: SignupInputParams;
@@ -19,17 +21,20 @@ interface HomeContainerProps {
     ) => void;
     handleToggleChecked: () => void;
     handleLogin: () => void;
+    handleResetError: () => void;
     handleSignup: () => void;
 }
 
 const HomeContainer: React.FC<HomeContainerProps> = ({
     checked,
+    error,
     loginInput,
     signupInput,
     handleOnChangeLoginInput,
     handleOnChangeSignupInput,
     handleToggleChecked,
     handleLogin,
+    handleResetError,
     handleSignup,
 }) => {
     // modal open state
@@ -41,14 +46,11 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
 
     return (
         <>
-            <AnimatePresence
-                initial={false}
-                exitBeforeEnter
-                onExitComplete={() => null}
-            >
+            <AnimatePresence>
                 {open && (
                     <Modal open={open} handleClose={handleToggle}>
                         <SwitchCard
+                            error={error}
                             checked={checked}
                             loginInput={loginInput}
                             signupInput={signupInput}
@@ -59,6 +61,7 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
                             handleChecked={handleToggleChecked}
                             handleGoogleLogin={googleLogin}
                             handleLogin={handleLogin}
+                            handleResetError={handleResetError}
                             handleSignup={handleSignup}
                         />
                     </Modal>

@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import '../../../styles/variables.scss';
 
 .loginCard {
     width: 100%;
@@ -68,4 +68,11 @@
         color: $primary;
         text-decoration: underline 1px $primary;
     }
+}
+
+.test {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
 }

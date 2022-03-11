@@ -2,11 +2,12 @@ import { AnyAction } from 'redux';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { RootState } from '../../store/index';
 import { ThunkAction } from 'redux-thunk';
-import { errorSet } from '@/store/error/actions';
+import { errorReset, errorSet } from '@/store/error/actions';
 import { sessionStatus } from '@/store/session/action';
 import login from '@/services/auth/Login';
 import signup from '@/services/auth/Signup';
 import { IError, IFirebaseError } from '@/store/error/models';
+import { firebaseError } from '@/lib/firebaseError';
 
 // session login
 // @param email: string
@@ -20,16 +21,17 @@ export const thunkLogin =
         // show loading bar
         dispatch(showLoading());
         try {
+            //error reset
+            dispatch(errorReset());
             await login(email, password);
             //dispatch(sessionStatus({ status: true, token }));
         } catch (e) {
             const error = e as IFirebaseError;
             const errorObj: IError = {
                 hasError: true,
-                errorType: error.code,
-                errorMessage: error.message,
+                errorType: error.message,
+                errorMessage: firebaseError(error.code),
             };
-            console.log('🚀 ~ file: thunk.ts ~ line 27 ~ error', error);
             dispatch(errorSet(errorObj));
         } finally {
             //hide loading bar

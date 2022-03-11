@@ -23,18 +23,26 @@
 
 .alert__close {
     position: absolute;
-    top: 1.5rem;
+    top: 0;
+    bottom: 0;
     right: 1rem;
+    margin: auto;
     background-color: transparent;
     border: none;
     outline: none;
     color: #fff;
-    font-size: 1.25rem;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .alert__icon {
     position: absolute;
-    top: 1.3rem;
-    left: 2rem;
+    display: flex;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 1rem;
+    height: 50%;
+    margin: auto;
     font-size: 1.75rem;
 }

@@ -44,13 +44,25 @@ const Alert: React.VFC<AlertProps> = ({
                 return null;
         }
     };
+    if (autoClose) {
+        setTimeout(() => {
+            onClose();
+        }, 3000);
+    }
+
     return (
         <div className={`${styles.alert} ${styles[alertType]}`}>
             {icons(type)}
             <div className="alert__message">{message}</div>
-            <button className={styles['alert__close']} type="button">
-                <FaTimes />
-            </button>
+            {!autoClose && (
+                <button
+                    className={styles['alert__close']}
+                    type="button"
+                    onClick={onClose}
+                >
+                    <FaTimes />
+                </button>
+            )}
         </div>
     );
 };

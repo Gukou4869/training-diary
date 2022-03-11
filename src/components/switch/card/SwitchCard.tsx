@@ -5,10 +5,12 @@ import {
     LoginInputParams,
     SignupInputParams,
 } from '@/screens/home/Home.Container';
+import { IError } from '@/store/error/models';
 import LoginCard from '../../card/login/LoginCard';
 import SignupCard from '../../card/signup/SignupCard';
 
 interface SwitchCardProps {
+    error: IError;
     checked?: boolean;
     loginInput: LoginInputParams;
     signupInput: SignupInputParams;
@@ -21,17 +23,20 @@ interface SwitchCardProps {
         event: React.ChangeEvent<HTMLInputElement>,
     ) => void;
     handleLogin?: () => void;
+    handleResetError: () => void;
     handleSignup?: () => void;
 }
 
 const SwitchCard: React.VFC<SwitchCardProps> = props => {
     const {
+        error,
         checked,
         handleChecked,
         handleOnChangeLoginInput,
         handleOnChangeSignupInput,
         handleGoogleLogin,
         handleLogin,
+        handleResetError,
         handleSignup,
     } = props;
     // switch login and sign up
@@ -47,9 +52,11 @@ const SwitchCard: React.VFC<SwitchCardProps> = props => {
                     <LoginCard
                         key={1}
                         checked={checked}
+                        error={error}
                         handleChecked={handleChecked}
                         handleOnChange={handleOnChangeLoginInput}
                         handleGoogleLogin={handleGoogleLogin}
+                        handleResetError={handleResetError}
                         moveToSignup={handleToggleCard}
                         handleSubmit={handleLogin}
                     />

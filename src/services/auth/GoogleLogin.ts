@@ -10,10 +10,6 @@ const googleLogin = (): void => {
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
-            console.log(
-                '🚀 ~ file: GoogleLogin.ts ~ line 13 ~ googleLogin ~ user',
-                user,
-            );
             // ...
         })
         .catch(error => {

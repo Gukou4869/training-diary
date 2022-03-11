@@ -8,9 +8,13 @@ import login from '@/services/auth/Login';
 import HomeView from './Home.View';
 import signup from '@/services/auth/Signup';
 import { thunkLogin } from '@/thunk/auth/thunk';
+import { errorReset } from '@/store/error/actions';
+import { IError } from '@/store/error/models';
 
 interface HomeContainerProps {
     token: string;
+    error: IError;
+    handleResetError: () => void;
     login: (email: string, password: string) => void;
 }
 
@@ -25,7 +29,12 @@ export interface SignupInputParams {
     confirmed: string;
 }
 
-const HomeContainer: React.FC<HomeContainerProps> = ({ token, login }) => {
+const HomeContainer: React.FC<HomeContainerProps> = ({
+    error,
+    token,
+    login,
+    handleResetError,
+}) => {
     //login input params
     const [loginInput, setLoginInput] = useState<LoginInputParams>({
         email: '',
@@ -78,6 +87,7 @@ const HomeContainer: React.FC<HomeContainerProps> = ({ token, login }) => {
 
     return (
         <HomeView
+            error={error}
             checked={checked}
             loginInput={loginInput}
             signupInput={signupInput}
@@ -85,6 +95,7 @@ const HomeContainer: React.FC<HomeContainerProps> = ({ token, login }) => {
             handleOnChangeSignupInput={handleOnChangeSignupInput}
             handleToggleChecked={handleToggleChecked}
             handleLogin={handleLogin}
+            handleResetError={handleResetError}
             handleSignup={handleSignup}
         />
     );
@@ -93,6 +104,7 @@ const HomeContainer: React.FC<HomeContainerProps> = ({ token, login }) => {
 const MapStateToProps = (store: RootState) => {
     return {
         token: store.session.token,
+        error: store.error,
     };
 };
 const MapDispatchToProps = (
@@ -101,6 +113,9 @@ const MapDispatchToProps = (
     return {
         login: (email: string, password: string): void => {
             dispatch(thunkLogin(email, password));
+        },
+        handleResetError: (): void => {
+            dispatch(errorReset());
         },
     };
 };
