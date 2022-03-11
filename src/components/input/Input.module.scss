@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import '../../styles/variables.scss';
 
 .form {
     position: relative;
@@ -44,8 +44,11 @@
 
 .form__eye {
     position: absolute;
-    right: 1rem;
-    top: 0.5rem;
+    right: 2rem;
+    top: 0;
+    bottom: 0;
+    height: 70%;
+    margin: auto;
     font-size: 1.25rem;
     cursor: pointer;
 }

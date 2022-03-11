@@ -1,7 +1,6 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
-import styles from '@/styles/components/Input.module.scss';
+import { useState } from 'react';
+import styles from './Input.module.scss';
 
 interface InputProps {
     name?: string;
@@ -22,21 +21,17 @@ export const Input: React.VFC<InputProps> = ({
 }) => {
     //set show password (boolean)
     const [show, setShow] = useState<boolean>(false);
-    const [inputType, setInputType] = useState<HTMLInputElement | null>(null);
 
-    useEffect(() => {
-        const inputType = document.getElementById(
-            'gukouui-form__input',
-        ) as HTMLInputElement;
-        if (inputType.type === 'password') {
-            setInputType(inputType);
+    const togglePasswordVisibility = () => {
+        const input = document.getElementsByName(
+            'password',
+        )[0] as HTMLInputElement;
+        if (input.type === 'password') {
+            input.type = 'text';
+        } else {
+            input.type = 'password';
         }
-    }, []);
-
-    const handleToggleEye = () => {
-        inputType.type === 'password'
-            ? ((inputType.type = 'text'), setShow(true))
-            : ((inputType.type = 'password'), setShow(false));
+        setShow(prevState => !prevState);
     };
 
     return (
@@ -45,7 +40,6 @@ export const Input: React.VFC<InputProps> = ({
                 className={`${styles['form__input']} ${
                     hasError ? styles['form__input--hasError'] : ''
                 }`}
-                id="gukouui-form__input"
                 type={type}
                 name={name}
                 autoComplete="off"
@@ -54,8 +48,11 @@ export const Input: React.VFC<InputProps> = ({
             />
             <label className={styles['form__label']}>{label}</label>
             {type === 'password' ? (
-                <span className={styles['form__eye']} onClick={handleToggleEye}>
-                    {inputType && show ? <AiFillEye /> : <AiFillEyeInvisible />}
+                <span
+                    className={styles['form__eye']}
+                    onClick={togglePasswordVisibility}
+                >
+                    {show ? '🐵' : '🙈'}
                 </span>
             ) : null}
         </div>
