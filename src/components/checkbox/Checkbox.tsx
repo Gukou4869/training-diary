@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineCheck } from 'react-icons/ai';
-import styles from '@/styles/components/Checkbox.module.scss';
+import styles from './Checkbox.module.scss';
 
 interface CheckboxProps {
     label?: string;

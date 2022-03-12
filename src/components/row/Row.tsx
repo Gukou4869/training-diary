@@ -1,5 +1,5 @@
 import * as React from 'react';
-import stlyes from '@/styles/components/Row.module.scss';
+import stlyes from './Row.module.scss';
 
 const Row: React.FC = props => {
     const { children } = props;

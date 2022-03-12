@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import styles from '@/styles/components/ActionButton.module.scss';
+import styles from './ActionButton.module.scss';
 
 interface ActionButtonProps {
     backgroundColor?: string;

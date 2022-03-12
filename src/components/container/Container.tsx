@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from '@/styles/components/Container.module.scss';
+import styles from './Container.module.scss';
 interface ContainerProps {}
 
 const Container: React.FC<ContainerProps> = props => {

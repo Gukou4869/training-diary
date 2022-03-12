@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ActionButton from '../button/action/ActionButton';
-import styles from '@/styles/components/Header.module.scss';
+import styles from './Header.module.scss';
 
 interface HeaderProps {
     handleToggleOpen?: () => void;

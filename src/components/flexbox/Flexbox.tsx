@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from '@/styles/components/Flexbox.module.scss';
+import styles from './Flexbox.module.scss';
 
 interface FlexBoxProps {
     direction?: 'row' | 'column';

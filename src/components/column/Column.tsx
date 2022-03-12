@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from '@/styles/components/Column.module.scss';
+import styles from './Column.module.scss';
 
 interface ColumnProps {
     xl?: 12 | 10 | 8 | 6 | 4 | 3 | 2;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Backdrop from '../backdrop/Backdrop';
-import styles from '@/styles/components/Modal.module.scss';
+import styles from './Modal.module.scss';
 
 interface ModalProps {
     children?: React.ReactElement;
