@@ -3,7 +3,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { motion } from 'framer-motion';
 import Input from '@/components/input/Input';
 import ActionButton from '@/components/button/action/ActionButton';
-import styles from '@/styles/components/SignupCard.module.scss';
+import styles from './SignupCard.module.scss';
 
 interface SignupCardProps {
     handleGoogleSignup?: () => void;
@@ -34,7 +34,7 @@ const SignUpCard: React.VFC<SignupCardProps> = props => {
                 },
             }}
         >
-            <h1>Sing up to Your Account</h1>
+            <h1>Sing up 📝</h1>
             <motion.button
                 type="button"
                 className={styles['signupCard__google']}

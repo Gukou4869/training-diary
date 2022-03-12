@@ -1,6 +1,7 @@
 import { createStore, combineReducers, AnyAction } from 'redux';
 import { adminInfoReducer } from './admin/reducers';
 import { errorReducer } from './error/reducers';
+import { loadingReducer } from './loading/reducers';
 import { loadingBarReducer } from 'react-redux-loading-bar';
 import { sessionReducer } from './session/reducers';
 import middleware from '../middleware';
@@ -9,6 +10,7 @@ import middleware from '../middleware';
 const rootReducer = combineReducers({
     adminInfo: adminInfoReducer,
     error: errorReducer,
+    loading: loadingReducer,
     loadingBar: loadingBarReducer,
     session: sessionReducer,
 });

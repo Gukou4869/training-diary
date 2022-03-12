@@ -82,7 +82,7 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
                     },
                 }}
             >
-                <h1>Login to Your Account</h1>
+                <h1>Login 🔏</h1>
                 <motion.button
                     type="button"
                     className={styles['loginCard__google']}

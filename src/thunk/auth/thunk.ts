@@ -7,6 +7,7 @@ import { sessionStatus } from '@/store/session/action';
 import login from '@/services/auth/Login';
 import signup from '@/services/auth/Signup';
 import { IError, IFirebaseError } from '@/store/error/models';
+import { showAuthLoading, hideAuthLoading } from '@/store/loading/actions';
 import { firebaseError } from '@/lib/firebaseError';
 
 // session login
@@ -20,6 +21,7 @@ export const thunkLogin =
     async dispatch => {
         // show loading bar
         dispatch(showLoading());
+        dispatch(showAuthLoading());
         try {
             //error reset
             dispatch(errorReset());
@@ -36,6 +38,7 @@ export const thunkLogin =
         } finally {
             //hide loading bar
             dispatch(hideLoading());
+            dispatch(hideAuthLoading());
         }
     };
 
