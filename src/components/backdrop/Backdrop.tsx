@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
-import styles from '@/styles/components/Backdrop.module.scss';
+import styles from './Backdrop.module.scss';
 
 interface BackdropProps {
     children?: React.ReactElement;
