@@ -1,8 +1,21 @@
 import type { NextPage } from 'next';
+import * as React from 'react';
+import { connect, useSelector } from 'react-redux';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { RootState } from '../store/index';
 import Head from 'next/head';
+import AuthLoading from '@/components/loading/auth/AuthLoading';
 import HomeContainer from '../screens/home/Home.Container';
 
-const Home: NextPage = () => {
+interface HomeProps {
+    authLoaging: boolean;
+}
+
+const Home: NextPage<HomeProps> = ({ authLoaging }) => {
+    const test = useSelector((state: RootState) => state.loading.authLoading);
+    console.log('🚀 ~ file: index.tsx ~ line 17 ~ test', test);
+    console.log('🚀 ~ file: index.tsx ~ line 16 ~ authLoaging', authLoaging);
     return (
         <>
             <Head>
@@ -13,9 +26,21 @@ const Home: NextPage = () => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <AuthLoading loading={test} />
             <HomeContainer />
         </>
     );
 };
 
-export default Home;
+const MapStateToProps = (store: RootState) => {
+    return {
+        authLoading: store.loading.authLoading,
+    };
+};
+const MapDispatchToProps = (
+    dispatch: ThunkDispatch<RootState, null, AnyAction>,
+) => {
+    return {};
+};
+
+export default connect(MapStateToProps, MapDispatchToProps)(Home);

@@ -4,13 +4,13 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.473);
+    background-color: rgba(0, 0, 0, 0.87);
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
     font-size: 3rem;
-    padding-right: 4.25rem;
+    z-index: 2000;
 }
 
 .authLoadingCircle {
