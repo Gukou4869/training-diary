@@ -2,7 +2,7 @@
 
 .signupCard {
     width: 100%;
-    min-height: 550px;
+    min-height: 500px;
 }
 
 .signupCard__google {
@@ -70,4 +70,11 @@
         color: $primary;
         text-decoration: underline 1px $primary;
     }
+}
+
+.test {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
 }

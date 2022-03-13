@@ -64,9 +64,11 @@ const SwitchCard: React.VFC<SwitchCardProps> = props => {
                 {!toggleCard && (
                     <SignupCard
                         key={2}
+                        error={error}
                         moveToLogin={handleToggleCard}
                         handleGoogleSignup={handleGoogleLogin}
                         handleOnChange={handleOnChangeSignupInput}
+                        handleResetError={handleResetError}
                         handleSubmit={handleSignup}
                     />
                 )}

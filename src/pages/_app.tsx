@@ -5,7 +5,11 @@ import { AnimatePresence } from 'framer-motion';
 import { Provider } from 'react-redux';
 import { store } from '../store/index';
 import { auth } from '../../firebase/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+import {
+    isSignInWithEmailLink,
+    onAuthStateChanged,
+    signInWithEmailLink,
+} from 'firebase/auth';
 import '@/styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -17,7 +21,6 @@ function MyApp({ Component, pageProps }: AppProps) {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 const uid = user.uid;
-                console.log('🚀 ~ file: firebase.js ~ line 23 ~ uid', uid);
                 router.push('/dashboard');
             } else {
                 // User is signed out
@@ -26,6 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             }
         });
     }, []);
+
     return (
         <AnimatePresence exitBeforeEnter>
             <Provider store={store}>

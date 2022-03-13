@@ -3,10 +3,13 @@ import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { LoginInputParams, SignupInputParams } from './Home.Container';
 import { IError } from '@/store/error/models';
-import Header from '@/components/header/Header';
+import Navbar from '@/components/navbar/Navbar';
 import googleLogin from '@/services/auth/GoogleLogin';
 import SwitchCard from '@/components/switch/card/SwitchCard';
 import Modal from '@/components/modal/Modal';
+import Header from '@/components/header/Header';
+import Background from '@/components/background/Background';
+import styles from './Home.module.scss';
 
 interface HomeContainerProps {
     error: IError;
@@ -46,6 +49,8 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
 
     return (
         <>
+            <div className={styles.home}></div>
+            <Header handleToggleOpen={handleToggle} />
             <AnimatePresence>
                 {open && (
                     <Modal open={open} handleClose={handleToggle}>
@@ -67,7 +72,6 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
                     </Modal>
                 )}
             </AnimatePresence>
-            <Header handleToggleOpen={handleToggle}></Header>
         </>
     );
 };

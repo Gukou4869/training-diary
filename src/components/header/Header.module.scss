@@ -1,33 +1,27 @@
 @import '@/styles/variables.scss';
 
 .tralog-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: $header-height;
-    background-color: transparent;
-    width: 100%;
+    position: relative;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #0099ff;
 }
 
-.tralog-header__title {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    font-size: 2rem;
+.tralog-header__container {
+    max-width: 1400px;
+    height: 100%;
+    padding: 0 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 5rem;
+    color: #fff;
     font-weight: bold;
 }
 
-.tralog-header__login {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    font-size: 1.25rem;
-    font-weight: bold;
-    background-color: transparent;
-    border: none;
-    outline: none;
+.tralog-header__container__description {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

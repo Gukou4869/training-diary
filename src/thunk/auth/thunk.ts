@@ -3,12 +3,11 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { RootState } from '../../store/index';
 import { ThunkAction } from 'redux-thunk';
 import { errorReset, errorSet } from '@/store/error/actions';
-import { sessionStatus } from '@/store/session/action';
-import login from '@/services/auth/Login';
-import signup from '@/services/auth/Signup';
 import { IError, IFirebaseError } from '@/store/error/models';
 import { showAuthLoading, hideAuthLoading } from '@/store/loading/actions';
 import { firebaseError } from '@/lib/firebaseError';
+import login from '@/services/auth/Login';
+import signup from '@/services/auth/Signup';
 
 // session login
 // @param email: string
@@ -26,6 +25,37 @@ export const thunkLogin =
             //error reset
             dispatch(errorReset());
             await login(email, password);
+            //dispatch(sessionStatus({ status: true, token }));
+        } catch (e) {
+            const error = e as IFirebaseError;
+            const errorObj: IError = {
+                hasError: true,
+                errorType: error.message,
+                errorMessage: firebaseError(error.code),
+            };
+            dispatch(errorSet(errorObj));
+        } finally {
+            //hide loading bar
+            dispatch(hideLoading());
+            dispatch(hideAuthLoading());
+        }
+    };
+
+// session signup
+// @param email: string
+export const thunkSignup =
+    (
+        email: string,
+        password: string,
+    ): ThunkAction<void, RootState, null, AnyAction> =>
+    async dispatch => {
+        // show loading bar
+        dispatch(showLoading());
+        dispatch(showAuthLoading());
+        try {
+            //error reset
+            dispatch(errorReset());
+            await signup(email, password);
             //dispatch(sessionStatus({ status: true, token }));
         } catch (e) {
             const error = e as IFirebaseError;

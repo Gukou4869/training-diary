@@ -36,13 +36,11 @@ const Modal: React.VFC<ModalProps> = props => {
                 animate="visible"
                 exit="exit"
             >
-                <button
-                    className={styles['modal__close']}
-                    onClick={handleClose}
-                    type="button"
-                >
-                    <FaTimes />
-                </button>
+                <div className={styles['modal__close']} onClick={handleClose}>
+                    <div className={styles['modal__close__btn']}>
+                        <FaTimes />
+                    </div>
+                </div>
                 {children}
             </motion.div>
         </Backdrop>

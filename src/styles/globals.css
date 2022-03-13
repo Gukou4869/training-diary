@@ -2,7 +2,11 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Inter, Arial, Helvetica Neue, Hiragino Kaku Gothic ProN,
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Apple Color Emoji',
+        'Noto Color Emoji', 'Noto Emoji', Noto Sans JP, -apple-system,
+        BlinkMacSystemFont, Segoe UI, sans-serif, Apple Color Emoji,
+        Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
     /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }

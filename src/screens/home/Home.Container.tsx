@@ -4,18 +4,18 @@ import { connect } from 'react-redux';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../../store/index';
-import login from '@/services/auth/Login';
-import HomeView from './Home.View';
-import signup from '@/services/auth/Signup';
-import { thunkLogin } from '@/thunk/auth/thunk';
-import { errorReset } from '@/store/error/actions';
+import { thunkLogin, thunkSignup } from '@/thunk/auth/thunk';
+import { errorReset, errorSet } from '@/store/error/actions';
 import { IError } from '@/store/error/models';
+import HomeView from './Home.View';
 
 interface HomeContainerProps {
     token: string;
     error: IError;
+    handleSetError: (error: IError) => void;
     handleResetError: () => void;
     login: (email: string, password: string) => void;
+    signup: (email: string, password: string) => void;
 }
 
 export interface LoginInputParams {
@@ -31,9 +31,10 @@ export interface SignupInputParams {
 
 const HomeContainer: React.FC<HomeContainerProps> = ({
     error,
-    token,
     login,
+    handleSetError,
     handleResetError,
+    signup,
 }) => {
     //login input params
     const [loginInput, setLoginInput] = useState<LoginInputParams>({
@@ -80,7 +81,14 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
     };
 
     const handleSignup = () => {
-        if (signupInput.password === signupInput.confirmed) {
+        if (signupInput.password !== signupInput.confirmed) {
+            const errorObj: IError = {
+                hasError: true,
+                errorType: 'invalid password/confirmed',
+                errorMessage: 'パスワードと確認用パスワードが一致しません',
+            };
+            handleSetError(errorObj);
+        } else {
             signup(signupInput.email, signupInput.password);
         }
     };
@@ -114,8 +122,14 @@ const MapDispatchToProps = (
         login: (email: string, password: string): void => {
             dispatch(thunkLogin(email, password));
         },
+        signup: (email: string, password: string): void => {
+            dispatch(thunkSignup(email, password));
+        },
         handleResetError: (): void => {
             dispatch(errorReset());
+        },
+        handleSetError: (error: IError) => {
+            dispatch(errorSet(error));
         },
     };
 };

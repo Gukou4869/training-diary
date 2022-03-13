@@ -14,8 +14,6 @@ interface HomeProps {
 
 const Home: NextPage<HomeProps> = ({ authLoaging }) => {
     const test = useSelector((state: RootState) => state.loading.authLoading);
-    console.log('🚀 ~ file: index.tsx ~ line 17 ~ test', test);
-    console.log('🚀 ~ file: index.tsx ~ line 16 ~ authLoaging', authLoaging);
     return (
         <>
             <Head>

@@ -1,4 +1,7 @@
+@import '@/styles/variables.scss';
+
 .modal {
+    position: relative;
     width: min(700px, 90%);
     margin: auto;
     padding: 3rem 5rem;
@@ -11,11 +14,22 @@
 
 .modal__close {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background-color: transparent;
+    top: 1rem;
+    right: 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: $gray-400;
+    color: #fff;
+    border-radius: 50%;
     font-size: 1.25rem;
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.modal__close__btn {
+    position: absolute;
+    top: 58%; /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -50%);
 }

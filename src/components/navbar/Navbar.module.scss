@@ -1,0 +1,33 @@
+@import '@/styles/variables.scss';
+
+.tralog-navbar {
+    display: flex;
+    justify-content: center;
+    height: $header-height;
+    width: 100%;
+    padding: 3rem 2rem;
+    z-index: 100;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: transparent;
+}
+
+.tralog-navbar__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1600px;
+    justify-content: space-between;
+}
+
+.tralog-navbar__container__btn-group {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tralog-navbar__container__btn-group__btn {
+    cursor: pointer;
+    margin: 0 0.5rem;
+}

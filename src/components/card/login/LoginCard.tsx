@@ -58,7 +58,6 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
                         <Alert
                             message={error.errorMessage}
                             type="error"
-                            autoClose={true}
                             onClose={handleResetError}
                         />
                     </motion.div>
@@ -82,7 +81,7 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
                     },
                 }}
             >
-                <h1>Login 🔏</h1>
+                <h1>ログイン 🔏</h1>
                 <motion.button
                     type="button"
                     className={styles['loginCard__google']}
@@ -124,7 +123,7 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
                     <Column xs={6} md={6}>
                         <FlexBox align="center" justify="end">
                             <p className={styles['loginCard__password-reset']}>
-                                Forget Password?
+                                パスワードを忘れましたか？
                             </p>
                         </FlexBox>
                     </Column>
@@ -135,12 +134,12 @@ const LoginCard: React.VFC<LoginCardProps> = props => {
                     onClick={handleSubmit}
                 />
                 <div className={styles['loginCard__footer']}>
-                    Not a member now?
+                    メンバーではない?
                     <span
                         className={styles['loginCard__footer__goToSignup']}
                         onClick={moveToSignup}
                     >
-                        Register Now
+                        いますぐサインアップ！
                     </span>
                 </div>
             </motion.div>
