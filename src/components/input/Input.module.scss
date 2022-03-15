@@ -26,7 +26,15 @@
     background: none;
     transition: all 0.2s ease;
     background-color: transparent !important;
-    @include themeOnFocusHover;
+    border: 2px solid $gray-300;
+    transition: all 0.2s ease-in;
+    &:hover {
+        border-color: $primary;
+    }
+    &:focus {
+        border-color: lighten($primary, 10%);
+        outline: none;
+    }
 }
 
 .form__label {

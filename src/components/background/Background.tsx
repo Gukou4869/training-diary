@@ -1,19 +1,10 @@
 import * as React from 'react';
+import styles from './Background.module.scss';
 
 interface BackgroundProps {}
 const Background: React.FC<BackgroundProps> = props => {
     return (
-        <div
-            className=""
-            style={{
-                width: '100%',
-                height: '10px',
-                position: 'absolute',
-                left: 0,
-                bottom: 0,
-                zIndex: 1,
-            }}
-        >
+        <div className={styles.background}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <path
                     fill="#0099ff"

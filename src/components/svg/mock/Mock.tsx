@@ -1,13 +1,9 @@
 import * as React from 'react';
+import styles from './Mock.module.scss';
 
 const MockImage: React.VFC = () => {
     return (
-        <div
-            className=""
-            style={{
-                width: '100%',
-            }}
-        >
+        <div className={styles.mock}>
             <svg
                 width="500"
                 height="500"
