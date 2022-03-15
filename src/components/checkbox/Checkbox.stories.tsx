@@ -18,5 +18,5 @@ const Template: ComponentStory<typeof Checkbox> = args => (
 export const Default = Template.bind({});
 Default.args = {
     label: 'Remenber Me',
-    open: false,
+    checked: false,
 };
