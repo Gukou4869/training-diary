@@ -1,7 +1,0 @@
-@import 'scss/functions';
-@import 'scss/variables';
-@import 'scss/mixins';
-
-.row {
-    @include make-row();
-}
