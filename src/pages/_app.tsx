@@ -5,11 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import { Provider } from 'react-redux';
 import { store } from '../store/index';
 import { auth } from '../../firebase/firebase';
-import {
-    isSignInWithEmailLink,
-    onAuthStateChanged,
-    signInWithEmailLink,
-} from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import '@/styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -28,7 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 router.push('/');
             }
         });
-    }, []);
+    }, [router]);
 
     return (
         <AnimatePresence exitBeforeEnter>
