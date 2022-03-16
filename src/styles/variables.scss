@@ -111,15 +111,3 @@ $form-font-size: 1rem;
 $form-element-padding: 0.75rem;
 
 $navbar-height: 3.5rem;
-
-@mixin themeOnFocusHover {
-    border: 2px solid $gray-300;
-    transition: all 0.2s ease-in;
-    &:hover {
-        border-color: $primary;
-    }
-    &:focus {
-        border-color: lighten($primary, 10%);
-        outline: none;
-    }
-}
