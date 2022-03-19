@@ -48,11 +48,7 @@ const SignUpCard: React.VFC<SignupCardProps> = ({
           }}
           className={styles.test}
         >
-          <Alert
-            message={error.errorMessage}
-            type="error"
-            onClose={handleResetError}
-          />
+          <Alert message={error.errorMessage} type="error" onClose={handleResetError} />
         </motion.div>
       )}
     </AnimatePresence>
@@ -90,20 +86,10 @@ const SignUpCard: React.VFC<SignupCardProps> = ({
       </motion.button>
       <div className={styles.signupCard__divider}> - OR -</div>
       <div className={styles.signupCard__input}>
-        <TextInput
-          type="email"
-          label="Email"
-          name="email"
-          onChange={handleOnChange}
-        />
+        <TextInput type="email" label="Email" name="email" onChange={handleOnChange} />
       </div>
       <div className={styles.signupCard__input}>
-        <TextInput
-          type="password"
-          label="Password"
-          name="password"
-          onChange={handleOnChange}
-        />
+        <TextInput type="password" label="Password" name="password" onChange={handleOnChange} />
       </div>
       <div className={styles.signupCard__input}>
         <TextInput
@@ -113,11 +99,7 @@ const SignUpCard: React.VFC<SignupCardProps> = ({
           onChange={handleOnChange}
         />
       </div>
-      <ActionButton
-        label="Signup to Your Account"
-        size="lg"
-        onClick={handleSubmit}
-      />
+      <ActionButton label="Signup to Your Account" size="lg" onClick={handleSubmit} />
       <div className={styles.signupCard__footer}>
         もうメンバーですか？
         <span

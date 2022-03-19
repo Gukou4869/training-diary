@@ -41,11 +41,7 @@ const Modal: React.VFC<ModalProps> = ({ children, handleClose }) => {
         animate="visible"
         exit="exit"
       >
-        <button
-          type="button"
-          className={styles.modal__close}
-          onClick={handleClose}
-        >
+        <button type="button" className={styles.modal__close} onClick={handleClose}>
           <div className={styles.modal__close__btn}>
             <FaTimes />
           </div>

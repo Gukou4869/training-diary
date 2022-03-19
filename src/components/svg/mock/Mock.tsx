@@ -13,12 +13,7 @@ const MockImage: React.VFC = () => (
     >
       <rect width="2240" height="2000" fill="url(#pattern0)" />
       <defs>
-        <pattern
-          id="pattern0"
-          patternContentUnits="objectBoundingBox"
-          width="1"
-          height="1"
-        >
+        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
           <use xlinkHref="#image0_2_17" transform="scale(0.000446429)" />
         </pattern>
         <image id="image0_2_17" width="2240" height="2000" />

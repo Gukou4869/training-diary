@@ -14,9 +14,7 @@ const Checkbox: React.VFC<CheckboxProps> = ({ label, checked, onClick }) => (
       role="checkbox"
       aria-checked="true"
       tabIndex={0}
-      className={`${styles.checkbox__circle} ${
-        checked && styles['checkbox__circle--open']
-      }`}
+      className={`${styles.checkbox__circle} ${checked && styles['checkbox__circle--open']}`}
       onClick={onClick}
       onKeyDown={onClick}
     >
