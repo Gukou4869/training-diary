@@ -3,36 +3,40 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { AnimatePresence } from 'framer-motion';
 import { Provider } from 'react-redux';
-import { store } from '../store/index';
-import { auth } from '../../firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import store from '../store/index';
+import { auth } from '../../firebase/firebase';
 import '@/styles/globals.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
-    const router = useRouter();
-    //auth observer
-    useEffect(() => {
-        onAuthStateChanged(auth, user => {
-            if (user) {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/firebase.User
-                const uid = user.uid;
-                router.push('/dashboard');
-            } else {
-                // User is signed out
-                // ...
-                router.push('/');
-            }
-        });
-    }, [router]);
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+  const router = useRouter();
+  // firebase auth observer
 
-    return (
-        <AnimatePresence exitBeforeEnter>
-            <Provider store={store}>
-                <Component {...pageProps} />
-            </Provider>
-        </AnimatePresence>
-    );
-}
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        router.push('/dashboard').catch((e) => {
+          throw e;
+        });
+      } else {
+        // User is signed out
+        // ...
+        router.push('/').catch((e) => {
+          throw e;
+        });
+      }
+    });
+  }, [router]);
+
+  return (
+    <AnimatePresence exitBeforeEnter>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    </AnimatePresence>
+  );
+};
 
 export default MyApp;

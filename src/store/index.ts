@@ -1,23 +1,24 @@
-import { createStore, combineReducers, AnyAction } from 'redux';
+import { combineReducers } from 'redux';
+import { loadingBarReducer } from 'react-redux-loading-bar';
+import { configureStore } from '@reduxjs/toolkit';
 import { adminInfoReducer } from './admin/reducers';
 import { errorReducer } from './error/reducers';
 import { loadingReducer } from './loading/reducers';
-import { loadingBarReducer } from 'react-redux-loading-bar';
 import { sessionReducer } from './session/reducers';
+import { RootState } from './store.d';
 import middleware from '../middleware';
-//combine reducers
+// combine reducers
 
 const rootReducer = combineReducers({
-    adminInfo: adminInfoReducer,
-    error: errorReducer,
-    loading: loadingReducer,
-    loadingBar: loadingBarReducer,
-    session: sessionReducer,
+  adminInfo: adminInfoReducer,
+  error: errorReducer,
+  loading: loadingReducer,
+  loadingBar: loadingBarReducer,
+  session: sessionReducer,
 });
 
-export type RootState = ReturnType<typeof rootReducer>;
+const store: RootState = configureStore({
+  reducer: rootReducer,
+});
 
-export const store = createStore<RootState, AnyAction, any, any>(
-    rootReducer,
-    middleware,
-);
+export default store;

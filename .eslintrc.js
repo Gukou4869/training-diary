@@ -13,8 +13,9 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint', 'jsx-a11y', 'react', 'react-hooks'],
+  plugins: ['prettier', '@typescript-eslint', 'jsx-a11y', 'react', 'react-hooks'],
   extends: [
+    'eslint-config-prettier',
     'airbnb',
     'airbnb-typescript',
     'airbnb/hooks',
@@ -25,6 +26,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'next',
     'next/core-web-vitals',
+    'prettier',
   ],
   rules: {
     curly: ['error', 'all'],
@@ -56,5 +58,7 @@ module.exports = {
         },
       },
     ],
+    'arrow-body-style': ['error', 'always'],
+    'prettier/prettier': ['error'],
   },
 };

@@ -1,30 +1,33 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { connect } from 'react-redux';
-import { AnyAction } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { useDispatch, useSelector } from 'react-redux';
 import { thunkLogin, thunkSignup } from '@/thunk/auth/thunk';
 import { errorReset, errorSet } from '@/store/error/actions';
 import { IError } from '@/store/error/models';
-import { RootState } from '../../store/index';
+import { RootState } from '@/store/store.d';
 import { LoginInputParams, SignupInputParams } from './Home.Interface';
 import HomeView from './Home.View';
 
-interface HomeContainerProps {
-  error: IError;
-  handleSetError: (error: IError) => void;
-  handleResetError: () => void;
-  login: (email: string, password: string) => void;
-  signup: (email: string, password: string) => void;
-}
+const HomeContainer: React.FC = () => {
+  // reduc store
+  const error: IError = useSelector((state: RootState) => {
+    return state.error;
+  });
+  // redux actions
+  const dispatch = useDispatch();
+  const login = (email: string, password: string): void => {
+    dispatch(thunkLogin(email, password));
+  };
+  const signup = (email: string, password: string): void => {
+    dispatch(thunkSignup(email, password));
+  };
+  const handleResetError = (): void => {
+    dispatch(errorReset());
+  };
+  const handleSetError = (errors: IError): void => {
+    dispatch(errorSet(errors));
+  };
 
-const HomeContainer: React.FC<HomeContainerProps> = ({
-  error,
-  login,
-  handleSetError,
-  handleResetError,
-  signup,
-}) => {
   // login input params
   const [loginInput, setLoginInput] = useState<LoginInputParams>({
     email: '',
@@ -39,9 +42,7 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
   // password memorise state
   const [checked, setChecked] = React.useState(false);
 
-  const handleOnChangeLoginInput = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ): void => {
+  const handleOnChangeLoginInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.currentTarget;
     const tempParams: LoginInputParams = {
       ...loginInput,
@@ -50,9 +51,7 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
     setLoginInput(tempParams);
   };
 
-  const handleOnChangeSignupInput = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ): void => {
+  const handleOnChangeSignupInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.currentTarget;
     const tempObj: SignupInputParams = {
       ...signupInput,
@@ -62,7 +61,9 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
   };
 
   const handleToggleChecked = (): void => {
-    setChecked((prevState: boolean) => !prevState);
+    setChecked((prevState: boolean) => {
+      return !prevState;
+    });
   };
 
   const handleLogin = (): void => {
@@ -98,21 +99,4 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
   );
 };
 
-const MapDispatchToProps = (
-  dispatch: ThunkDispatch<RootState, null, AnyAction>,
-) => ({
-  login: (email: string, password: string): void => {
-    dispatch(thunkLogin(email, password));
-  },
-  signup: (email: string, password: string): void => {
-    dispatch(thunkSignup(email, password));
-  },
-  handleResetError: (): void => {
-    dispatch(errorReset());
-  },
-  handleSetError: (error: IError) => {
-    dispatch(errorSet(error));
-  },
-});
-
-export default connect(MapStateToProps, MapDispatchToProps)(HomeContainer);
+export default HomeContainer;
