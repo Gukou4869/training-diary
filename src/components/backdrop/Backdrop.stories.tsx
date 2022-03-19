@@ -3,8 +3,8 @@ import { ComponentMeta } from '@storybook/react';
 import BackDrop from './Backdrop';
 
 export default {
-    title: 'BackDrop',
-    component: BackDrop,
+  title: 'BackDrop',
+  component: BackDrop,
 } as ComponentMeta<typeof BackDrop>;
 
-export const Default = () => <BackDrop />;
+export const Default = (): JSX.Element => <BackDrop />;

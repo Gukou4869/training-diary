@@ -3,6 +3,6 @@
 @import 'bootstrap/scss/mixins';
 
 .container {
-    @include make-container(100px);
-    width: 800px;
+  @include make-container(100px);
+  width: 800px;
 }

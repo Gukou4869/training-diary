@@ -1,78 +1,78 @@
 @import '@/styles/variables.scss';
 
 .loginCard {
-    width: 100%;
-    min-height: 500px;
+  width: 100%;
+  min-height: 500px;
 }
 
 .loginCard__google {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    outline: none;
-    border: 1px solid gray;
-    padding: 1rem 0.75rem;
-    width: 100%;
-    font-size: 1.25rem;
-    border-radius: 5px;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid gray;
+  padding: 1rem 0.75rem;
+  width: 100%;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .loginCard__google__logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-right: 1rem;
 }
 
 .loginCard__divider {
-    display: flex;
-    justify-content: center;
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 1rem auto;
 }
 
 .loginCard__input {
-    margin: 1rem auto;
+  margin: 1rem auto;
 }
 
 .loginCard__password-reset {
-    cursor: pointer;
-    &:hover {
-        color: $primary;
-        text-decoration: underline 1px $primary;
-    }
+  cursor: pointer;
+  &:hover {
+    color: $primary;
+    text-decoration: underline 1px $primary;
+  }
 }
 .loginCard__password-setting {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1.5rem auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto;
 }
 
 .loginCard__footer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1.5rem auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto;
 }
 
 .loginCard__footer__goToSignup {
-    margin-left: 0.5rem;
-    cursor: pointer;
-    &:hover {
-        color: $primary;
-        text-decoration: underline 1px $primary;
-    }
+  margin-left: 0.5rem;
+  cursor: pointer;
+  &:hover {
+    color: $primary;
+    text-decoration: underline 1px $primary;
+  }
 }
 
 .test {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
 }

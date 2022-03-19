@@ -4,15 +4,15 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 export default {
-    title: 'Input',
+  title: 'Input',
 } as ComponentMeta<typeof Input>;
 
-const Template: ComponentStory<typeof Input> = args => <Input {...args} />;
+const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    type: 'text',
-    label: 'Email',
-    hasError: false,
-    onChange: action('clicked'),
+  type: 'text',
+  label: 'Email',
+  hasError: false,
+  onChange: action('clicked'),
 };

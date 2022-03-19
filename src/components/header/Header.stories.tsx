@@ -3,8 +3,8 @@ import { ComponentMeta } from '@storybook/react';
 import Header from './Header';
 
 export default {
-    title: 'Header',
-    component: Header,
+  title: 'Header',
+  component: Header,
 } as ComponentMeta<typeof Header>;
 
-export const Default = () => <Header />;
+export const Default = (): JSX.Element => <Header />;

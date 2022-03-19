@@ -1,40 +1,40 @@
 @import '@/styles/variables.scss';
 
 .button {
-    width: 100%;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    background-color: $primary;
-    display: inline-block;
-    line-height: 1;
-    transition: all 0.1s;
-    &:hover {
-        filter: brightness(110%) !important;
-    }
-    cursor: pointer;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  background-color: $primary;
+  display: inline-block;
+  line-height: 1;
+  transition: all 0.1s;
+  &:hover {
+    filter: brightness(110%) !important;
+  }
+  cursor: pointer;
 }
 
 .button--sm {
-    font-size: 12px;
-    padding: 12px 16px;
+  font-size: 12px;
+  padding: 12px 16px;
 }
 .button--md {
-    font-size: 14px;
-    padding: 16px 20px;
+  font-size: 14px;
+  padding: 16px 20px;
 }
 .button--lg {
-    font-size: 16px;
-    padding: 1.25rem 24px;
+  font-size: 16px;
+  padding: 1.25rem 24px;
 }
 
 .button--float {
-    &:hover {
-        transform: translate3d((0, -2px, 0));
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    }
+  &:hover {
+    transform: translate3d((0, -2px, 0));
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
 }
 
 .button--block {
-    width: auto;
+  width: auto;
 }

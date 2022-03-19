@@ -14,20 +14,20 @@ module.exports = {
     },
   },
   plugins: ['prettier', '@typescript-eslint', 'jsx-a11y', 'react', 'react-hooks'],
-  extends: [
-    'eslint-config-prettier',
-    'airbnb',
-    'airbnb-typescript',
-    'airbnb/hooks',
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'next',
-    'next/core-web-vitals',
-    'prettier',
-  ],
+  // extends: [
+  //   'eslint-config-prettier',
+  //   'airbnb',
+  //   'airbnb-typescript',
+  //   'airbnb/hooks',
+  //   'eslint:recommended',
+  //   'plugin:@typescript-eslint/recommended',
+  //   'plugin:@typescript-eslint/recommended-requiring-type-checking',
+  //   'plugin:react/recommended',
+  //   'plugin:react/jsx-runtime',
+  //   'next',
+  //   'next/core-web-vitals',
+  //   'prettier',
+  // ],
   rules: {
     curly: ['error', 'all'],
     'react/function-component-definition': [
@@ -44,21 +44,8 @@ module.exports = {
       },
     ],
     'react/require-default-props': 'off',
-    'object-curly-newline': [
-      'error',
-      {
-        ObjectExpression: 'always',
-        ObjectPattern: {
-          multiline: true,
-        },
-        ImportDeclaration: 'never',
-        ExportDeclaration: {
-          multiline: true,
-          minProperties: 2,
-        },
-      },
-    ],
     'arrow-body-style': ['error', 'always'],
-    'prettier/prettier': ['error'],
+    'object-curly-newline': 'off',
+    'arrow-body-style': 'off',
   },
 };

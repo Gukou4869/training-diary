@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { AnimatePresence } from 'framer-motion';
 import { Provider } from 'react-redux';
 import { onAuthStateChanged } from 'firebase/auth';
-import store from '../store/index';
+import { store } from '../store/index';
 import { auth } from '../../firebase/firebase';
 import '@/styles/globals.css';
 

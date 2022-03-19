@@ -38,12 +38,7 @@ const AuthLoading: React.VFC<IAuthLoadingProps> = ({ loading }) => {
     return null;
   }
   return (
-    <motion.div
-      className={styles.authLoading}
-      variants={loadingContainerVariants}
-      initial="start"
-      animate="end"
-    >
+    <motion.div className={styles.authLoading} variants={loadingContainerVariants} initial="start" animate="end">
       Authorizing
       <div className={styles.authLoadingText} />
       <motion.span

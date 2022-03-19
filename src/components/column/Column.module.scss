@@ -3,185 +3,185 @@
 @import 'bootstrap/scss/mixins';
 
 .col {
-    @include make-col-ready();
+  @include make-col-ready();
 }
 
 .col-md-2 {
-    @include media-breakpoint-up(md) {
-        @include make-col(2);
-    }
+  @include media-breakpoint-up(md) {
+    @include make-col(2);
+  }
 }
 .col-md-3 {
-    @include media-breakpoint-up(md) {
-        @include make-col(3);
-    }
+  @include media-breakpoint-up(md) {
+    @include make-col(3);
+  }
 }
 .col-md-4 {
-    @include media-breakpoint-up(md) {
-        @include make-col(4);
-    }
+  @include media-breakpoint-up(md) {
+    @include make-col(4);
+  }
 }
 .col-md-6 {
-    @include media-breakpoint-up(md) {
-        @include make-col(6);
-    }
+  @include media-breakpoint-up(md) {
+    @include make-col(6);
+  }
 }
 .col-md-8 {
-    @include media-breakpoint-up(md) {
-        @include make-col(8);
-    }
+  @include media-breakpoint-up(md) {
+    @include make-col(8);
+  }
 }
 .col-md-10 {
-    @include media-breakpoint-up(md) {
-        @include make-col(10);
-    }
+  @include media-breakpoint-up(md) {
+    @include make-col(10);
+  }
 }
 .col-md-12 {
-    @include media-breakpoint-up(md) {
-        @include make-col(12);
-    }
+  @include media-breakpoint-up(md) {
+    @include make-col(12);
+  }
 }
 
 .col-sm-2 {
-    @include media-breakpoint-up(sm) {
-        @include make-col(2);
-    }
+  @include media-breakpoint-up(sm) {
+    @include make-col(2);
+  }
 }
 .col-sm-3 {
-    @include media-breakpoint-up(sm) {
-        @include make-col(3);
-    }
+  @include media-breakpoint-up(sm) {
+    @include make-col(3);
+  }
 }
 .col-sm-4 {
-    @include media-breakpoint-up(sm) {
-        @include make-col(4);
-    }
+  @include media-breakpoint-up(sm) {
+    @include make-col(4);
+  }
 }
 .col-sm-6 {
-    @include media-breakpoint-up(sm) {
-        @include make-col(6);
-    }
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
 }
 .col-sm-8 {
-    @include media-breakpoint-up(sm) {
-        @include make-col(8);
-    }
+  @include media-breakpoint-up(sm) {
+    @include make-col(8);
+  }
 }
 .col-sm-10 {
-    @include media-breakpoint-up(sm) {
-        @include make-col(10);
-    }
+  @include media-breakpoint-up(sm) {
+    @include make-col(10);
+  }
 }
 .col-sm-12 {
-    @include media-breakpoint-up(sm) {
-        @include make-col(12);
-    }
+  @include media-breakpoint-up(sm) {
+    @include make-col(12);
+  }
 }
 
 .col-lg-2 {
-    @include media-breakpoint-up(lg) {
-        @include make-col(2);
-    }
+  @include media-breakpoint-up(lg) {
+    @include make-col(2);
+  }
 }
 .col-lg-3 {
-    @include media-breakpoint-up(lg) {
-        @include make-col(3);
-    }
+  @include media-breakpoint-up(lg) {
+    @include make-col(3);
+  }
 }
 .col-lg-4 {
-    @include media-breakpoint-up(lg) {
-        @include make-col(4);
-    }
+  @include media-breakpoint-up(lg) {
+    @include make-col(4);
+  }
 }
 .col-lg-6 {
-    @include media-breakpoint-up(lg) {
-        @include make-col(6);
-    }
+  @include media-breakpoint-up(lg) {
+    @include make-col(6);
+  }
 }
 .col-lg-8 {
-    @include media-breakpoint-up(lg) {
-        @include make-col(8);
-    }
+  @include media-breakpoint-up(lg) {
+    @include make-col(8);
+  }
 }
 .col-lg-10 {
-    @include media-breakpoint-up(lg) {
-        @include make-col(10);
-    }
+  @include media-breakpoint-up(lg) {
+    @include make-col(10);
+  }
 }
 .col-lg-12 {
-    @include media-breakpoint-up(lg) {
-        @include make-col(12);
-    }
+  @include media-breakpoint-up(lg) {
+    @include make-col(12);
+  }
 }
 
 .col-xl-2 {
-    @include media-breakpoint-up(xl) {
-        @include make-col(2);
-    }
+  @include media-breakpoint-up(xl) {
+    @include make-col(2);
+  }
 }
 .col-xl-3 {
-    @include media-breakpoint-up(xl) {
-        @include make-col(3);
-    }
+  @include media-breakpoint-up(xl) {
+    @include make-col(3);
+  }
 }
 .col-xl-4 {
-    @include media-breakpoint-up(xl) {
-        @include make-col(4);
-    }
+  @include media-breakpoint-up(xl) {
+    @include make-col(4);
+  }
 }
 .col-xl-6 {
-    @include media-breakpoint-up(xl) {
-        @include make-col(6);
-    }
+  @include media-breakpoint-up(xl) {
+    @include make-col(6);
+  }
 }
 .col-xl-8 {
-    @include media-breakpoint-up(xl) {
-        @include make-col(8);
-    }
+  @include media-breakpoint-up(xl) {
+    @include make-col(8);
+  }
 }
 .col-xl-10 {
-    @include media-breakpoint-up(xl) {
-        @include make-col(10);
-    }
+  @include media-breakpoint-up(xl) {
+    @include make-col(10);
+  }
 }
 .col-xl-12 {
-    @include media-breakpoint-up(xl) {
-        @include make-col(12);
-    }
+  @include media-breakpoint-up(xl) {
+    @include make-col(12);
+  }
 }
 
 .col-2 {
-    @include media-breakpoint-down(sm) {
-        @include make-col(2);
-    }
+  @include media-breakpoint-down(sm) {
+    @include make-col(2);
+  }
 }
 .col-3 {
-    @include media-breakpoint-down(sm) {
-        @include make-col(3);
-    }
+  @include media-breakpoint-down(sm) {
+    @include make-col(3);
+  }
 }
 .col-4 {
-    @include media-breakpoint-down(sm) {
-        @include make-col(4);
-    }
+  @include media-breakpoint-down(sm) {
+    @include make-col(4);
+  }
 }
 .col-6 {
-    @include media-breakpoint-down(sm) {
-        @include make-col(6);
-    }
+  @include media-breakpoint-down(sm) {
+    @include make-col(6);
+  }
 }
 .col-8 {
-    @include media-breakpoint-down(sm) {
-        @include make-col(8);
-    }
+  @include media-breakpoint-down(sm) {
+    @include make-col(8);
+  }
 }
 .col-10 {
-    @include media-breakpoint-down(sm) {
-        @include make-col(10);
-    }
+  @include media-breakpoint-down(sm) {
+    @include make-col(10);
+  }
 }
 .col-12 {
-    @include media-breakpoint-down(sm) {
-        @include make-col(12);
-    }
+  @include media-breakpoint-down(sm) {
+    @include make-col(12);
+  }
 }

@@ -6,16 +6,12 @@ module.exports = {
     '../src/**/*.stories.@(js|jsx|ts|tsx)',
     '../src/components/**/*.stories.@(js|jsx|ts|tsx)',
   ],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
   framework: '@storybook/react',
   core: {
     builder: 'webpack5',
   },
-  webpackFinal: async config => {
+  webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.scss$/,
       use: [

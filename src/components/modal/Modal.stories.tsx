@@ -3,13 +3,13 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Modal from './Modal';
 
 export default {
-    title: 'Modal',
-    component: Modal,
+  title: 'Modal',
+  component: Modal,
 } as ComponentMeta<typeof Modal>;
 
-const Template: ComponentStory<typeof Modal> = args => <Modal {...args} />;
+const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    open: true,
+  open: true,
 };

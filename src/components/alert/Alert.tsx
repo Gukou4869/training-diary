@@ -11,30 +11,19 @@ interface AlertProps {
   onClose?: () => void;
 }
 
-const Alert: React.VFC<AlertProps> = ({
-  type,
-  message,
-  autoClose,
-  onClose,
-}) => {
+const Alert: React.VFC<AlertProps> = ({ type, message, autoClose, onClose }) => {
   const alertType = `alert--${type}`;
-  const icons = (
-    alert: 'error' | 'success' | 'warning',
-  ): React.ReactElement => {
+  const icons = (alert: 'error' | 'success' | 'warning'): React.ReactElement => {
     switch (alert) {
       case 'error':
         return (
-          <div
-            className={`${styles.alert__icon} ${styles['alert__icon--error']}`}
-          >
+          <div className={`${styles.alert__icon} ${styles['alert__icon--error']}`}>
             <MdOutlineErrorOutline />
           </div>
         );
       case 'success':
         return (
-          <div
-            className={`${styles.alert__icon} ${styles['alert__icon--error']}`}
-          >
+          <div className={`${styles.alert__icon} ${styles['alert__icon--error']}`}>
             <AiOutlineCheckCircle />
           </div>
         );

@@ -10,13 +10,7 @@ interface ActionButtonProps {
   onClick?: () => void;
 }
 
-const ActionButton: React.VFC<ActionButtonProps> = ({
-  block,
-  float,
-  label,
-  size,
-  onClick,
-}) => {
+const ActionButton: React.VFC<ActionButtonProps> = ({ block, float, label, size, onClick }) => {
   const hasFloat = float ? 'button--float' : '';
   const buttonSize = size ? `button--${size}` : 'button--md';
   const buttonWidth = block ? 'button--block' : '';

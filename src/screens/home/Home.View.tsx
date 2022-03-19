@@ -14,12 +14,8 @@ interface HomeContainerProps {
   checked: boolean;
   loginInput: LoginInputParams;
   signupInput: SignupInputParams;
-  handleOnChangeLoginInput: (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => void;
-  handleOnChangeSignupInput: (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => void;
+  handleOnChangeLoginInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleOnChangeSignupInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleToggleChecked: () => void;
   handleLogin: () => void;
   handleResetError: () => void;

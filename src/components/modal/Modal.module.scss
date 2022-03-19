@@ -1,35 +1,35 @@
 @import '@/styles/variables.scss';
 
 .modal {
-    position: relative;
-    width: min(700px, 90%);
-    margin: auto;
-    padding: 3rem 5rem;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #fff;
+  position: relative;
+  width: min(700px, 90%);
+  margin: auto;
+  padding: 3rem 5rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
 }
 
 .modal__close {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-    width: 2rem;
-    height: 2rem;
-    background-color: $gray-400;
-    color: #fff;
-    border-radius: 50%;
-    font-size: 1.25rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: $gray-400;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .modal__close__btn {
-    position: absolute;
-    top: 58%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
