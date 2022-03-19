@@ -11,7 +11,7 @@ import { RootState } from '../../store/index';
 
 // session login
 // @param email: string
-// @param password: stringx
+// @param password: string
 export const thunkLogin = (email: string, password: string): ThunkAction<void, RootState, null, AnyAction> => {
   return async (dispatch) => {
     // show loading bar
