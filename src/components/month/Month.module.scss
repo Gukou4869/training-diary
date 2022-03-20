@@ -1,6 +1,8 @@
+@import '@/styles/variables.scss';
+
 .month {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - $header-height);
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   grid-template-rows: repeat(5, minmax(0, 1fr));
