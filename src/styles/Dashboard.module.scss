@@ -2,3 +2,15 @@
   width: 100%;
   min-height: 100vh;
 }
+
+.body {
+  display: flex;
+}
+
+.sidebar {
+  width: 16rem;
+}
+
+.calendar {
+  flex: 1;
+}

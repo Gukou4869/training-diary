@@ -20,7 +20,6 @@ export const Day: React.VFC<DayProps> = ({ day, rowIdx, currentDay, currentMonth
   };
   console.log(day.format('M'));
   console.log(new Date().getMonth() + 1);
-  //console.log(day.format('M') === new Date().getMonth() + 1);
   return (
     <div className={styles.day}>
       <header className={styles['day__header']}>

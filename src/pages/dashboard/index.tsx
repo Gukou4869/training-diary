@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import getMonth from '@/lib/date/dateUtils';
 import Month from '@/components/month/Month';
 import CalandarHeader from '@/components/header/calendar/CalendarHeader';
+import Sidebar from '@/components/sidebar/Sidebar';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store.d';
 import { DaySet, MonthSet } from '@/store/date/actions';
@@ -57,31 +58,37 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
     <AnimatePresence exitBeforeEnter>
       <div className={styles.dashboard}>
         <CalandarHeader currentMonth={calender.month} setMonth={setMonth} setToday={setToday} />
-        {showCalender && (
-          <motion.div
-            exit={{
-              opacity: 0,
-              x: -60,
-              transition: {
-                duration: 0.2,
-              },
-            }}
-            initial={{
-              opacity: 0,
-              x: 30,
-            }}
-            animate={{
-              opacity: 1,
-              x: 0,
-              transition: {
-                duration: 0.2,
-                ease: 'easeOut',
-              },
-            }}
-          >
-            <Month month={currentMonth} currentDay={currentDay} currentMonth={calender.month} />
-          </motion.div>
-        )}
+        <div className={styles.body}>
+          <div className={styles.sidebar}>
+            <Sidebar />
+          </div>
+          {showCalender && (
+            <motion.div
+              exit={{
+                opacity: 0,
+                x: -60,
+                transition: {
+                  duration: 0.2,
+                },
+              }}
+              initial={{
+                opacity: 0,
+                x: 30,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                  duration: 0.2,
+                  ease: 'easeOut',
+                },
+              }}
+              className={styles.calendar}
+            >
+              <Month month={currentMonth} currentDay={currentDay} currentMonth={calender.month} />
+            </motion.div>
+          )}
+        </div>
       </div>
     </AnimatePresence>
   );
