@@ -1,22 +1,31 @@
 import React from 'react';
-import { getYearMonth, getCurrentDayClass, getLastMonthDateClass } from '@/lib/date/dateUtils';
+import {
+  getYearMonth,
+  getTodayClass,
+  getLastMonthDateClass,
+  getSelectedDayClass,
+} from '@/lib/date/dateUtils';
 import { MdOutlineKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import styles from './SmallCalendar.module.scss';
 
 interface SmallCalendarProps {
-  month: Array<any>;
   currentDayIdx: number;
   currentMonthIdx: number;
-  handleMoveToPrevMonth: () => void;
+  month: Array<any>;
+  selectedDay: number;
   handleMoveToNextMonth: () => void;
+  handleMoveToPrevMonth: () => void;
+  handleSetDay: (day: any, monthIdx: number) => void;
 }
 
 const SmallCalendar: React.VFC<SmallCalendarProps> = ({
-  month,
   currentDayIdx,
   currentMonthIdx,
-  handleMoveToPrevMonth,
+  month,
+  selectedDay,
   handleMoveToNextMonth,
+  handleMoveToPrevMonth,
+  handleSetDay,
 }) => {
   return (
     <div className={styles.smallCalendar}>
@@ -52,9 +61,13 @@ const SmallCalendar: React.VFC<SmallCalendarProps> = ({
                 return (
                   <button
                     key={idx.toString()}
+                    value={day.format('D')}
                     className={`${styles['smallCalendar__body__content']} ${
-                      styles[getCurrentDayClass(day, currentDayIdx, currentMonthIdx)]
-                    } ${styles[getLastMonthDateClass(day, currentMonthIdx)]}`}
+                      styles[getTodayClass(day, currentDayIdx)]
+                    } ${styles[getLastMonthDateClass(day, currentMonthIdx)]} ${
+                      styles[getSelectedDayClass(day, selectedDay, currentMonthIdx)]
+                    }`}
+                    onClick={() => handleSetDay(day, currentMonthIdx)}
                   >
                     <span>{day.format('D')}</span>
                   </button>

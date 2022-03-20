@@ -4,29 +4,35 @@ import SmallCalendar from '../calender/small/SmallCalendar';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
-  month: Array<any>;
   currentDayIdx: number;
   currentMonthIdx: number;
-  handleMoveToPrevMonth: () => void;
+  month: Array<any>;
+  selectedDay: number;
   handleMoveToNextMonth: () => void;
+  handleMoveToPrevMonth: () => void;
+  handleSetDay: (day: any, monthIdx: number) => void;
 }
 
 const Sidebar: React.VFC<SidebarProps> = ({
-  month,
   currentDayIdx,
   currentMonthIdx,
-  handleMoveToPrevMonth,
+  month,
+  selectedDay,
   handleMoveToNextMonth,
+  handleMoveToPrevMonth,
+  handleSetDay,
 }) => {
   return (
     <aside className={styles.sidebar}>
       <CreateEventButton />
       <SmallCalendar
-        month={month}
         currentDayIdx={currentDayIdx}
         currentMonthIdx={currentMonthIdx}
-        handleMoveToPrevMonth={handleMoveToPrevMonth}
+        month={month}
+        selectedDay={selectedDay}
         handleMoveToNextMonth={handleMoveToNextMonth}
+        handleMoveToPrevMonth={handleMoveToPrevMonth}
+        handleSetDay={handleSetDay}
       />
     </aside>
   );

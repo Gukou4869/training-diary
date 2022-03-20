@@ -21,11 +21,15 @@ export const getYearMonth = (motnhIdx: number): string => {
   return dayjs(new Date(dayjs().year(), motnhIdx - 1)).format('MMMM YYYY');
 };
 
-export const getCurrentDayClass = (day: any, dayIdx: number, monthIdx: number): string => {
-  return Number(day.format('D')) === dayIdx && Number(day.format('M')) == monthIdx
-    ? 'selected'
-    : '';
+export const getTodayClass = (day: any, dayIdx: number): string => {
+  return Number(day.format('D')) === dayIdx && Number(day.format('M')) === thisMonth ? 'today' : '';
 };
 export const getLastMonthDateClass = (day: any, monthIdx: number): string => {
   return Number(day.format('M')) !== monthIdx ? 'day__lastMonth' : '';
+};
+
+export const getSelectedDayClass = (day: any, selected: number, monthIdx: number): string => {
+  return selected === Number(day.format('D')) && Number(day.format('M')) === monthIdx
+    ? 'selected'
+    : '';
 };

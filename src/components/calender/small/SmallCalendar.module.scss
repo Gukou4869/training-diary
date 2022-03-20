@@ -44,17 +44,37 @@
 .smallCalendar__body__content {
   border: none;
   background-color: transparent;
+  border-radius: 50%;
   cursor: pointer;
+  &:hover {
+    background-color: $gray-300;
+    transition: all 300ms ease-out;
+  }
 }
 
-.selected {
+.today {
   background-color: rgb(59 130 246);
   color: white;
   border-radius: 50%;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 100%;
+  height: 100%;
 }
 
 .day__lastMonth {
   color: $gray-700;
+}
+
+.selected {
+  color: #185abc !important;
+  background-color: #d2e3fc;
+  color: white;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  &:hover {
+    background-color: #d2e3fc;
+  }
+  &:active {
+    background-color: #8ab4f8;
+  }
 }
