@@ -12,7 +12,7 @@ export const Month: React.VFC<MonthProps> = ({ month }) => {
         return (
           <React.Fragment key={weekIdx}>
             {week.map((day: any, dayIdx: number) => {
-              return <Day day={day} key={dayIdx} />;
+              return <Day day={day} key={dayIdx} rowIdx={weekIdx} />;
             })}
           </React.Fragment>
         );
