@@ -5,12 +5,12 @@ import dayjs from 'dayjs';
 interface DayProps {
   day: any;
   rowIdx: number;
+  currentDay: number;
 }
 
-export const Day: React.VFC<DayProps> = ({ day, rowIdx }) => {
-  const dayJS = dayjs as any;
+export const Day: React.VFC<DayProps> = ({ day, rowIdx, currentDay }) => {
   const getCurrentDayClass = (): string => {
-    return day.format('DD-MM-YY') === dayjs().format('DD-MM-YY') ? 'selected' : '';
+    return Number(day.format('DD')) === currentDay ? 'selected' : '';
   };
   return (
     <div className={styles.day}>
