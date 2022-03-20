@@ -75,7 +75,11 @@ const SignUpCard: React.VFC<SignupCardProps> = ({
         }}
       >
         <h1>サインアップ 📝</h1>
-        <motion.button type="button" className={styles.signupCard__google} onClick={handleGoogleSignup}>
+        <motion.button
+          type="button"
+          className={styles.signupCard__google}
+          onClick={handleGoogleSignup}
+        >
           <span className={styles.signupCard__google__logo}>
             <FcGoogle />
           </span>
@@ -89,7 +93,12 @@ const SignUpCard: React.VFC<SignupCardProps> = ({
           <TextInput type="password" label="Password" name="password" onChange={handleOnChange} />
         </div>
         <div className={styles.signupCard__input}>
-          <TextInput type="password" label="Confirmed Password" name="confirmed" onChange={handleOnChange} />
+          <TextInput
+            type="password"
+            label="Confirmed Password"
+            name="confirmed"
+            onChange={handleOnChange}
+          />
         </div>
         <ActionButton label="Signup to Your Account" size="lg" onClick={handleSubmit} />
         <div className={styles.signupCard__footer}>

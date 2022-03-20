@@ -6,7 +6,7 @@ import Month from '@/components/month/Month';
 import CalandarHeader from '@/components/header/calendar/CalendarHeader';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store.d';
-import { MonthSet } from '@/store/date/actions';
+import { DaySet, MonthSet } from '@/store/date/actions';
 import { ICalendarDateState } from '@/store/date/models';
 import styles from '@/styles/Dashboard.module.scss';
 
@@ -20,10 +20,26 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
   const setMonth = (month: number): void => {
     setShowCalender(false);
     setTimeout(() => {
+      //set month
       dispatch(MonthSet(month));
+      //set day
+      month === new Date().getMonth() + 1
+        ? dispatch(DaySet(new Date().getDate()))
+        : dispatch(DaySet(1));
       setShowCalender(true);
-    }, 10);
+    }, 1);
   };
+  const setToday = (): void => {
+    setShowCalender(false);
+    setTimeout(() => {
+      dispatch(MonthSet(new Date().getMonth() + 1));
+      dispatch(DaySet(new Date().getDate()));
+      setShowCalender(true);
+    }, 1);
+  };
+
+  const setDay = (): void => {};
+
   const [currentMonth, setCurrentMonth] = useState(getMonth(null));
   const [currentDay, setCurrentDay] = useState(null);
   const [showCalender, setShowCalender] = useState(true);
@@ -40,7 +56,7 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
   return (
     <AnimatePresence exitBeforeEnter>
       <div className={styles.dashboard}>
-        <CalandarHeader setMonth={setMonth} currentMonth={calender.month} />
+        <CalandarHeader currentMonth={calender.month} setMonth={setMonth} setToday={setToday} />
         {showCalender && (
           <motion.div
             exit={{
@@ -59,10 +75,11 @@ const Dashboard: React.FC<DashboardProps> = (props) => {
               x: 0,
               transition: {
                 duration: 0.2,
+                ease: 'easeOut',
               },
             }}
           >
-            <Month month={currentMonth} currentDay={currentDay} />
+            <Month month={currentMonth} currentDay={currentDay} currentMonth={calender.month} />
           </motion.div>
         )}
       </div>

@@ -11,9 +11,11 @@ interface ColumnProps {
 
 const Column: React.FC<ColumnProps> = ({ xl, lg, md, sm, xs, children }) => (
   <div
-    className={`${styles.col} ${xl ? styles[`col-xl-${xl}`] : ''} ${lg ? styles[`col-lg-${lg}`] : ''} ${
-      md ? styles[`col-md-${md}`] : ''
-    } ${sm ? styles[`col-sm-${sm}`] : ''} ${xs ? styles[`col-${xs}`] : ''}`}
+    className={`${styles.col} ${xl ? styles[`col-xl-${xl}`] : ''} ${
+      lg ? styles[`col-lg-${lg}`] : ''
+    } ${md ? styles[`col-md-${md}`] : ''} ${sm ? styles[`col-sm-${sm}`] : ''} ${
+      xs ? styles[`col-${xs}`] : ''
+    }`}
   >
     {children}
   </div>

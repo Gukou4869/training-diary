@@ -83,7 +83,11 @@ const LoginCard: React.VFC<LoginCardProps> = ({
         }}
       >
         <h1>ログイン 🔏</h1>
-        <motion.button type="button" className={styles.loginCard__google} onClick={handleGoogleLogin}>
+        <motion.button
+          type="button"
+          className={styles.loginCard__google}
+          onClick={handleGoogleLogin}
+        >
           <span className={styles.loginCard__google__logo}>
             <FcGoogle />
           </span>
@@ -91,7 +95,13 @@ const LoginCard: React.VFC<LoginCardProps> = ({
         </motion.button>
         <div className={styles.loginCard__divider}> - OR -</div>
         <div className={styles.loginCard__input}>
-          <TextInput type="email" name="email" label="Email" onChange={handleOnChange} hasError={error.hasError} />
+          <TextInput
+            type="email"
+            name="email"
+            label="Email"
+            onChange={handleOnChange}
+            hasError={error.hasError}
+          />
         </div>
         <div className={styles.loginCard__input}>
           <TextInput type="password" name="password" label="Password" onChange={handleOnChange} />

@@ -12,7 +12,10 @@ import { RootState } from '../../store/index';
 // session login
 // @param email: string
 // @param password: string
-export const thunkLogin = (email: string, password: string): ThunkAction<void, RootState, null, AnyAction> => {
+export const thunkLogin = (
+  email: string,
+  password: string,
+): ThunkAction<void, RootState, null, AnyAction> => {
   return async (dispatch) => {
     // show loading bar
     dispatch(showLoading());
@@ -40,7 +43,10 @@ export const thunkLogin = (email: string, password: string): ThunkAction<void, R
 
 // session signup
 // @param email: string
-export const thunkSignup = (email: string, password: string): ThunkAction<void, RootState, null, AnyAction> => {
+export const thunkSignup = (
+  email: string,
+  password: string,
+): ThunkAction<void, RootState, null, AnyAction> => {
   return async (dispatch) => {
     // show loading bar
     dispatch(showLoading());

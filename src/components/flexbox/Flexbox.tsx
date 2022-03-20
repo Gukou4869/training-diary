@@ -9,9 +9,11 @@ interface FlexBoxProps {
 
 const FlexBox: React.FC<FlexBoxProps> = ({ direction, justify, align, children }) => (
   <div
-    className={`${styles['flex-box']} ${direction ? styles[`flex-box--direction-${direction}`] : ''} ${
-      justify ? styles[`flex-box--justify-${justify}`] : ''
-    } ${align ? styles[`flex-box--align-${align}`] : ''}`}
+    className={`${styles['flex-box']} ${
+      direction ? styles[`flex-box--direction-${direction}`] : ''
+    } ${justify ? styles[`flex-box--justify-${justify}`] : ''} ${
+      align ? styles[`flex-box--align-${align}`] : ''
+    }`}
   >
     {children}
   </div>
