@@ -1,5 +1,14 @@
 @import '@/styles/variables.scss';
 
+.fullCalendar {
+  width: 100%;
+  min-height: calc(100vh - $header-height);
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  cursor: pointer;
+}
+
 .day {
   display: flex;
   justify-content: center;

@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 
 // カレンダーグリッドの作成
-const getMonth = (month: number = dayjs().month()): Array<any> => {
+export const getMonth = (month: number = dayjs().month()): Array<any> => {
   const year = dayjs().year();
   const firstDayOfMonth = dayjs(new Date(year, month, 1)).day();
   let currentMonthCount = 0 - firstDayOfMonth;
@@ -14,4 +14,18 @@ const getMonth = (month: number = dayjs().month()): Array<any> => {
   return daysMartix;
 };
 
-export default getMonth;
+export const thisMonth: number = new Date().getMonth() + 1;
+export const today: number = new Date().getDate();
+
+export const getYearMonth = (motnhIdx: number): string => {
+  return dayjs(new Date(dayjs().year(), motnhIdx - 1)).format('MMMM YYYY');
+};
+
+export const getCurrentDayClass = (day: any, dayIdx: number, monthIdx: number): string => {
+  return Number(day.format('D')) === dayIdx && Number(day.format('M')) == monthIdx
+    ? 'selected'
+    : '';
+};
+export const getLastMonthDateClass = (day: any, monthIdx: number): string => {
+  return Number(day.format('M')) !== monthIdx ? 'day__lastMonth' : '';
+};
