@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Container from './Container';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import './storyStyles.scss';
 
 export default {
   title: 'Gukou UI/Atoms/Grid/Container',

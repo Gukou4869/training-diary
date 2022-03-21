@@ -1,0 +1,35 @@
+.categoryTag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  padding: 0.125rem 0;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 900;
+  border-radius: 30px;
+}
+
+.chest {
+  background: linear-gradient(to left top, #f7971e, #ffd200);
+}
+
+.sholder {
+  background: linear-gradient(to left top, #34e89e, #0f3443);
+}
+
+.ab {
+  background: linear-gradient(to left top, #2193b0, #6dd5ed);
+}
+
+.back {
+  background: linear-gradient(to left top, #2193b0, #6dd5ed);
+}
+
+.arm {
+  background: linear-gradient(to left top, #f953c6, #b91d73);
+}
+
+.legs {
+  background: linear-gradient(to left top, #ff416c, #ff4b2b);
+}
