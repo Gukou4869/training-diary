@@ -4,10 +4,11 @@ import styles from './Backdrop.module.scss';
 
 interface BackdropProps {
   children?: React.ReactElement;
+  disabled?: boolean;
   onClick?: () => void;
 }
 
-const Backdrop: React.VFC<BackdropProps> = ({ children, onClick }) => (
+const Backdrop: React.VFC<BackdropProps> = ({ children, disabled, onClick }) => (
   <motion.div
     initial={{
       opacity: 0,
@@ -18,7 +19,7 @@ const Backdrop: React.VFC<BackdropProps> = ({ children, onClick }) => (
     exit={{
       opacity: 0,
     }}
-    className={styles.backdrop}
+    className={!disabled ? styles.backdrop : styles.disabledBackdrop}
     onClick={onClick}
   >
     {children}

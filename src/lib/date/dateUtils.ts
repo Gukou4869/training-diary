@@ -18,7 +18,9 @@ export const thisMonth: number = new Date().getMonth() + 1;
 export const today: number = new Date().getDate();
 
 export const getYearMonth = (motnhIdx: number): string => {
-  return dayjs(new Date(dayjs().year(), motnhIdx - 1)).format('MMMM YYYY');
+  return `${dayjs(new Date(dayjs().year(), motnhIdx - 1)).format('YYYY')}年 ${dayjs(
+    new Date(dayjs().year(), motnhIdx - 1),
+  ).format('M')}月`;
 };
 
 export const getTodayClass = (day: any, dayIdx: number): string => {

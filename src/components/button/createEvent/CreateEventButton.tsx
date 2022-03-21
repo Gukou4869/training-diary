@@ -2,11 +2,13 @@ import React from 'react';
 import { FiPlus } from 'react-icons/fi';
 import styles from './CreateEventButton.module.scss';
 
-interface CreateEventButtonProps {}
+interface CreateEventButtonProps {
+  onClick: () => void;
+}
 
-const CreateEventButton: React.VFC<CreateEventButtonProps> = () => {
+const CreateEventButton: React.VFC<CreateEventButtonProps> = ({ onClick }) => {
   return (
-    <button type="button" className={styles.createEvent}>
+    <button type="button" className={styles.createEvent} onClick={onClick}>
       <FiPlus />
       Create
     </button>

@@ -21,7 +21,7 @@ const CalanderHeader: React.VFC<CalandarHeaderProps> = ({
       <div className="">画像(仮)</div>
       <h1 className={styles['calendarHeader__title']}>TRALOG</h1>
       <button className={styles['calendarHeader__today']} onClick={handleReset}>
-        Today
+        今日
       </button>
       <div className={styles['calendarHeader__arrow']}>
         <div className={styles['calendarHeader__arrow__cursor']} onClick={handleMoveToPrevMonth}>

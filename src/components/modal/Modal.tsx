@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { FaTimes } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Backdrop from '../backdrop/Backdrop';
 import styles from './Modal.module.scss';
 
 interface ModalProps {
   children?: React.ReactElement;
+  disableBackdrop?: boolean;
   open?: boolean;
   handleClose?: () => void;
 }
 
-const Modal: React.VFC<ModalProps> = ({ children, handleClose }) => {
+const Modal: React.VFC<ModalProps> = ({ children, disableBackdrop, open, handleClose }) => {
   const dropIn = {
     hidden: {
       y: '-15vh',
@@ -30,25 +31,29 @@ const Modal: React.VFC<ModalProps> = ({ children, handleClose }) => {
     },
   };
   return (
-    <Backdrop>
-      <motion.div
-        className={styles.modal}
-        onClick={(event: React.MouseEvent) => {
-          event.stopPropagation();
-        }}
-        variants={dropIn}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        <button type="button" className={styles.modal__close} onClick={handleClose}>
-          <div className={styles.modal__close__btn}>
-            <FaTimes />
-          </div>
-        </button>
-        {children}
-      </motion.div>
-    </Backdrop>
+    <AnimatePresence exitBeforeEnter>
+      {open && (
+        <Backdrop disabled={disableBackdrop}>
+          <motion.div
+            className={styles.modal}
+            onClick={(event: React.MouseEvent) => {
+              event.stopPropagation();
+            }}
+            variants={dropIn}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <button type="button" className={styles.modal__close} onClick={handleClose}>
+              <div className={styles.modal__close__btn}>
+                <FaTimes />
+              </div>
+            </button>
+            {children}
+          </motion.div>
+        </Backdrop>
+      )}
+    </AnimatePresence>
   );
 };
 
