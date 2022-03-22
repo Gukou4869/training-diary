@@ -1,6 +1,7 @@
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 import { within, userEvent } from '@storybook/testing-library';
-import { Story, ComponentMeta, ComponentStory, ComponentStoryObj } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { expect } from '@storybook/jest';
 import Alert from './Alert';
 
 export default {
@@ -10,40 +11,12 @@ export default {
     backgroundColor: {
       control: 'color',
     },
+    onClose: { action: true },
   },
 } as ComponentMeta<typeof Alert>;
 
 const Template: ComponentStory<typeof Alert> = (args) => {
   return <Alert {...args} />;
-};
-
-export const ASFD: ComponentStory<typeof Alert> = () => {
-  const [open, setOpen] = useState(true);
-  const handleToggle = (): void => {
-    setOpen((prevState) => !prevState);
-  };
-
-  if (open) {
-    return (
-      <Alert
-        type="error"
-        message="こちらのEmailアドレスは現在登録されていません"
-        onClose={handleToggle}
-      />
-    );
-  } else {
-    return (
-      <div className="" onClick={handleToggle}>
-        クリックするとアラートが出現するよ
-      </div>
-    );
-  }
-};
-
-export const Error = Template.bind({});
-Error.args = {
-  type: 'error',
-  message: 'こちらのEmailアドレスは現在登録されていません',
 };
 
 export const Success = Template.bind({});
@@ -52,7 +25,17 @@ Success.args = {
   message: 'ログインに成功しました！',
 };
 
-ASFD.play = async ({ canvasElement }) => {
+export const Error = Template.bind({});
+Error.args = {
+  type: 'error',
+  message: 'こちらのEmailアドレスは現在登録されていません',
+};
+
+//test
+//onClick buttonが起動するか
+Success.play = async ({ args, canvasElement }) => {
   const canvas = within(canvasElement);
-  userEvent.click(canvas.getByRole('button'));
+  await userEvent.click(canvas.getByRole('button'));
+  await expect(args.onClose).toHaveBeenCalled();
+  await expect(args.onClose).toBeNull();
 };
