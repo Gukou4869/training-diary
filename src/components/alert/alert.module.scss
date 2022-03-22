@@ -1,12 +1,17 @@
 @import '@/styles/variables.scss';
 
 .alert {
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
   color: #fff;
   padding: 1rem 0.5rem;
   border-radius: 5px;
+}
+
+.alert__message {
+  font-weight: 500;
 }
 
 .alert--error {
@@ -23,15 +28,14 @@
 
 .alert__close {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 1rem;
   right: 1rem;
   margin: auto;
   background-color: transparent;
   border: none;
   outline: none;
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.125rem;
   cursor: pointer;
 }
 

@@ -5,15 +5,15 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 import styles from './alert.module.scss';
 
 interface AlertProps {
-  type?: 'error' | 'success' | 'warning';
+  type?: 'error' | 'success';
   message?: string;
   autoClose?: boolean;
   onClose?: () => void;
 }
 
-const Alert: React.VFC<AlertProps> = ({ type, message, autoClose, onClose }) => {
+const Alert: React.VFC<AlertProps> = ({ type, message, autoClose = false, onClose }) => {
   const alertType = `alert--${type}`;
-  const icons = (alert: 'error' | 'success' | 'warning'): React.ReactElement => {
+  const icons = (alert: 'error' | 'success'): React.ReactElement => {
     switch (alert) {
       case 'error':
         return (
@@ -40,11 +40,11 @@ const Alert: React.VFC<AlertProps> = ({ type, message, autoClose, onClose }) => 
   return (
     <div className={`${styles.alert} ${styles[alertType]}`}>
       {icons(type)}
-      <div className="alert__message">{message}</div>
+      <div className={styles['alert__message']}>{message}</div>
       {!autoClose && (
-        <button className={styles.alert__close} type="button" onClick={onClose}>
+        <div className={styles.alert__close} onClick={onClose} role="button">
           <FaTimes />
-        </button>
+        </div>
       )}
     </div>
   );
