@@ -2,11 +2,11 @@ import React from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { MdOutlineErrorOutline } from 'react-icons/md';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
-import styles from './alert.module.scss';
+import styles from './Alert.module.scss';
 
 interface AlertProps {
-  type?: 'error' | 'success';
-  message?: string;
+  type: 'error' | 'success';
+  message: string;
   autoClose?: boolean;
   onClose?: () => void;
 }
