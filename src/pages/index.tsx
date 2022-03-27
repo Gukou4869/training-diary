@@ -9,6 +9,7 @@ import { thunkAuthObserver } from '@/thunk/session/thunk';
 import { useEffect } from 'react';
 
 const Home: NextPage = () => {
+  const loading: boolean = useSelector((state: RootState) => state.loading.authLoading);
   const dispatch = useDispatch();
   const authObserver = (): void => {
     dispatch(thunkAuthObserver());
@@ -16,9 +17,6 @@ const Home: NextPage = () => {
   useEffect(() => {
     authObserver();
   }, []);
-  const loading: boolean = useSelector((state: RootState) => {
-    return state.loading.authLoading;
-  });
   return (
     <>
       <Head>

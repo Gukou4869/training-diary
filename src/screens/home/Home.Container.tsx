@@ -54,6 +54,13 @@ const HomeContainer: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (sessionStatus) {
+      console.log(sessionStatus);
+      router.replace('/dashboard');
+    }
+  }, [sessionStatus]);
+
   const handleOnChangeLoginInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.currentTarget;
     const tempParams: LoginInputParams = {
@@ -95,9 +102,6 @@ const HomeContainer: React.FC = () => {
     }
   };
 
-  if (sessionStatus) {
-    router.replace('/dashboard');
-  }
   return (
     <HomeView
       error={error}

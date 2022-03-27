@@ -76,7 +76,7 @@ export interface ISessionState {
   success: boolean;
 }
 // session storage for initial session state
-const status = true;
+const status = false;
 const token = '';
 
 export const initialSessionState: ISessionState = {

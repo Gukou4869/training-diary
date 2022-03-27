@@ -8,7 +8,8 @@ import { firebaseError } from '@/lib/firebaseError';
 import login from '@/services/auth/Login';
 import signup from '@/services/auth/Signup';
 import { RootState } from '../../store/index';
-import { sessionStatus } from '@/store/session/action';
+import { sessionLogout, sessionStatus } from '@/store/session/action';
+import signout from '@/services/auth/Signout';
 
 // session login
 // @param email: string
@@ -27,6 +28,7 @@ export const thunkLogin = (
       dispatch(errorReset());
       await login(email, password);
       dispatch(sessionStatus({ status: true, token: '' }));
+      sessionStorage.setItem('status', 'true');
       //checkedであればローカルストレージに記憶、unckeckedであれば削除
       if (checked) {
         localStorage.setItem('password', password);
@@ -63,7 +65,8 @@ export const thunkSignup = (
       // error reset
       dispatch(errorReset());
       await signup(email, password);
-      // dispatch(sessionStatus({ status: true, token }));
+      sessionStorage.setItem('status', 'true');
+      dispatch(sessionStatus({ status: true, token: '' }));
     } catch (e) {
       const error = e as IFirebaseError;
       const errorObj: IError = {
@@ -82,17 +85,24 @@ export const thunkSignup = (
 
 // session logout
 // @param token: string
-export const thunkLogout = (token: string): ThunkAction<void, RootState, null, AnyAction> => {
+export const thunkLogout = (): ThunkAction<void, RootState, null, AnyAction> => {
   return async (dispatch) => {
     // show loading bar
     dispatch(showLoading());
     try {
-      // await logout(token);
-      // dispatch(sessionStatus({ status: false, token: '' }));
+      await signout();
+      dispatch(sessionLogout());
+      localStorage.removeItem('status');
     } catch (e) {
-      // dispatch(errorSet(axiosError(e)));
+      const error = e as IFirebaseError;
+      const errorObj: IError = {
+        hasError: true,
+        errorType: error.message,
+        errorMessage: firebaseError(error.code),
+      };
+      dispatch(errorSet(errorObj));
     } finally {
-      // dispatch(hideLoading());
+      dispatch(hideLoading());
     }
   };
 };

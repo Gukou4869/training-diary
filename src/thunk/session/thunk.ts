@@ -21,6 +21,13 @@ export const thunkAuthObserver = (): ThunkAction<void, RootState, null, AnyActio
       onAuthStateChanged(auth, (user) => {
         if (user) {
           dispatch(sessionStatus({ token: user.uid, status: true }));
+          setTimeout(() => {
+            dispatch(hideAuthLoading());
+          }, 1000);
+        } else {
+          setTimeout(() => {
+            dispatch(hideAuthLoading());
+          }, 1000);
         }
       });
     } catch (e) {
@@ -34,7 +41,6 @@ export const thunkAuthObserver = (): ThunkAction<void, RootState, null, AnyActio
     } finally {
       // hide loading bar
       dispatch(hideLoading());
-      dispatch(hideAuthLoading());
     }
   };
 };

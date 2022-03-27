@@ -1,5 +1,4 @@
 export const firebaseError = (code: string): string => {
-  console.log(code);
   switch (code) {
     case 'auth/user-not-found':
       return 'こちらのメールアドレスは登録されていません。';

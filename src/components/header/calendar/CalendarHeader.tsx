@@ -7,6 +7,7 @@ interface CalandarHeaderProps {
   currentMonthIdx: number;
   handleMoveToPrevMonth?: () => void;
   handleMoveToNextMonth?: () => void;
+  handleLogout: () => void;
   handleReset: () => void;
 }
 
@@ -14,6 +15,7 @@ const CalanderHeader: React.VFC<CalandarHeaderProps> = ({
   currentMonthIdx,
   handleMoveToPrevMonth,
   handleMoveToNextMonth,
+  handleLogout,
   handleReset,
 }) => {
   return (
@@ -32,6 +34,9 @@ const CalanderHeader: React.VFC<CalandarHeaderProps> = ({
         </div>
       </div>
       <p className={styles['smallCalendar__header__text']}>{getYearMonth(currentMonthIdx)}</p>
+      <button className={styles['calendarHeader__logout']} onClick={handleLogout}>
+        ログアウト
+      </button>
     </header>
   );
 };
