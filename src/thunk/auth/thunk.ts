@@ -8,6 +8,7 @@ import { firebaseError } from '@/lib/firebaseError';
 import login from '@/services/auth/Login';
 import signup from '@/services/auth/Signup';
 import { RootState } from '../../store/index';
+import { sessionStatus } from '@/store/session/action';
 
 // session login
 // @param email: string
@@ -15,6 +16,7 @@ import { RootState } from '../../store/index';
 export const thunkLogin = (
   email: string,
   password: string,
+  checked?: boolean,
 ): ThunkAction<void, RootState, null, AnyAction> => {
   return async (dispatch) => {
     // show loading bar
@@ -24,7 +26,13 @@ export const thunkLogin = (
       // error reset
       dispatch(errorReset());
       await login(email, password);
-      // dispatch(sessionStatus({ status: true, token }));
+      dispatch(sessionStatus({ status: true, token: '' }));
+      //checkedであればローカルストレージに記憶、unckeckedであれば削除
+      if (checked) {
+        localStorage.setItem('password', password);
+      } else {
+        localStorage.removeItem('password');
+      }
     } catch (e) {
       const error = e as IFirebaseError;
       const errorObj: IError = {

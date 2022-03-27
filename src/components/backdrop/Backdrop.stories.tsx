@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import BackDrop from './Backdrop';
 
 export default {
@@ -7,4 +7,14 @@ export default {
   component: BackDrop,
 } as ComponentMeta<typeof BackDrop>;
 
-export const Default = (): JSX.Element => <BackDrop />;
+const Template: ComponentStory<typeof BackDrop> = (args) => <BackDrop {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  disabled: false,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
+};

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkLogin, thunkSignup } from '@/thunk/auth/thunk';
 import { errorReset, errorSet } from '@/store/error/actions';
@@ -9,14 +10,15 @@ import { LoginInputParams, SignupInputParams } from './Home.Interface';
 import HomeView from './Home.View';
 
 const HomeContainer: React.FC = () => {
-  // reduc store
-  const error: IError = useSelector((state: RootState) => {
-    return state.error;
-  });
+  //router
+  const router = useRouter();
+  // redux store
+  const error: IError = useSelector((state: RootState) => state.error);
+  const sessionStatus: boolean = useSelector((state: RootState) => state.session.status);
   // redux actions
   const dispatch = useDispatch();
-  const login = (email: string, password: string): void => {
-    dispatch(thunkLogin(email, password));
+  const login = (email: string, password: string, checked?: boolean): void => {
+    dispatch(thunkLogin(email, password, checked));
   };
   const signup = (email: string, password: string): void => {
     dispatch(thunkSignup(email, password));
@@ -40,7 +42,17 @@ const HomeContainer: React.FC = () => {
     confirmed: '',
   });
   // password memorise state
-  const [checked, setChecked] = React.useState(false);
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('password')) {
+      setLoginInput({
+        ...loginInput,
+        password: localStorage.getItem('password'),
+      });
+      setChecked(true);
+    }
+  }, []);
 
   const handleOnChangeLoginInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.currentTarget;
@@ -67,7 +79,7 @@ const HomeContainer: React.FC = () => {
   };
 
   const handleLogin = (): void => {
-    login(loginInput.email, loginInput.password);
+    login(loginInput.email, loginInput.password, checked);
   };
 
   const handleSignup = (): void => {
@@ -83,6 +95,9 @@ const HomeContainer: React.FC = () => {
     }
   };
 
+  if (sessionStatus) {
+    router.replace('/dashboard');
+  }
   return (
     <HomeView
       error={error}
