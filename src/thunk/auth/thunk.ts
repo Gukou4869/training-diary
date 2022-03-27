@@ -10,6 +10,7 @@ import signup from '@/services/auth/Signup';
 import { RootState } from '../../store/index';
 import { sessionLogout, sessionStatus } from '@/store/session/action';
 import signout from '@/services/auth/Signout';
+import googleLogin from '@/services/auth/GoogleLogin';
 
 // session login
 // @param email: string
@@ -27,8 +28,8 @@ export const thunkLogin = (
       // error reset
       dispatch(errorReset());
       await login(email, password);
-      dispatch(sessionStatus({ status: true, token: '' }));
-      sessionStorage.setItem('status', 'true');
+      localStorage.setItem('status', 'true');
+      dispatch(sessionStatus({ token: '', status: true }));
       //checkedであればローカルストレージに記憶、unckeckedであれば削除
       if (checked) {
         localStorage.setItem('password', password);
@@ -65,8 +66,34 @@ export const thunkSignup = (
       // error reset
       dispatch(errorReset());
       await signup(email, password);
-      sessionStorage.setItem('status', 'true');
-      dispatch(sessionStatus({ status: true, token: '' }));
+      localStorage.setItem('status', 'true');
+      dispatch(sessionStatus({ token: '', status: true }));
+    } catch (e) {
+      const error = e as IFirebaseError;
+      const errorObj: IError = {
+        hasError: true,
+        errorType: error.message,
+        errorMessage: firebaseError(error.code),
+      };
+      dispatch(errorSet(errorObj));
+    } finally {
+      // hide loading bar
+      dispatch(hideLoading());
+      dispatch(hideAuthLoading());
+    }
+  };
+};
+
+export const thunkGoogleAuth = (): ThunkAction<void, RootState, null, AnyAction> => {
+  return async (dispatch) => {
+    // show loading bar
+    dispatch(showLoading());
+    dispatch(showAuthLoading());
+    try {
+      // error reset
+      dispatch(errorReset());
+      const user = await googleLogin();
+      console.log('🚀 ~ file: thunk.ts ~ line 96 ~ return ~ user', user);
     } catch (e) {
       const error = e as IFirebaseError;
       const errorObj: IError = {

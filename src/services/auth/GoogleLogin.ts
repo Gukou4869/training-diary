@@ -10,6 +10,7 @@ const googleLogin = (): void => {
       const token = credential.accessToken;
       // The signed-in user info.
       const { user } = result;
+      return user;
       // ...
     })
     .catch((error) => {

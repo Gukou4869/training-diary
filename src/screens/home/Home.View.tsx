@@ -14,6 +14,7 @@ interface HomeContainerProps {
   checked: boolean;
   loginInput: LoginInputParams;
   signupInput: SignupInputParams;
+  handleGoogleAuth: () => void;
   handleOnChangeLoginInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleOnChangeSignupInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleToggleChecked: () => void;
@@ -27,6 +28,7 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
   error,
   loginInput,
   signupInput,
+  handleGoogleAuth,
   handleOnChangeLoginInput,
   handleOnChangeSignupInput,
   handleToggleChecked,
@@ -53,10 +55,10 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
               checked={checked}
               loginInput={loginInput}
               signupInput={signupInput}
+              handleGoogleAuth={handleGoogleAuth}
               handleOnChangeLoginInput={handleOnChangeLoginInput}
               handleOnChangeSignupInput={handleOnChangeSignupInput}
               handleChecked={handleToggleChecked}
-              handleGoogleLogin={googleLogin}
               handleLogin={handleLogin}
               handleResetError={handleResetError}
               handleSignup={handleSignup}

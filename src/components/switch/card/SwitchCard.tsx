@@ -12,7 +12,7 @@ interface SwitchCardProps {
   loginInput: LoginInputParams;
   signupInput: SignupInputParams;
   handleChecked?: () => void;
-  handleGoogleLogin?: () => void;
+  handleGoogleAuth?: () => void;
   handleOnChangeLoginInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleOnChangeSignupInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleLogin?: () => void;
@@ -26,7 +26,7 @@ const SwitchCard: React.VFC<SwitchCardProps> = ({
   handleChecked,
   handleOnChangeLoginInput,
   handleOnChangeSignupInput,
-  handleGoogleLogin,
+  handleGoogleAuth,
   handleLogin,
   handleResetError,
   handleSignup,
@@ -46,7 +46,7 @@ const SwitchCard: React.VFC<SwitchCardProps> = ({
           error={error}
           handleChecked={handleChecked}
           handleOnChange={handleOnChangeLoginInput}
-          handleGoogleLogin={handleGoogleLogin}
+          handleGoogleLogin={handleGoogleAuth}
           handleResetError={handleResetError}
           moveToSignup={handleToggleCard}
           handleSubmit={handleLogin}
@@ -57,7 +57,7 @@ const SwitchCard: React.VFC<SwitchCardProps> = ({
           key={2}
           error={error}
           moveToLogin={handleToggleCard}
-          handleGoogleSignup={handleGoogleLogin}
+          handleGoogleSignup={handleGoogleAuth}
           handleOnChange={handleOnChangeSignupInput}
           handleResetError={handleResetError}
           handleSubmit={handleSignup}

@@ -12,7 +12,9 @@ const Home: NextPage = () => {
   const loading: boolean = useSelector((state: RootState) => state.loading.authLoading);
   const dispatch = useDispatch();
   const authObserver = (): void => {
-    dispatch(thunkAuthObserver());
+    if (localStorage.getItem('status')) {
+      dispatch(thunkAuthObserver());
+    }
   };
   useEffect(() => {
     authObserver();

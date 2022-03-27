@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { thunkLogin, thunkSignup } from '@/thunk/auth/thunk';
+import { thunkGoogleAuth, thunkLogin, thunkSignup } from '@/thunk/auth/thunk';
 import { errorReset, errorSet } from '@/store/error/actions';
 import { IError } from '@/store/error/models';
 import { RootState } from '@/store/store.d';
@@ -22,6 +22,9 @@ const HomeContainer: React.FC = () => {
   };
   const signup = (email: string, password: string): void => {
     dispatch(thunkSignup(email, password));
+  };
+  const handleGoogleAuth = (): void => {
+    dispatch(thunkGoogleAuth());
   };
   const handleResetError = (): void => {
     dispatch(errorReset());
@@ -56,7 +59,6 @@ const HomeContainer: React.FC = () => {
 
   useEffect(() => {
     if (sessionStatus) {
-      console.log(sessionStatus);
       router.replace('/dashboard');
     }
   }, [sessionStatus]);
@@ -108,6 +110,7 @@ const HomeContainer: React.FC = () => {
       checked={checked}
       loginInput={loginInput}
       signupInput={signupInput}
+      handleGoogleAuth={handleGoogleAuth}
       handleOnChangeLoginInput={handleOnChangeLoginInput}
       handleOnChangeSignupInput={handleOnChangeSignupInput}
       handleToggleChecked={handleToggleChecked}

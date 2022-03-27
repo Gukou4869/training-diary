@@ -5,17 +5,16 @@ interface InputProps {
   name?: string;
   hasError?: boolean;
   label: string;
-  size?: string;
   type: 'number' | 'text' | 'password' | 'email';
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input: React.VFC<InputProps> = ({ name, hasError, label, size, type, onChange }) => {
+export const Input: React.VFC<InputProps> = ({ name, hasError, label, type, onChange }) => {
   // set show password (boolean)
   const [show, setShow] = useState<boolean>(false);
 
   const togglePasswordVisibility = (): void => {
-    const input = document.getElementsByName('password')[0] as HTMLInputElement;
+    const input = document.getElementsByName(name)[0] as HTMLInputElement;
     if (input.type === 'password') {
       input.type = 'text';
     } else {
