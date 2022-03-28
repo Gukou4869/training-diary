@@ -17,4 +17,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   options: ['sholder', 'ab', 'chest'],
+  placeholder: '部位を選択してください',
 };

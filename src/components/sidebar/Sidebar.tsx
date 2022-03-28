@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import CreateEventButton from '../button/createEvent/CreateEventButton';
+import CreateLogCard from '../card/createLog/CreateLogCard';
 import Modal from '../modal/Modal';
 import SmallCalendar from '../calender/small/SmallCalendar';
 import styles from './Sidebar.module.scss';
@@ -31,7 +32,9 @@ const Sidebar: React.VFC<SidebarProps> = ({
   };
   return (
     <aside className={styles.sidebar}>
-      <Modal disableBackdrop={true} open={open} handleClose={handleToggleOpen}></Modal>
+      <Modal disableBackdrop={true} open={open} handleClose={handleToggleOpen}>
+        <CreateLogCard />
+      </Modal>
       <CreateEventButton onClick={handleToggleOpen} />
       <SmallCalendar
         currentDayIdx={currentDayIdx}

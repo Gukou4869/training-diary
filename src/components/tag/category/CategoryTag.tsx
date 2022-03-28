@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './CategoryTag.module.scss';
 
 interface CategoryTagProps {
-  type: 'sholder' | 'chest' | 'ab' | 'back' | 'arm' | 'legs';
+  type: string;
+  //type: 'sholder' | 'chest' | 'ab' | 'back' | 'arm' | 'legs';
 }
 
 const CategoryTag: React.VFC<CategoryTagProps> = ({ type }) => {

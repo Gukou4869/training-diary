@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import styles from './Select.module.scss';
 
 interface SelectProps {
   options: Array<string>;
+  placeholder?: string;
 }
 
-const Select: React.VFC<SelectProps> = ({ options }) => {
+const Select: React.VFC<SelectProps> = ({ options, placeholder }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const [selected, setSelected] = useState('');
   const handleToggleOpen = (): void => {
     setOpen((prevState) => !prevState);
   };
-
   const dropIn = {
     hidden: {
       y: '-5vh',
@@ -24,7 +25,7 @@ const Select: React.VFC<SelectProps> = ({ options }) => {
       x: '10px',
       y: '1vh',
       opacity: 1,
-      width: '300px',
+      width: '200px',
       transition: {
         duration: 0.2,
       },
@@ -32,25 +33,32 @@ const Select: React.VFC<SelectProps> = ({ options }) => {
   };
   return (
     <>
-      <div className={styles.select} onClick={handleToggleOpen}></div>
-      <AnimatePresence exitBeforeEnter>
-        {open && (
-          <motion.div
-            variants={dropIn}
-            initial="hidden"
-            animate="visible"
-            className={styles.options}
-          >
-            {options.map((item, i) => {
-              return (
-                <div className="" key={i.toString()}>
+      <div className={styles.select} onClick={handleToggleOpen}>
+        {selected ? (
+          <div className={styles.selected}>{selected}</div>
+        ) : (
+          <div className={styles.placeholder}>{placeholder}</div>
+        )}
+      </div>
+      {open && (
+        <motion.div variants={dropIn} initial="hidden" animate="visible" className={styles.options}>
+          {options.map((item, i) => {
+            return (
+              <div className={styles.optionsItem} key={i.toString()}>
+                <div
+                  className={styles.optionsItem}
+                  onClick={() => {
+                    setSelected(item);
+                    handleToggleOpen();
+                  }}
+                >
                   {item}
                 </div>
-              );
-            })}
-          </motion.div>
-        )}
-      </AnimatePresence>
+              </div>
+            );
+          })}
+        </motion.div>
+      )}
     </>
   );
 };
