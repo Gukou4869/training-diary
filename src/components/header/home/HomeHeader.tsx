@@ -1,14 +1,14 @@
 import * as React from 'react';
-import Navbar from '../navbar/Navbar';
-import Background from '../background/Background';
-import MockImage from '../svg/mock/Mock';
-import styles from './Header.module.scss';
+import Navbar from '../../navbar/Navbar';
+import Background from '../../background/Background';
+import MockImage from '../../svg/mock/Mock';
+import styles from './HomeHeader.module.scss';
 
-interface HeaderProps {
+interface HomeHeaderProps {
   handleToggleOpen?: () => void;
 }
 
-const Header: React.VFC<HeaderProps> = ({ handleToggleOpen }) => (
+const HomeHeader: React.VFC<HomeHeaderProps> = ({ handleToggleOpen }) => (
   <div className={styles['tralog-header']}>
     <Background />
     <Navbar handleToggleOpen={handleToggleOpen} />
@@ -25,4 +25,4 @@ const Header: React.VFC<HeaderProps> = ({ handleToggleOpen }) => (
   </div>
 );
 
-export default Header;
+export default HomeHeader;

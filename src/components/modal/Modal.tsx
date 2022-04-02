@@ -8,10 +8,11 @@ interface ModalProps {
   children?: React.ReactElement;
   disableBackdrop?: boolean;
   open?: boolean;
+  title?: string;
   handleClose?: () => void;
 }
 
-const Modal: React.VFC<ModalProps> = ({ children, disableBackdrop, open, handleClose }) => {
+const Modal: React.VFC<ModalProps> = ({ children, disableBackdrop, open, title, handleClose }) => {
   const dropIn = {
     hidden: {
       y: '-15vh',
@@ -44,6 +45,7 @@ const Modal: React.VFC<ModalProps> = ({ children, disableBackdrop, open, handleC
             animate="visible"
             exit="exit"
           >
+            <div className={styles['modal__title']}>{title}</div>
             <button type="button" className={styles.modal__close} onClick={handleClose}>
               <div className={styles.modal__close__btn}>
                 <FaTimes />

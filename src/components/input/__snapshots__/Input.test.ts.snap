@@ -192,6 +192,7 @@ exports[`Storyshots Button Default 1`] = `
 exports[`Storyshots CategoryBadge Default 1`] = `
 <div
   className="categoryTag ab"
+  onClick={[Function]}
 >
   腹
 </div>
@@ -228,6 +229,103 @@ exports[`Storyshots CreateLogCard Default 1`] = `
       💪🏼 ログを残す
     </div>
   </div>
+  <div
+    className="tag"
+  >
+    <div
+      className="tagItem"
+    >
+      <div
+        className="categoryTag sholder"
+        onClick={[Function]}
+      >
+        肩
+      </div>
+    </div>
+    <div
+      className="tagItem"
+    >
+      <div
+        className="categoryTag chest"
+        onClick={[Function]}
+      >
+        胸
+      </div>
+    </div>
+    <div
+      className="tagItem"
+    >
+      <div
+        className="categoryTag ab"
+        onClick={[Function]}
+      >
+        腹
+      </div>
+    </div>
+    <div
+      className="tagItem"
+    >
+      <div
+        className="categoryTag back"
+        onClick={[Function]}
+      >
+        背中
+      </div>
+    </div>
+    <div
+      className="tagItem"
+    >
+      <div
+        className="categoryTag arm"
+        onClick={[Function]}
+      >
+        腕
+      </div>
+    </div>
+    <div
+      className="tagItem"
+    >
+      <div
+        className="categoryTag legs"
+        onClick={[Function]}
+      >
+        足
+      </div>
+    </div>
+  </div>
+  <div
+    className="flex-box   "
+  >
+    <div
+      className="select"
+    >
+      <div
+        className="select"
+        onClick={[Function]}
+      >
+        <div
+          className="placeholder"
+        >
+          部位を選択してください
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="flex-box   "
+  >
+    <div
+      className="select"
+    >
+      <button
+        className="button button--md  "
+        style={Object {}}
+        type="button"
+      >
+        登録する
+      </button>
+    </div>
+  </div>
 </div>
 `;
 
@@ -250,6 +348,9 @@ exports[`Storyshots CreateLogCard Default 2 1`] = `
       }
     }
   >
+    <div
+      className="modal__title"
+    />
     <button
       className="modal__close"
       onClick={null}
@@ -288,6 +389,103 @@ exports[`Storyshots CreateLogCard Default 2 1`] = `
           className="header"
         >
           💪🏼 ログを残す
+        </div>
+      </div>
+      <div
+        className="tag"
+      >
+        <div
+          className="tagItem"
+        >
+          <div
+            className="categoryTag sholder"
+            onClick={[Function]}
+          >
+            肩
+          </div>
+        </div>
+        <div
+          className="tagItem"
+        >
+          <div
+            className="categoryTag chest"
+            onClick={[Function]}
+          >
+            胸
+          </div>
+        </div>
+        <div
+          className="tagItem"
+        >
+          <div
+            className="categoryTag ab"
+            onClick={[Function]}
+          >
+            腹
+          </div>
+        </div>
+        <div
+          className="tagItem"
+        >
+          <div
+            className="categoryTag back"
+            onClick={[Function]}
+          >
+            背中
+          </div>
+        </div>
+        <div
+          className="tagItem"
+        >
+          <div
+            className="categoryTag arm"
+            onClick={[Function]}
+          >
+            腕
+          </div>
+        </div>
+        <div
+          className="tagItem"
+        >
+          <div
+            className="categoryTag legs"
+            onClick={[Function]}
+          >
+            足
+          </div>
+        </div>
+      </div>
+      <div
+        className="flex-box   "
+      >
+        <div
+          className="select"
+        >
+          <div
+            className="select"
+            onClick={[Function]}
+          >
+            <div
+              className="placeholder"
+            >
+              部位を選択してください
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="flex-box   "
+      >
+        <div
+          className="select"
+        >
+          <button
+            className="button button--md  "
+            style={Object {}}
+            type="button"
+          >
+            登録する
+          </button>
         </div>
       </div>
     </div>
@@ -346,22 +544,12 @@ exports[`Storyshots Header Default 1`] = `
       >
         TRALOG!
       </div>
-      <div
-        className="tralog-navbar__container__btn-group"
+      <button
+        className="tralog-navbar__container__btn-group__btn"
+        type="button"
       >
-        <button
-          className="tralog-navbar__container__btn-group__btn"
-          type="button"
-        >
-          ログイン
-        </button>
-        <button
-          className="tralog-navbar__container__btn-group__btn"
-          type="button"
-        >
-          サインアップ
-        </button>
-      </div>
+        始めてみる
+      </button>
     </div>
   </div>
   <div
@@ -456,6 +644,9 @@ exports[`Storyshots Modal Default 1`] = `
       }
     }
   >
+    <div
+      className="modal__title"
+    />
     <button
       className="modal__close"
       type="button"
@@ -491,5 +682,11 @@ exports[`Storyshots Select Default 1`] = `
 <div
   className="select"
   onClick={[Function]}
-/>
+>
+  <div
+    className="placeholder"
+  >
+    部位を選択してください
+  </div>
+</div>
 `;
