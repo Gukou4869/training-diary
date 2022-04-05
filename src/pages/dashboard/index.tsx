@@ -22,7 +22,6 @@ const Dashboard: React.FC<DashboardProps> = () => {
   const calendar: ICalendarDateState = useSelector((store: RootState) => store.calenderDate);
   //session store
   const status: boolean = useSelector((store: RootState) => store.session.status);
-  const loading: boolean = useSelector((state: RootState) => state.loading.authLoading);
   //dispatch
   const dispatch = useDispatch();
 
@@ -105,6 +104,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
             month={currentMonth}
             currentDayIdx={calendar.day}
             currentMonthIdx={calendar.month}
+            selectedDay={selectedDay}
             handleMoveToPrevMonth={handleMoveToPrevMonth}
             handleMoveToNextMonth={handleMoveToNextMonth}
           />

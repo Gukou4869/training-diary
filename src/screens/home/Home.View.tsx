@@ -5,7 +5,7 @@ import { IError } from '@/store/error/models';
 import googleLogin from '@/services/auth/GoogleLogin';
 import SwitchCard from '@/components/switch/card/SwitchCard';
 import Modal from '@/components/modal/Modal';
-import Header from '@/components/header/Header';
+import Header from '@/components/header/home/HomeHeader';
 import { LoginInputParams, SignupInputParams } from './Home.Interface';
 import styles from './Home.module.scss';
 
