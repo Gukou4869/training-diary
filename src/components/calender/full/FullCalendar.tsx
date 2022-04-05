@@ -10,6 +10,7 @@ interface FullCalendarProps {
   selectedDay: number;
   handleMoveToPrevMonth: () => void;
   handleMoveToNextMonth: () => void;
+  handleSetDay: (day: any, monthIdx: number) => void;
 }
 
 const FullCalendar: React.VFC<FullCalendarProps> = ({
@@ -19,6 +20,7 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
   selectedDay,
   handleMoveToPrevMonth,
   handleMoveToNextMonth,
+  handleSetDay,
 }) => {
   const handleOnWheel = (e: React.WheelEvent): void => {
     if (e.deltaY > 0) {
@@ -61,9 +63,7 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
                       className={styles.day}
                       key={dayIdx.toString()}
                       onWheel={handleOnWheel}
-                      onClick={() => {
-                        console.log(day);
-                      }}
+                      onClick={() => handleSetDay(day, currentMonthIdx)}
                     >
                       <header className={styles['day__header']}>
                         {weekIdx === 0 && (

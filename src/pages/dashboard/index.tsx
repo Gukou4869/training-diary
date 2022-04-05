@@ -12,6 +12,8 @@ import CalandarHeader from '@/components/header/calendar/CalendarHeader';
 import FullCalendar from '@/components/calender/full/FullCalendar';
 import Sidebar from '@/components/sidebar/Sidebar';
 import styles from '@/styles/Dashboard.module.scss';
+import CreateLogCard from '@/components/card/createLog/CreateLogCard';
+import Modal from '@/components/modal/Modal';
 
 interface DashboardProps {}
 
@@ -52,6 +54,9 @@ const Dashboard: React.FC<DashboardProps> = () => {
         handleMoveToNextMonth();
       }
     }
+    if (selectedDay === Number(day.format('D'))) {
+      handleToggleOpen();
+    }
   };
 
   //auth routing
@@ -75,11 +80,20 @@ const Dashboard: React.FC<DashboardProps> = () => {
     setCurrentMonth(getMonth(calendar.month - 1));
   }, [calendar.month]);
 
+  //open create modal
+  const [open, setOpen] = useState(false);
+  const handleToggleOpen = (): void => {
+    setOpen((prevState) => !prevState);
+  };
+
   // if (loading) {
   //   return null;
   // }
   return (
     <div className={styles.dashboard}>
+      <Modal disableBackdrop={true} open={open} handleClose={handleToggleOpen}>
+        <CreateLogCard />
+      </Modal>
       <CalandarHeader
         currentMonthIdx={calendar.month}
         handleMoveToPrevMonth={handleMoveToPrevMonth}
@@ -96,6 +110,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
             selectedDay={selectedDay}
             handleMoveToNextMonth={handleMoveToNextMonth}
             handleMoveToPrevMonth={handleMoveToPrevMonth}
+            handleToggleOpen={handleToggleOpen}
             handleSetDay={handleSetDay}
           />
         </div>
@@ -107,6 +122,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
             selectedDay={selectedDay}
             handleMoveToPrevMonth={handleMoveToPrevMonth}
             handleMoveToNextMonth={handleMoveToNextMonth}
+            handleSetDay={handleSetDay}
           />
         </div>
       </div>

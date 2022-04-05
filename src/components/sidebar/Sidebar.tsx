@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
 import CreateEventButton from '../button/createEvent/CreateEventButton';
-import CreateLogCard from '../card/createLog/CreateLogCard';
-import Modal from '../modal/Modal';
 import SmallCalendar from '../calender/small/SmallCalendar';
 import styles from './Sidebar.module.scss';
 
@@ -13,6 +10,7 @@ interface SidebarProps {
   selectedDay: number;
   handleMoveToNextMonth: () => void;
   handleMoveToPrevMonth: () => void;
+  handleToggleOpen: () => void;
   handleSetDay: (day: any, monthIdx: number) => void;
 }
 
@@ -23,18 +21,11 @@ const Sidebar: React.VFC<SidebarProps> = ({
   selectedDay,
   handleMoveToNextMonth,
   handleMoveToPrevMonth,
+  handleToggleOpen,
   handleSetDay,
 }) => {
-  //open create modal
-  const [open, setOpen] = useState(false);
-  const handleToggleOpen = (): void => {
-    setOpen((prevState) => !prevState);
-  };
   return (
     <aside className={styles.sidebar}>
-      <Modal disableBackdrop={true} open={open} handleClose={handleToggleOpen}>
-        <CreateLogCard />
-      </Modal>
       <CreateEventButton onClick={handleToggleOpen} />
       <SmallCalendar
         currentDayIdx={currentDayIdx}
