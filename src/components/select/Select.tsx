@@ -39,31 +39,30 @@ const Select: React.VFC<SelectProps> = ({ options, placeholder }) => {
                 ) : (
                     <div className={styles.placeholder}>{placeholder}</div>
                 )}
-            </div>
-            {open && (
-                <motion.div
-                    variants={dropIn}
-                    initial="hidden"
-                    animate="visible"
-                    className={styles.options}
-                >
-                    {options.map((item, i) => {
-                        return (
-                            <div className={styles.optionsItem} key={i.toString()}>
-                                <div
-                                    className={styles.optionsItem}
-                                    onClick={() => {
-                                        setSelected(item);
-                                        handleToggleOpen();
-                                    }}
-                                >
-                                    {item}
+                {open && (
+                    <motion.div
+                        variants={dropIn}
+                        initial="hidden"
+                        animate="visible"
+                        className={styles.options}
+                    >
+                        {options.map((item, i) => {
+                            return (
+                                <div className={styles.optionsItem} key={i.toString()}>
+                                    <div
+                                        className={styles.optionsItem}
+                                        onClick={() => {
+                                            setSelected(item);
+                                        }}
+                                    >
+                                        {item}
+                                    </div>
                                 </div>
-                            </div>
-                        );
-                    })}
-                </motion.div>
-            )}
+                            );
+                        })}
+                    </motion.div>
+                )}
+            </div>
         </>
     );
 };

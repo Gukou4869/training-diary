@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import benchPress from '../../../assets/benchpress.jpeg';
+import { ITraining } from '@/lib/training/Training';
 import styles from './TrainingCard.module.scss';
 
 interface TrainingCardProps {
-    title?: string;
+    training: ITraining;
 }
 
-const TrainingCard: React.VFC<TrainingCardProps> = ({ title }) => {
+const TrainingCard: React.VFC<TrainingCardProps> = ({ training }) => {
     return (
         <motion.div className={styles.training}>
-            <div className={styles.title}>{title}</div>
-            <Image src={benchPress} width={'150'} height={'150'} className={styles.image} />
+            <div className={styles.title}>{training.name}</div>
+            <Image src={training.src} width={'150'} height={'150'} className={styles.image} />
         </motion.div>
     );
 };

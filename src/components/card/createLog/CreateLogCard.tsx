@@ -1,16 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
-import { trainingType, getTraining } from '@/lib/training/Training';
+import { trainingType, getTraining, getRep, getWeight } from '@/lib/training/Training';
 import ActionButton from '@/components/button/action/ActionButton';
 import CategoryTag from '@/components/tag/category/CategoryTag';
 import FlexBox from '@/components/flexbox/Flexbox';
 import Select from '@/components/select/Select';
+import TrainingCard from '../training/TrainingCard';
 import styles from './CreateLogCard.module.scss';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface CreateLogCardProps {}
 
 const CreateLogCard: React.VFC<CreateLogCardProps> = () => {
-    const [training, setTraining] = useState('');
+    const [training, setTraining] = useState('sholder');
     return (
         <div className={styles.createLog}>
             <FlexBox justify="start">
@@ -31,15 +33,48 @@ const CreateLogCard: React.VFC<CreateLogCardProps> = () => {
                 })}
             </div>
             <FlexBox>
-                <div className={styles.select}>
-                    <Select
-                        options={getTraining(training)}
-                        placeholder={'部位を選択してください'}
-                    />
+                <div className={styles.trainingList}>
+                    {getTraining(training).map((item, index) => {
+                        return (
+                            <motion.div
+                                key={index}
+                                exit={{
+                                    opacity: 0,
+                                    x: 60,
+                                    transition: {
+                                        duration: 0.2,
+                                    },
+                                }}
+                                initial={{
+                                    opacity: 0,
+                                    x: 60,
+                                }}
+                                animate={{
+                                    opacity: 1,
+                                    x: 0,
+                                    transition: {
+                                        duration: 0.2,
+                                    },
+                                }}
+                            >
+                                <TrainingCard training={item} />
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </FlexBox>
             <FlexBox>
                 <div className={styles.select}>
+                    <Select options={getWeight()} placeholder={'重量'} />
+                    <span className="">kg</span>
+                </div>
+                <div className={styles.select}>
+                    <Select options={getRep()} placeholder={'レップ数'} />
+                    <span className="">REP</span>
+                </div>
+            </FlexBox>
+            <FlexBox>
+                <div className={styles.submit}>
                     <ActionButton label="登録する" />
                 </div>
             </FlexBox>

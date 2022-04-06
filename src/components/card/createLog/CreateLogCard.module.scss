@@ -8,9 +8,32 @@
     font-weight: 700;
 }
 
+.trainingList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem auto;
+    max-height: 30rem;
+    overflow-y: scroll;
+}
+
+.trainingList::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.trainingList {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
 .select {
-    width: 100%;
-    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48%;
+    margin: 0 0.25rem;
 }
 
 .tag {
@@ -19,4 +42,9 @@
 
 .tagItem {
     margin: 0.5rem;
+}
+
+.submit {
+    margin: 1rem 0;
+    width: 100%;
 }
