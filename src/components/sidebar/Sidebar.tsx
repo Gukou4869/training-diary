@@ -4,40 +4,40 @@ import SmallCalendar from '../calender/small/SmallCalendar';
 import styles from './Sidebar.module.scss';
 
 interface SidebarProps {
-  currentDayIdx: number;
-  currentMonthIdx: number;
-  month: Array<any>;
-  selectedDay: number;
-  handleMoveToNextMonth: () => void;
-  handleMoveToPrevMonth: () => void;
-  handleToggleOpen: () => void;
-  handleSetDay: (day: any, monthIdx: number) => void;
+    currentDayIdx: number;
+    currentMonthIdx: number;
+    month: Array<any>;
+    selectedDay: number;
+    handleMoveToNextMonth: () => void;
+    handleMoveToPrevMonth: () => void;
+    handleToggleOpen: () => void;
+    handleSetDay: (day: any, monthIdx: number) => void;
 }
 
 const Sidebar: React.VFC<SidebarProps> = ({
-  currentDayIdx,
-  currentMonthIdx,
-  month,
-  selectedDay,
-  handleMoveToNextMonth,
-  handleMoveToPrevMonth,
-  handleToggleOpen,
-  handleSetDay,
+    currentDayIdx,
+    currentMonthIdx,
+    month,
+    selectedDay,
+    handleMoveToNextMonth,
+    handleMoveToPrevMonth,
+    handleToggleOpen,
+    handleSetDay,
 }) => {
-  return (
-    <aside className={styles.sidebar}>
-      <CreateEventButton onClick={handleToggleOpen} />
-      <SmallCalendar
-        currentDayIdx={currentDayIdx}
-        currentMonthIdx={currentMonthIdx}
-        month={month}
-        selectedDay={selectedDay}
-        handleMoveToNextMonth={handleMoveToNextMonth}
-        handleMoveToPrevMonth={handleMoveToPrevMonth}
-        handleSetDay={handleSetDay}
-      />
-    </aside>
-  );
+    return (
+        <aside className={styles.sidebar}>
+            <CreateEventButton onClick={handleToggleOpen} />
+            <SmallCalendar
+                currentDayIdx={currentDayIdx}
+                currentMonthIdx={currentMonthIdx}
+                month={month}
+                selectedDay={selectedDay}
+                handleMoveToNextMonth={handleMoveToNextMonth}
+                handleMoveToPrevMonth={handleMoveToPrevMonth}
+                handleSetDay={handleSetDay}
+            />
+        </aside>
+    );
 };
 
 export default Sidebar;

@@ -1,0 +1,24 @@
+@import '@/styles/variables.scss';
+
+.training {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: min(300px, 200px);
+    height: min(300px, 200px);
+    border-radius: 10px;
+    border: 1px solid $gray-300;
+    cursor: pointer;
+    &:hover {
+        border: 1px solid $success;
+        transition: border 0.3s;
+    }
+}
+.title {
+    flex: 1;
+    height: 3rem;
+}
+
+.image {
+    flex: 3;
+}

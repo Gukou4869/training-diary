@@ -1,74 +1,74 @@
 @import '@/styles/variables.scss';
 
 .fullCalendar {
-  width: 100%;
-  min-height: calc(100vh - $header-height);
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  grid-template-rows: repeat(5, minmax(0, 1fr));
-  cursor: pointer;
+    width: 100%;
+    min-height: calc(100vh - $header-height);
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+    cursor: pointer;
 }
 
 .day {
-  display: flex;
-  justify-content: center;
-  border: 1px solid $gray-300;
+    display: flex;
+    justify-content: center;
+    border: 1px solid $gray-300;
 }
 
 .day__header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .day__weekday {
-  margin: 0.25rem 0 0 0;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+    margin: 0.25rem 0 0 0;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }
 
 .day__date {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0.25rem;
-  font-size: 0.875rem;
-  margin: 0 0.25rem;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  &:hover {
-    background-color: $gray-300;
-    transition: all 300ms ease-out;
-  }
-  &:active {
-    background-color: #8ab4f8;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    margin: 0 0.25rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    &:hover {
+        background-color: $gray-300;
+        transition: all 300ms ease-out;
+    }
+    &:active {
+        background-color: #8ab4f8;
+    }
 }
 
 .today {
-  background-color: rgb(59 130 246);
-  color: white;
-  border-radius: 50%;
-  width: 1.75rem;
-  height: 1.75rem;
+    background-color: rgb(59 130 246);
+    color: white;
+    border-radius: 50%;
+    width: 1.75rem;
+    height: 1.75rem;
 }
 
 .day__lastMonth {
-  color: $gray-700;
+    color: $gray-700;
 }
 
 .selected {
-  color: #185abc !important;
-  background-color: #d2e3fc;
-  color: white;
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-  &:hover {
+    color: #185abc !important;
     background-color: #d2e3fc;
-  }
-  &:active {
-    background-color: #8ab4f8;
-  }
+    color: white;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    &:hover {
+        background-color: #d2e3fc;
+    }
+    &:active {
+        background-color: #8ab4f8;
+    }
 }

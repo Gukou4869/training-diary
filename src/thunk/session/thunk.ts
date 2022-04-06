@@ -13,34 +13,34 @@ import { sessionStatus } from '@/store/session/action';
 // auth observer
 
 export const thunkAuthObserver = (): ThunkAction<void, RootState, null, AnyAction> => {
-  return async (dispatch) => {
-    // show loading bar
-    dispatch(showLoading());
-    dispatch(showAuthLoading());
-    try {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          dispatch(sessionStatus({ token: user.uid, status: true }));
-          setTimeout(() => {
-            dispatch(hideAuthLoading());
-          }, 1000);
-        } else {
-          setTimeout(() => {
-            dispatch(hideAuthLoading());
-          }, 1000);
+    return async (dispatch) => {
+        // show loading bar
+        dispatch(showLoading());
+        dispatch(showAuthLoading());
+        try {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    dispatch(sessionStatus({ token: user.uid, status: true }));
+                    setTimeout(() => {
+                        dispatch(hideAuthLoading());
+                    }, 1000);
+                } else {
+                    setTimeout(() => {
+                        dispatch(hideAuthLoading());
+                    }, 1000);
+                }
+            });
+        } catch (e) {
+            const error = e as IFirebaseError;
+            const errorObj: IError = {
+                hasError: true,
+                errorType: error.message,
+                errorMessage: firebaseError(error.code),
+            };
+            dispatch(errorSet(errorObj));
+        } finally {
+            // hide loading bar
+            dispatch(hideLoading());
         }
-      });
-    } catch (e) {
-      const error = e as IFirebaseError;
-      const errorObj: IError = {
-        hasError: true,
-        errorType: error.message,
-        errorMessage: firebaseError(error.code),
-      };
-      dispatch(errorSet(errorObj));
-    } finally {
-      // hide loading bar
-      dispatch(hideLoading());
-    }
-  };
+    };
 };

@@ -1,36 +1,36 @@
 @import '@/styles/variables.scss';
 
 .select {
-  position: relative;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid $gray-300;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
+    position: relative;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid $gray-300;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .selected {
-  color: #000;
+    color: #000;
 }
 
 .placeholder {
-  color: $gray-500;
+    color: $gray-500;
 }
 
 .options {
-  position: absolute;
-  border: 1px solid $gray-300;
-  border-radius: 5px;
-  background-color: #fff;
+    position: absolute;
+    border: 1px solid $gray-300;
+    border-radius: 5px;
+    background-color: #fff;
 }
 
 .optionsItem {
-  cursor: pointer;
-  padding: 0.125rem 0.5rem;
-  font-size: 1rem;
-  &:hover {
-    background-color: $gray-100;
-    transition: all 0.2s ease;
-  }
+    cursor: pointer;
+    padding: 0.125rem 0.5rem;
+    font-size: 1rem;
+    &:hover {
+        background-color: $gray-100;
+        transition: all 0.2s ease;
+    }
 }

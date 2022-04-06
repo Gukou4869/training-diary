@@ -5,13 +5,13 @@ import { store } from '../store/index';
 import '@/styles/globals.css';
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
-  return (
-    <AnimatePresence exitBeforeEnter>
-      <Provider store={store}>
-        <Component {...pageProps} />
-      </Provider>
-    </AnimatePresence>
-  );
+    return (
+        <AnimatePresence exitBeforeEnter>
+            <Provider store={store}>
+                <Component {...pageProps} />
+            </Provider>
+        </AnimatePresence>
+    );
 };
 
 export default MyApp;

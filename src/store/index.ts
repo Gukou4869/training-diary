@@ -9,12 +9,12 @@ import middleware from '../middleware';
 // combine reducers
 
 const rootReducer = combineReducers({
-  adminInfo: adminInfoReducer,
-  calenderDate: calendarDateReducer,
-  error: errorReducer,
-  loading: loadingReducer,
-  loadingBar: loadingBarReducer,
-  session: sessionReducer,
+    adminInfo: adminInfoReducer,
+    calenderDate: calendarDateReducer,
+    error: errorReducer,
+    loading: loadingReducer,
+    loadingBar: loadingBarReducer,
+    session: sessionReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
