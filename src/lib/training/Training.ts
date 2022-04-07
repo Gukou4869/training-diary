@@ -4,6 +4,20 @@ import dumbbellFly from '@/assets/dumbbellFly.jpeg';
 import sideRaise from '@/assets/sideRaise.jpeg';
 import frontRaise from '@/assets/frontRaise.jpeg';
 import rearRaise from '@/assets/rearRaise.jpeg';
+import chrunch from '@/assets/chrunch.jpeg';
+import reverseChrunch from '@/assets/reverseChrunch.jpeg';
+import sittingAbRoaler from '@/assets/sittingAbRoaler.jpeg';
+import deadLift from '@/assets/deadLift.jpeg';
+import chinning from '@/assets/chinning.jpeg';
+import bentOverRow from '@/assets/bentOverRow.jpeg';
+import seatedRow from '@/assets/seatedRow.jpeg';
+import ezBarCurl from '@/assets/ezBarCurl.jpeg';
+import inclineCurl from '@/assets/inclineCurl.jpeg';
+import bysepsCurl from '@/assets/bysepsCurl.jpeg';
+import barbellSquat from '@/assets/barbellSquat.jpeg';
+import bulgarianSquat from '@/assets/bulgarianSquat.jpeg';
+import legExtention from '@/assets/legExtention.jpeg';
+import legCurl from '@/assets/legCurl.jpeg';
 
 export type Training = 'sholder' | 'chest' | 'ab' | 'back' | 'arm' | 'legs';
 export const trainingType = ['sholder', 'chest', 'ab', 'back', 'arm', 'legs'];
@@ -31,6 +45,123 @@ export const getWeight = (): Array<string> => {
     }
     return result;
 };
+
+export const getTraining = (type: string): Array<ITraining> => {
+    switch (type) {
+        case 'sholder':
+            return sholderTrainingList;
+        case 'chest':
+            return chestTrainingList;
+        case 'ab':
+            return abTrainingList;
+        case 'back':
+            return backTrainingList;
+        case 'arm':
+            return armsTrainingList;
+        case 'legs':
+            return legsTrainingList;
+        default:
+            return sholderTrainingList;
+    }
+};
+
+export const sholderTrainingList: Array<ITraining> = [
+    {
+        name: 'サイドレイズ',
+        src: sideRaise,
+    },
+    {
+        name: 'フロントレイズ',
+        src: frontRaise,
+    },
+    {
+        name: 'リアレイズ',
+        src: rearRaise,
+    },
+];
+
+export const chestTrainingList: Array<ITraining> = [
+    {
+        name: 'ベンチプレス',
+        src: benchPress,
+    },
+    {
+        name: 'インクライベンチプレス',
+        src: inclineBenchPress,
+    },
+    {
+        name: 'ダンベルフライ',
+        src: dumbbellFly,
+    },
+];
+
+export const abTrainingList: Array<ITraining> = [
+    {
+        name: 'クランチ',
+        src: chrunch,
+    },
+    {
+        name: 'リバースクランチ',
+        src: reverseChrunch,
+    },
+    {
+        name: 'アブローラー',
+        src: sittingAbRoaler,
+    },
+];
+
+export const backTrainingList: Array<ITraining> = [
+    {
+        name: 'デッドリフト',
+        src: deadLift,
+    },
+    {
+        name: 'チンニング',
+        src: chinning,
+    },
+    {
+        name: 'ベントオーバーロウ',
+        src: bentOverRow,
+    },
+    {
+        name: 'シーテッド・ロウ',
+        src: seatedRow,
+    },
+];
+
+export const armsTrainingList: Array<ITraining> = [
+    {
+        name: 'イージーバーカール',
+        src: ezBarCurl,
+    },
+    {
+        name: 'インクラインカール',
+        src: inclineCurl,
+    },
+    {
+        name: 'バイセプスカール',
+        src: bysepsCurl,
+    },
+];
+
+export const legsTrainingList: Array<ITraining> = [
+    {
+        name: 'バーベルスクワット',
+        src: barbellSquat,
+    },
+    {
+        name: 'ブルガリアンスクワット',
+        src: bulgarianSquat,
+    },
+    {
+        name: 'レッグエクステンション',
+        src: legExtention,
+    },
+    {
+        name: 'レッグカール',
+        src: legCurl,
+    },
+];
 
 export const sholderTraining = [
     'サイドレイズ',
@@ -86,53 +217,4 @@ export const legsTraining = [
     'レッグエクステンション',
     'レッグカール',
     'ヒップスラスト',
-];
-
-export const getTraining = (type: string): Array<ITraining> => {
-    switch (type) {
-        case 'sholder':
-            return sholderTrainingList;
-        case 'chest':
-            return chestTrainingList;
-        // case 'ab':
-        //     return abTraining;
-        // case 'back':
-        //     return backTraining;
-        // case 'arm':
-        //     return armTraining;
-        // case 'legs':
-        //     return legsTraining;
-        default:
-            return null;
-    }
-};
-
-export const sholderTrainingList: Array<ITraining> = [
-    {
-        name: 'サイドレイズ',
-        src: sideRaise,
-    },
-    {
-        name: 'フロントレイズ',
-        src: frontRaise,
-    },
-    {
-        name: 'リアレイズ',
-        src: rearRaise,
-    },
-];
-
-export const chestTrainingList: Array<ITraining> = [
-    {
-        name: 'ベンチプレス',
-        src: benchPress,
-    },
-    {
-        name: 'インクライベンチプレス',
-        src: inclineBenchPress,
-    },
-    {
-        name: 'ダンベルフライ',
-        src: dumbbellFly,
-    },
 ];
