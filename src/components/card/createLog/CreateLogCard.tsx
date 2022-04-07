@@ -34,33 +34,34 @@ const CreateLogCard: React.VFC<CreateLogCardProps> = () => {
             </div>
             <FlexBox>
                 <div className={styles.trainingList}>
-                    {getTraining(training).map((item, index) => {
-                        return (
-                            <motion.div
-                                key={index}
-                                exit={{
-                                    opacity: 0,
-                                    x: 60,
-                                    transition: {
-                                        duration: 0.2,
-                                    },
-                                }}
-                                initial={{
-                                    opacity: 0,
-                                    x: 60,
-                                }}
-                                animate={{
-                                    opacity: 1,
-                                    x: 0,
-                                    transition: {
-                                        duration: 0.2,
-                                    },
-                                }}
-                            >
-                                <TrainingCard training={item} />
-                            </motion.div>
-                        );
-                    })}
+                    {training &&
+                        getTraining(training).map((item, index) => {
+                            return (
+                                <motion.div
+                                    key={index}
+                                    exit={{
+                                        opacity: 0,
+                                        x: 60,
+                                        transition: {
+                                            duration: 0.2,
+                                        },
+                                    }}
+                                    initial={{
+                                        opacity: 0,
+                                        x: 60,
+                                    }}
+                                    animate={{
+                                        opacity: 1,
+                                        x: 0,
+                                        transition: {
+                                            duration: 0.2,
+                                        },
+                                    }}
+                                >
+                                    <TrainingCard training={item} />
+                                </motion.div>
+                            );
+                        })}
                 </div>
             </FlexBox>
             <FlexBox>

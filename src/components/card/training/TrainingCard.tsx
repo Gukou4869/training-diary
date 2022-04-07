@@ -10,7 +10,27 @@ interface TrainingCardProps {
 
 const TrainingCard: React.VFC<TrainingCardProps> = ({ training }) => {
     return (
-        <motion.div className={styles.training}>
+        <motion.div
+            className={styles.training}
+            exit={{
+                opacity: 0,
+                x: 60,
+                transition: {
+                    duration: 0.2,
+                },
+            }}
+            initial={{
+                opacity: 0,
+                x: 60,
+            }}
+            animate={{
+                opacity: 1,
+                x: 0,
+                transition: {
+                    duration: 0.2,
+                },
+            }}
+        >
             <div className={styles.title}>{training.name}</div>
             <Image src={training.src} width={'150'} height={'150'} className={styles.image} />
         </motion.div>
