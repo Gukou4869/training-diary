@@ -32,38 +32,36 @@ const Select: React.VFC<SelectProps> = ({ options, placeholder }) => {
         },
     };
     return (
-        <>
-            <div className={styles.select} onClick={handleToggleOpen}>
-                {selected ? (
-                    <div className={styles.selected}>{selected}</div>
-                ) : (
-                    <div className={styles.placeholder}>{placeholder}</div>
-                )}
-                {open && (
-                    <motion.div
-                        variants={dropIn}
-                        initial="hidden"
-                        animate="visible"
-                        className={styles.options}
-                    >
-                        {options.map((item, i) => {
-                            return (
-                                <div className={styles.optionsItem} key={i.toString()}>
-                                    <div
-                                        className={styles.optionsItem}
-                                        onClick={() => {
-                                            setSelected(item);
-                                        }}
-                                    >
-                                        {item}
-                                    </div>
+        <div className={styles.select} onClick={handleToggleOpen}>
+            {selected ? (
+                <div className={styles.selected}>{selected}</div>
+            ) : (
+                <div className={styles.placeholder}>{placeholder}</div>
+            )}
+            {open && (
+                <motion.div
+                    variants={dropIn}
+                    initial="hidden"
+                    animate="visible"
+                    className={styles.options}
+                >
+                    {options.map((item, i) => {
+                        return (
+                            <div className={styles.optionsItem} key={i.toString()}>
+                                <div
+                                    className={styles.optionsItem}
+                                    onClick={() => {
+                                        setSelected(item);
+                                    }}
+                                >
+                                    {item}
                                 </div>
-                            );
-                        })}
-                    </motion.div>
-                )}
-            </div>
-        </>
+                            </div>
+                        );
+                    })}
+                </motion.div>
+            )}
+        </div>
     );
 };
 

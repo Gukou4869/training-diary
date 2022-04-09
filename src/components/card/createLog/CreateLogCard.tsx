@@ -74,9 +74,9 @@ const CreateLogCard: React.VFC<CreateLogCardProps> = () => {
                     <span className="">REP</span>
                 </div>
             </FlexBox>
-            <FlexBox>
+            <FlexBox justify="end">
                 <div className={styles.submit}>
-                    <ActionButton label="登録する" />
+                    <ActionButton label="登録" />
                 </div>
             </FlexBox>
         </div>
