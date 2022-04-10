@@ -9,10 +9,12 @@ import styles from './CreateLogCard.module.scss';
 import { motion } from 'framer-motion';
 
 interface CreateLogCardProps {
-    part: Training;
+    currentMonth: number;
     menu: number | null;
+    part: Training;
     weight: string | null;
     reps: string | null;
+    selectedDay: number;
     handleSetMenu?: (menuIdx: number) => void;
     handleSetWeight: (value: string) => void;
     handleSetReps: (value: string) => void;
@@ -21,10 +23,12 @@ interface CreateLogCardProps {
 }
 
 const CreateLogCard: React.VFC<CreateLogCardProps> = ({
+    currentMonth,
     part,
     menu,
     weight,
     reps,
+    selectedDay,
     handleSetMenu,
     handleSetReps,
     handleSetWeight,
@@ -35,6 +39,9 @@ const CreateLogCard: React.VFC<CreateLogCardProps> = ({
         <div className={styles.createLog}>
             <FlexBox justify="start">
                 <div className={styles.header}>💪🏼 ログを残す</div>
+                <span className={styles.date}>
+                    {currentMonth}月{selectedDay}日
+                </span>
             </FlexBox>
             <div className={styles.tag}>
                 {trainingType.map((item: Training, index: number) => {

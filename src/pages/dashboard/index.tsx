@@ -122,6 +122,8 @@ const Dashboard: React.FC<DashboardProps> = () => {
                     menu={menu}
                     weight={weight}
                     reps={reps}
+                    currentMonth={calendar.month}
+                    selectedDay={selectedDay}
                     handleSetWeight={handleSetWeight}
                     handleSetReps={handleSetReps}
                     handleSetTrainingPart={handleSetTrainingPart}

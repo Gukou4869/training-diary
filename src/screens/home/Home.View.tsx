@@ -34,16 +34,9 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
     handleResetError,
     handleSignup,
 }) => {
-    // modal open state
-    const [open, setOpen] = useState<boolean>(false);
-
-    const handleToggle = (): void => {
-        setOpen((prevState: boolean) => !prevState);
-    };
-
     return (
         <>
-            <Header handleToggleOpen={handleToggle} />
+            <Header />
             <div className={styles.homeContainer}>
                 <h1 className={styles.homeTitle}>
                     WORKOUT
