@@ -5,13 +5,21 @@ import { ITraining } from '@/lib/training/Training';
 import styles from './TrainingCard.module.scss';
 
 interface TrainingCardProps {
+    menuIdx: number;
     training: ITraining;
+    selected: boolean;
+    handleSetMenu: (menuIdx: number) => void;
 }
 
-const TrainingCard: React.VFC<TrainingCardProps> = ({ training }) => {
+const TrainingCard: React.VFC<TrainingCardProps> = ({
+    menuIdx,
+    training,
+    selected,
+    handleSetMenu,
+}) => {
     return (
         <motion.div
-            className={styles.training}
+            className={`${styles.training} ${selected && `${styles.selected}`}`}
             exit={{
                 opacity: 0,
                 x: 60,
@@ -30,6 +38,7 @@ const TrainingCard: React.VFC<TrainingCardProps> = ({ training }) => {
                     duration: 0.2,
                 },
             }}
+            onClick={() => handleSetMenu(menuIdx)}
         >
             <div className={styles.title}>{training.name}</div>
             <Image src={training.src} width={'150'} height={'150'} className={styles.image} />

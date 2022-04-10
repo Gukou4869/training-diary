@@ -6,12 +6,12 @@ import styles from './Select.module.scss';
 interface SelectProps {
     options: Array<string>;
     placeholder?: string;
-    onSelect?: () => void;
+    selectedValue?: string;
+    onSelect?: (value: string) => void;
 }
 
-const Select: React.VFC<SelectProps> = ({ options, placeholder }) => {
+const Select: React.VFC<SelectProps> = ({ options, placeholder, selectedValue, onSelect }) => {
     const [open, setOpen] = useState<boolean>(false);
-    const [selected, setSelected] = useState('');
     const handleToggleOpen = (): void => {
         setOpen((prevState) => !prevState);
     };
@@ -34,8 +34,8 @@ const Select: React.VFC<SelectProps> = ({ options, placeholder }) => {
     };
     return (
         <div className={styles.select} onClick={handleToggleOpen}>
-            {selected ? (
-                <div className={styles.selected}>{selected}</div>
+            {selectedValue ? (
+                <div className={styles.selected}>{selectedValue}</div>
             ) : (
                 <div className={styles.placeholder}>{placeholder}</div>
             )}
@@ -51,11 +51,8 @@ const Select: React.VFC<SelectProps> = ({ options, placeholder }) => {
                             <div className={styles.optionsItem} key={i.toString()}>
                                 <div
                                     className={styles.optionsItem}
-                                    onClick={(
-                                        event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-                                    ) => {
-                                        console.log(event.currentTarget);
-                                        setSelected(item);
+                                    onClick={() => {
+                                        onSelect(item);
                                     }}
                                 >
                                     {item}

@@ -81,6 +81,10 @@ const Dashboard: React.FC<DashboardProps> = () => {
     const [part, setPart] = useState<Training>('sholder');
     //training menu
     const [menu, setMenu] = useState<number | null>(null);
+    //training weight
+    const [weight, setWeight] = useState<string | null>(null);
+    //training reps
+    const [reps, setReps] = useState<string | null>(null);
 
     //set current month Arr
     useEffect(() => {
@@ -98,12 +102,31 @@ const Dashboard: React.FC<DashboardProps> = () => {
     const handleSetMenu = (menuIdx: number): void => {
         setMenu(menuIdx);
     };
+
+    const handleSetWeight = (value: string): void => {
+        setWeight(value);
+    };
+
+    const handleSetReps = (value: string): void => {
+        setReps(value);
+    };
+
+    const onSubmit = (): void => {
+        console.log(part, menu, weight, reps);
+    };
     return (
         <div className={styles.dashboard}>
             <Modal disableBackdrop={true} open={open} handleClose={handleToggleOpen}>
                 <CreateLogCard
+                    part={part}
+                    menu={menu}
+                    weight={weight}
+                    reps={reps}
+                    handleSetWeight={handleSetWeight}
+                    handleSetReps={handleSetReps}
                     handleSetTrainingPart={handleSetTrainingPart}
                     handleSetMenu={handleSetMenu}
+                    onSubmit={onSubmit}
                 />
             </Modal>
             <CalandarHeader

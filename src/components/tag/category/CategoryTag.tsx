@@ -1,9 +1,10 @@
 import React from 'react';
+import { Training } from '@/lib/training/Training';
 import styles from './CategoryTag.module.scss';
 
 interface CategoryTagProps {
-    type: string;
-    onClick: (type: string) => void;
+    type: Training;
+    onClick: (type: Training) => void;
     //type: 'sholder' | 'chest' | 'ab' | 'back' | 'arm' | 'legs';
 }
 

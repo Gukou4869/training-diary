@@ -1,5 +1,6 @@
 import React from 'react';
 import TrainingCard from './TrainingCard';
+import benchPress from '../../../assets/benchpress.jpeg';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
@@ -15,5 +16,8 @@ const Template: ComponentStory<typeof TrainingCard> = (args) => <TrainingCard {.
 export const Default = Template.bind({});
 
 Default.args = {
-    title: 'Bench Press',
+    training: {
+        name: 'ベンチプレス',
+        src: benchPress,
+    },
 };

@@ -20,7 +20,7 @@ import legExtention from '@/assets/legExtention.jpeg';
 import legCurl from '@/assets/legCurl.jpeg';
 
 export type Training = 'sholder' | 'chest' | 'ab' | 'back' | 'arm' | 'legs';
-export const trainingType = ['sholder', 'chest', 'ab', 'back', 'arm', 'legs'];
+export const trainingType: Array<Training> = ['sholder', 'chest', 'ab', 'back', 'arm', 'legs'];
 export interface ITraining {
     name: string;
     src: StaticImageData;

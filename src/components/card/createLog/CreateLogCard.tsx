@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { trainingType, getTraining, getRep, getWeight, Training } from '@/lib/training/Training';
 import ActionButton from '@/components/button/action/ActionButton';
 import CategoryTag from '@/components/tag/category/CategoryTag';
@@ -10,35 +9,46 @@ import styles from './CreateLogCard.module.scss';
 import { motion } from 'framer-motion';
 
 interface CreateLogCardProps {
+    part: Training;
+    menu: number | null;
+    weight: string | null;
+    reps: string | null;
     handleSetMenu?: (menuIdx: number) => void;
+    handleSetWeight: (value: string) => void;
+    handleSetReps: (value: string) => void;
     handleSetTrainingPart?: (part: Training) => void;
+    onSubmit: () => void;
 }
 
-const CreateLogCard: React.VFC<CreateLogCardProps> = ({ handleSetMenu, handleSetTrainingPart }) => {
-    const [training, setTraining] = useState('sholder');
+const CreateLogCard: React.VFC<CreateLogCardProps> = ({
+    part,
+    menu,
+    weight,
+    reps,
+    handleSetMenu,
+    handleSetReps,
+    handleSetWeight,
+    handleSetTrainingPart,
+    onSubmit,
+}) => {
     return (
         <div className={styles.createLog}>
             <FlexBox justify="start">
                 <div className={styles.header}>💪🏼 ログを残す</div>
             </FlexBox>
             <div className={styles.tag}>
-                {trainingType.map((item: string, index: number) => {
+                {trainingType.map((item: Training, index: number) => {
                     return (
                         <div className={styles.tagItem} key={index.toString()}>
-                            <CategoryTag
-                                type={item}
-                                onClick={(type: string) => {
-                                    setTraining(type);
-                                }}
-                            />
+                            <CategoryTag type={item} onClick={handleSetTrainingPart} />
                         </div>
                     );
                 })}
             </div>
             <FlexBox>
                 <div className={styles.trainingList}>
-                    {training &&
-                        getTraining(training).map((item, index) => {
+                    {part &&
+                        getTraining(part).map((item, index) => {
                             return (
                                 <motion.div
                                     key={index}
@@ -61,7 +71,12 @@ const CreateLogCard: React.VFC<CreateLogCardProps> = ({ handleSetMenu, handleSet
                                         },
                                     }}
                                 >
-                                    <TrainingCard training={item} />
+                                    <TrainingCard
+                                        training={item}
+                                        menuIdx={index}
+                                        selected={menu === index ? true : false}
+                                        handleSetMenu={handleSetMenu}
+                                    />
                                 </motion.div>
                             );
                         })}
@@ -69,17 +84,27 @@ const CreateLogCard: React.VFC<CreateLogCardProps> = ({ handleSetMenu, handleSet
             </FlexBox>
             <FlexBox>
                 <div className={styles.select}>
-                    <Select options={getWeight()} placeholder={'重量'} />
+                    <Select
+                        options={getWeight()}
+                        placeholder={'重量'}
+                        selectedValue={weight}
+                        onSelect={handleSetWeight}
+                    />
                     <span>kg</span>
                 </div>
                 <div className={styles.select}>
-                    <Select options={getRep()} placeholder={'レップ数'} />
+                    <Select
+                        options={getRep()}
+                        placeholder={'レップ数'}
+                        selectedValue={reps}
+                        onSelect={handleSetReps}
+                    />
                     <span>REP</span>
                 </div>
             </FlexBox>
             <FlexBox justify="end">
                 <div className={styles.submit}>
-                    <ActionButton label="登録" />
+                    <ActionButton label="登録" onClick={onSubmit} />
                 </div>
             </FlexBox>
         </div>
