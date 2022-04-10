@@ -1,17 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
-import { trainingType, getTraining, getRep, getWeight } from '@/lib/training/Training';
+import { trainingType, getTraining, getRep, getWeight, Training } from '@/lib/training/Training';
 import ActionButton from '@/components/button/action/ActionButton';
 import CategoryTag from '@/components/tag/category/CategoryTag';
 import FlexBox from '@/components/flexbox/Flexbox';
 import Select from '@/components/select/Select';
 import TrainingCard from '../training/TrainingCard';
 import styles from './CreateLogCard.module.scss';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-interface CreateLogCardProps {}
+interface CreateLogCardProps {
+    handleSetMenu?: (menuIdx: number) => void;
+    handleSetTrainingPart?: (part: Training) => void;
+}
 
-const CreateLogCard: React.VFC<CreateLogCardProps> = () => {
+const CreateLogCard: React.VFC<CreateLogCardProps> = ({ handleSetMenu, handleSetTrainingPart }) => {
     const [training, setTraining] = useState('sholder');
     return (
         <div className={styles.createLog}>
@@ -67,11 +70,11 @@ const CreateLogCard: React.VFC<CreateLogCardProps> = () => {
             <FlexBox>
                 <div className={styles.select}>
                     <Select options={getWeight()} placeholder={'重量'} />
-                    <span className="">kg</span>
+                    <span>kg</span>
                 </div>
                 <div className={styles.select}>
                     <Select options={getRep()} placeholder={'レップ数'} />
-                    <span className="">REP</span>
+                    <span>REP</span>
                 </div>
             </FlexBox>
             <FlexBox justify="end">

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store.d';
 import { getMonth, thisMonth, today } from '@/lib/date/dateUtils';
+import { Training } from '@/lib/training/Training';
 import { DaySet, MonthSet } from '@/store/date/actions';
 import { ICalendarDateState } from '@/store/date/models';
 import { thunkLogout } from '@/thunk/auth/thunk';
@@ -74,25 +75,36 @@ const Dashboard: React.FC<DashboardProps> = () => {
     const [currentMonth, setCurrentMonth] = useState(getMonth(null));
     //selected Day
     const [selectedDay, setSelectedDay] = useState<number | null>(null);
+    //open create modal
+    const [open, setOpen] = useState(false);
+    //training part
+    const [part, setPart] = useState<Training>('sholder');
+    //training menu
+    const [menu, setMenu] = useState<number | null>(null);
 
     //set current month Arr
     useEffect(() => {
         setCurrentMonth(getMonth(calendar.month - 1));
     }, [calendar.month]);
 
-    //open create modal
-    const [open, setOpen] = useState(false);
     const handleToggleOpen = (): void => {
         setOpen((prevState) => !prevState);
     };
 
-    // if (loading) {
-    //   return null;
-    // }
+    const handleSetTrainingPart = (part: Training): void => {
+        setPart(part);
+    };
+
+    const handleSetMenu = (menuIdx: number): void => {
+        setMenu(menuIdx);
+    };
     return (
         <div className={styles.dashboard}>
             <Modal disableBackdrop={true} open={open} handleClose={handleToggleOpen}>
-                <CreateLogCard />
+                <CreateLogCard
+                    handleSetTrainingPart={handleSetTrainingPart}
+                    handleSetMenu={handleSetMenu}
+                />
             </Modal>
             <CalandarHeader
                 currentMonthIdx={calendar.month}

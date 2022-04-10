@@ -6,6 +6,7 @@ import styles from './Select.module.scss';
 interface SelectProps {
     options: Array<string>;
     placeholder?: string;
+    onSelect?: () => void;
 }
 
 const Select: React.VFC<SelectProps> = ({ options, placeholder }) => {
@@ -50,7 +51,10 @@ const Select: React.VFC<SelectProps> = ({ options, placeholder }) => {
                             <div className={styles.optionsItem} key={i.toString()}>
                                 <div
                                     className={styles.optionsItem}
-                                    onClick={() => {
+                                    onClick={(
+                                        event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+                                    ) => {
+                                        console.log(event.currentTarget);
                                         setSelected(item);
                                     }}
                                 >
