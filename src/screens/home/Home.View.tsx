@@ -2,9 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { IError } from '@/store/error/models';
-import googleLogin from '@/services/auth/GoogleLogin';
 import SwitchCard from '@/components/switch/card/SwitchCard';
-import Modal from '@/components/modal/Modal';
 import Header from '@/components/header/home/HomeHeader';
 import { LoginInputParams, SignupInputParams } from './Home.Interface';
 import styles from './Home.module.scss';
@@ -45,27 +43,29 @@ const HomeContainer: React.FC<HomeContainerProps> = ({
 
     return (
         <>
-            <div className={styles.home} />
             <Header handleToggleOpen={handleToggle} />
-            <AnimatePresence>
-                {open && (
-                    <Modal open={open} handleClose={handleToggle}>
-                        <SwitchCard
-                            error={error}
-                            checked={checked}
-                            loginInput={loginInput}
-                            signupInput={signupInput}
-                            handleGoogleAuth={handleGoogleAuth}
-                            handleOnChangeLoginInput={handleOnChangeLoginInput}
-                            handleOnChangeSignupInput={handleOnChangeSignupInput}
-                            handleChecked={handleToggleChecked}
-                            handleLogin={handleLogin}
-                            handleResetError={handleResetError}
-                            handleSignup={handleSignup}
-                        />
-                    </Modal>
-                )}
-            </AnimatePresence>
+            <div className={styles.homeContainer}>
+                <h1 className={styles.homeTitle}>
+                    WORKOUT
+                    <br />
+                    WITH ME
+                </h1>
+                <AnimatePresence>
+                    <SwitchCard
+                        error={error}
+                        checked={checked}
+                        loginInput={loginInput}
+                        signupInput={signupInput}
+                        handleGoogleAuth={handleGoogleAuth}
+                        handleOnChangeLoginInput={handleOnChangeLoginInput}
+                        handleOnChangeSignupInput={handleOnChangeSignupInput}
+                        handleChecked={handleToggleChecked}
+                        handleLogin={handleLogin}
+                        handleResetError={handleResetError}
+                        handleSignup={handleSignup}
+                    />
+                </AnimatePresence>
+            </div>
         </>
     );
 };

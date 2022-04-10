@@ -2,3 +2,18 @@
     position: relative;
     width: 100%;
 }
+
+.homeContainer {
+    max-width: 1400px;
+    min-height: calc(100vh - 5rem);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeTitle {
+    font-size: 5rem;
+    flex: 0 0 50%;
+    color: #0099ff;
+}

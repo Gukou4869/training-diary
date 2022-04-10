@@ -2,11 +2,9 @@
 
 .tralog-header {
     position: relative;
-    height: 600px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #0099ff;
 }
 
 .tralog-header__container {
@@ -17,7 +15,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     font-size: 5rem;
-    color: #fff;
+    color: #000;
     font-weight: bold;
 }
 

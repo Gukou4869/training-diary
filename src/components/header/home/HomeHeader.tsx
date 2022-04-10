@@ -10,18 +10,7 @@ interface HomeHeaderProps {
 
 const HomeHeader: React.VFC<HomeHeaderProps> = ({ handleToggleOpen }) => (
     <div className={styles['tralog-header']}>
-        <Background />
         <Navbar handleToggleOpen={handleToggleOpen} />
-        <div className={styles['tralog-header__container']}>
-            <div className={styles['tralog-header__container__description']}>
-                WORKOUT
-                <br />
-                WITH ME
-            </div>
-            <div className={styles['tralog-header__container__description']}>
-                <MockImage />
-            </div>
-        </div>
     </div>
 );
 

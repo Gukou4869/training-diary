@@ -5,6 +5,7 @@ import { IError } from '@/store/error/models';
 import { LoginInputParams, SignupInputParams } from '@/screens/home/Home.Interface';
 import LoginCard from '../../card/login/LoginCard';
 import SignupCard from '../../card/signup/SignupCard';
+import styles from './SwitchCard.module.scss';
 
 interface SwitchCardProps {
     error: IError;
@@ -38,32 +39,34 @@ const SwitchCard: React.VFC<SwitchCardProps> = ({
         setToggleCard((prevState: boolean) => !prevState);
     };
     return (
-        <AnimatePresence initial={false} exitBeforeEnter>
-            {toggleCard && (
-                <LoginCard
-                    key={1}
-                    checked={checked}
-                    error={error}
-                    handleChecked={handleChecked}
-                    handleOnChange={handleOnChangeLoginInput}
-                    handleGoogleLogin={handleGoogleAuth}
-                    handleResetError={handleResetError}
-                    moveToSignup={handleToggleCard}
-                    handleSubmit={handleLogin}
-                />
-            )}
-            {!toggleCard && (
-                <SignupCard
-                    key={2}
-                    error={error}
-                    moveToLogin={handleToggleCard}
-                    handleGoogleSignup={handleGoogleAuth}
-                    handleOnChange={handleOnChangeSignupInput}
-                    handleResetError={handleResetError}
-                    handleSubmit={handleSignup}
-                />
-            )}
-        </AnimatePresence>
+        <div className={styles.modal}>
+            <AnimatePresence initial={false} exitBeforeEnter>
+                {toggleCard && (
+                    <LoginCard
+                        key={1}
+                        checked={checked}
+                        error={error}
+                        handleChecked={handleChecked}
+                        handleOnChange={handleOnChangeLoginInput}
+                        handleGoogleLogin={handleGoogleAuth}
+                        handleResetError={handleResetError}
+                        moveToSignup={handleToggleCard}
+                        handleSubmit={handleLogin}
+                    />
+                )}
+                {!toggleCard && (
+                    <SignupCard
+                        key={2}
+                        error={error}
+                        moveToLogin={handleToggleCard}
+                        handleGoogleSignup={handleGoogleAuth}
+                        handleOnChange={handleOnChangeSignupInput}
+                        handleResetError={handleResetError}
+                        handleSubmit={handleSignup}
+                    />
+                )}
+            </AnimatePresence>
+        </div>
     );
 };
 
