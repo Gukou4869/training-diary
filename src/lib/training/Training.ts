@@ -26,6 +26,15 @@ export interface ITraining {
     src: StaticImageData;
 }
 
+export interface IEvents {
+    part: Training;
+    menu: number;
+    weight: string;
+    reps: string;
+    day: number;
+    id: number;
+}
+
 export const getRep = (): Array<string> => {
     let rep = 1;
     let result = [];

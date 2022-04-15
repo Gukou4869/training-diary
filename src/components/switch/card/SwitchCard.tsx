@@ -39,7 +39,7 @@ const SwitchCard: React.VFC<SwitchCardProps> = ({
         setToggleCard((prevState: boolean) => !prevState);
     };
     return (
-        <div className={styles.modal}>
+        <div className={styles.toggleCard}>
             <AnimatePresence initial={false} exitBeforeEnter>
                 {toggleCard && (
                     <LoginCard

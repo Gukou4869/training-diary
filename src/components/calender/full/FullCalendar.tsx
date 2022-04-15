@@ -2,8 +2,10 @@ import React from 'react';
 import { getTodayClass, getLastMonthDateClass, getSelectedDayClass } from '@/lib/date/dateUtils';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from './FullCalendar.module.scss';
+import { IEvents } from '@/lib/training/Training';
 
 interface FullCalendarProps {
+    events: Array<null | IEvents>;
     month?: Array<any>;
     currentDayIdx?: number;
     currentMonthIdx?: number;
@@ -14,6 +16,7 @@ interface FullCalendarProps {
 }
 
 const FullCalendar: React.VFC<FullCalendarProps> = ({
+    events,
     month,
     currentDayIdx,
     currentMonthIdx,
@@ -94,6 +97,7 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
                                                     {day.format('D')}
                                                 </p>
                                             </header>
+                                            {/* <div className="">{events[dayIdx - 1]}</div> */}
                                         </div>
                                     );
                                 })}

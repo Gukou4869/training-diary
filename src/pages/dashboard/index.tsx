@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store/store.d';
-import { getMonth, thisMonth, today } from '@/lib/date/dateUtils';
-import { Training } from '@/lib/training/Training';
+import { getMonth, thisMonth, today, getDate, createNewEventsArr } from '@/lib/date/dateUtils';
+import { IEvents, Training } from '@/lib/training/Training';
 import { DaySet, MonthSet } from '@/store/date/actions';
 import { ICalendarDateState } from '@/store/date/models';
 import { thunkLogout } from '@/thunk/auth/thunk';
@@ -25,6 +25,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
     const calendar: ICalendarDateState = useSelector((store: RootState) => store.calenderDate);
     //session store
     const status: boolean = useSelector((store: RootState) => store.session.status);
+    const date = getDate(calendar.month);
     //dispatch
     const dispatch = useDispatch();
 
@@ -71,6 +72,27 @@ const Dashboard: React.FC<DashboardProps> = () => {
         }
     }, [status]);
 
+    useEffect(() => {
+        const events = localStorage.getItem('events');
+        setEvents(JSON.parse(events)[date]);
+        if (!events) {
+            const result = createNewEventsArr();
+            localStorage.setItem(
+                'events',
+                JSON.stringify({
+                    [date]: result,
+                }),
+            );
+        }
+        if (events) {
+            const result = createNewEventsArr();
+            const newEvents = Object.assign(JSON.parse(events), {
+                [date]: result,
+            });
+            localStorage.setItem('events', JSON.stringify(newEvents));
+        }
+    }, []);
+
     //current Month Arr
     const [currentMonth, setCurrentMonth] = useState(getMonth(null));
     //selected Day
@@ -85,6 +107,8 @@ const Dashboard: React.FC<DashboardProps> = () => {
     const [weight, setWeight] = useState<string | null>(null);
     //training reps
     const [reps, setReps] = useState<string | null>(null);
+    //calendar events object
+    const [events, setEvents] = useState<Array<null | IEvents>>([]);
 
     //set current month Arr
     useEffect(() => {
@@ -112,7 +136,32 @@ const Dashboard: React.FC<DashboardProps> = () => {
     };
 
     const onSubmit = (): void => {
-        console.log(part, menu, weight, reps);
+        const newEvents: IEvents = {
+            part,
+            menu,
+            weight,
+            reps,
+            day: selectedDay,
+            id: Date.now(),
+        };
+        const newObj: Array<null | IEvents> = events.map((item, index) => {
+            if (index === newEvents.day - 1) {
+                if (item && Array.isArray(item)) {
+                    console.log('this ite is array ');
+                    item.push(newEvents);
+                    return item;
+                } else {
+                    return [newEvents];
+                }
+            } else {
+                return item;
+            }
+        });
+        setEvents(newObj);
+        const storageEvents = JSON.parse(localStorage.getItem('events'));
+        storageEvents[date] = newObj;
+        localStorage.setItem('events', JSON.stringify(storageEvents));
+        handleToggleOpen();
     };
     return (
         <div className={styles.dashboard}>
@@ -153,6 +202,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
                 </div>
                 <div className={styles.calendar}>
                     <FullCalendar
+                        events={events}
                         month={currentMonth}
                         currentDayIdx={calendar.day}
                         currentMonthIdx={calendar.month}

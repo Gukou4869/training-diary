@@ -20,7 +20,6 @@ const CalanderHeader: React.VFC<CalandarHeaderProps> = ({
 }) => {
     return (
         <header className={styles.calendarHeader}>
-            <div className="">画像(仮)</div>
             <h1 className={styles['calendarHeader__title']}>TRALOG</h1>
             <button className={styles['calendarHeader__today']} onClick={handleReset}>
                 今日

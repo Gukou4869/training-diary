@@ -1,9 +1,13 @@
 @import '@/styles/variables.scss';
-.modal {
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+.toggleCard {
     position: relative;
     width: min(700px, 90%);
     margin: auto;
-    padding: 3rem 3rem;
+    padding: 1rem 1rem;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
@@ -11,6 +15,9 @@
     background-color: #fff;
     border: 1px solid $gray-100;
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    @include media-breakpoint-up(xl) {
+        padding: 3rem 3rem;
+    }
 }
 
 .modal__close {

@@ -17,10 +17,16 @@ export const getMonth = (month: number = dayjs().month()): Array<any> => {
 export const thisMonth: number = new Date().getMonth() + 1;
 export const today: number = new Date().getDate();
 
-export const getYearMonth = (motnhIdx: number): string => {
-    return `${dayjs(new Date(dayjs().year(), motnhIdx - 1)).format('YYYY')}年 ${dayjs(
-        new Date(dayjs().year(), motnhIdx - 1),
+export const getYearMonth = (monthIdx: number): string => {
+    return `${dayjs(new Date(dayjs().year(), monthIdx - 1)).format('YYYY')}年 ${dayjs(
+        new Date(dayjs().year(), monthIdx - 1),
     ).format('M')}月`;
+};
+
+export const getDate = (monthIdx: number): string => {
+    return `${dayjs(new Date(dayjs().year(), monthIdx - 1)).format('YYYY')}-${dayjs(
+        new Date(dayjs().year(), monthIdx - 1),
+    ).format('M')}`;
 };
 
 export const getTodayClass = (day: any, dayIdx: number): string => {
@@ -36,4 +42,14 @@ export const getSelectedDayClass = (day: any, selected: number, monthIdx: number
     return selected === Number(day.format('D')) && Number(day.format('M')) === monthIdx
         ? 'selected'
         : '';
+};
+
+export const createNewEventsArr = (): Array<null> => {
+    let times = 1;
+    const result = [];
+    while (times <= 31) {
+        result.push(null);
+        times++;
+    }
+    return result;
 };
