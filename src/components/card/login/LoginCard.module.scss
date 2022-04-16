@@ -1,4 +1,7 @@
 @import '@/styles/variables.scss';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 
 .loginCard {
     width: 100%;
@@ -15,7 +18,7 @@
     padding: 1rem 0.75rem;
     width: 100%;
     font-size: 1.25rem;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
