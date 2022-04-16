@@ -1,23 +1,32 @@
 @import '@/styles/variables.scss';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 
 .calendarHeader {
     position: relative;
     display: flex;
     align-items: center;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem;
     height: $header-height;
+    @include media-breakpoint-up(md) {
+        padding: 0.5rem 2rem;
+    }
 }
 
 .calendarHeader__title {
-    margin: 0 0.5rem;
-    font-size: 1.25rem;
-    color: $gray-500;
-    margin: 0 1rem;
+    display: none;
+    @include media-breakpoint-up(md) {
+        display: block;
+        margin: 0 0.5rem;
+        font-size: 1.25rem;
+        color: $gray-500;
+        margin: 0 1rem;
+    }
 }
 
 .calendarHeader__today {
     padding: 0.5rem 1rem;
-    margin: 0.5rem 0.5rem;
     background-color: transparent;
     border: 1px solid $gray-300;
     border-radius: 5px;
@@ -27,11 +36,17 @@
         background-color: $gray-100;
         transition: all 0.3s;
     }
+    @include media-breakpoint-up(md) {
+        margin: 0.5rem 0.5rem;
+    }
 }
 
 .calendarHeader__arrow {
-    margin: 0 2rem;
+    margin: 0 0.5rem;
     display: flex;
+    @include media-breakpoint-up(md) {
+        margin: 0 2rem;
+    }
 }
 
 .calendarHeader__arrow__cursor {
@@ -44,15 +59,15 @@
 .calendarHeader__logout {
     position: absolute;
     right: 1rem;
-    padding: 0.5rem 1rem;
     margin: 0.5rem 0.5rem;
     background-color: transparent;
-    border: 1px solid $gray-300;
-    border-radius: 5px;
-    font-size: 1.125rem;
+    font-size: 2rem;
     cursor: pointer;
     &:hover {
         background-color: $gray-100;
         transition: all 0.3s;
+    }
+    @include media-breakpoint-up(xl) {
+        right: 2rem;
     }
 }

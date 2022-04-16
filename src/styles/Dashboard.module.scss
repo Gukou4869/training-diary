@@ -1,4 +1,7 @@
 @import './variables.scss';
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
 
 .dashboard {
     width: 100%;
@@ -10,9 +13,16 @@
 }
 
 .sidebar {
-    width: $sidebar-width;
+    width: 100%;
+    @include media-breakpoint-up(md) {
+        width: $sidebar-width;
+    }
 }
 
 .calendar {
-    flex: 1;
+    display: none;
+    @include media-breakpoint-up(md) {
+        display: block;
+        flex: 1;
+    }
 }

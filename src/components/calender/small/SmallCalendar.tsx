@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     getYearMonth,
     getTodayClass,
@@ -18,6 +18,10 @@ interface SmallCalendarProps {
     handleSetDay: (day: any, monthIdx: number) => void;
 }
 
+interface DeviceSize {
+    width: number;
+}
+
 const SmallCalendar: React.VFC<SmallCalendarProps> = ({
     currentDayIdx,
     currentMonthIdx,
@@ -27,6 +31,26 @@ const SmallCalendar: React.VFC<SmallCalendarProps> = ({
     handleMoveToPrevMonth,
     handleSetDay,
 }) => {
+    const [deviceWidth, setDeviceWidth] = useState(0);
+    const [windowDimensions, setWindowDimensions] = useState(false);
+
+    const getWindowDimensions = (): DeviceSize => {
+        const { innerWidth: width } = window;
+        return {
+            width,
+        };
+    };
+
+    useEffect(() => {
+        const onResize = (): void => {
+            const currentWidth = getWindowDimensions();
+            setWindowDimensions(currentWidth.width >= 600 ? true : false);
+            setDeviceWidth(currentWidth.width - 100);
+        };
+        window.addEventListener('resize', onResize);
+        onResize();
+        return () => window.removeEventListener('resize', onResize);
+    }, []);
     return (
         <div className={styles.smallCalendar}>
             <header className={styles['smallCalendar__header']}>
@@ -48,7 +72,10 @@ const SmallCalendar: React.VFC<SmallCalendarProps> = ({
                     </div>
                 </div>
             </header>
-            <div className={styles['smallCalendar__body']}>
+            <div
+                className={styles['smallCalendar__body']}
+                style={!windowDimensions ? { height: deviceWidth } : null}
+            >
                 {month[0].map((day: any, i: number) => {
                     return (
                         <span key={i.toString()} className={styles['smallCalendar__body__date']}>

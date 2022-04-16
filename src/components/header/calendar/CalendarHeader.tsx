@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { MdOutlineSettings } from 'react-icons/md';
 import { getYearMonth } from '@/lib/date/dateUtils';
 import { MdOutlineKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import styles from './CalendarHeader.module.scss';
@@ -39,9 +40,9 @@ const CalanderHeader: React.VFC<CalandarHeaderProps> = ({
                 </div>
             </div>
             <p className={styles['smallCalendar__header__text']}>{getYearMonth(currentMonthIdx)}</p>
-            <button className={styles['calendarHeader__logout']} onClick={handleLogout}>
-                ログアウト
-            </button>
+            <div className={styles['calendarHeader__logout']} onClick={handleLogout}>
+                <MdOutlineSettings />
+            </div>
         </header>
     );
 };
