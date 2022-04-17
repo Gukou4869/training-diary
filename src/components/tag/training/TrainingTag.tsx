@@ -1,5 +1,6 @@
 import { getTrainingName, Training } from "@/lib/training/Training";
 import React from "react";
+import { MdDelete } from "react-icons/md";
 import styles from "./TrainingTag.module.scss";
 
 export interface TrainingTagProps {
@@ -7,7 +8,7 @@ export interface TrainingTagProps {
     menu: number;
     weight: string;
     reps: string;
-    onClick: () => void;
+    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const TrainingTag: React.VFC<TrainingTagProps> = ({ part, menu, weight, reps, onClick }) => {
@@ -15,16 +16,19 @@ const TrainingTag: React.VFC<TrainingTagProps> = ({ part, menu, weight, reps, on
     return (
         <div
             role="button"
-            className={`${styles.trainingTag} ${styles[part]}`}
-            onClick={onClick}
-            onKeyPress={onClick}
             tabIndex={0}
+            className={`${styles.trainingTag} ${styles[part]}`}
+            onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+            onKeyPress={(e: React.KeyboardEvent<HTMLDivElement>) => e.stopPropagation()}
         >
             <div className="">{name}</div>
             <div className={styles.info}>
                 <div className={styles.weight}>
                     {weight}/{reps}
                 </div>
+                <button type="button" className={styles.delete} onClick={onClick}>
+                    <MdDelete />
+                </button>
             </div>
         </div>
     );

@@ -151,6 +151,23 @@ const Dashboard: React.FC = () => {
         localStorage.setItem("events", JSON.stringify(storageEvents));
         handleToggleOpen();
     };
+
+    const deleteLog = (log: IEvents[], logIdx: number, day: number): void => {
+        const updateLog = log.filter((_, idx) => idx !== logIdx);
+        const oldLog = events;
+        if (log.length === 1) {
+            oldLog.splice(day - 1, 1, null);
+        } else {
+            oldLog.splice(day - 1, 1, updateLog);
+        }
+        setEvents(oldLog);
+        localStorage.setItem(
+            "events",
+            JSON.stringify({
+                [date]: oldLog,
+            }),
+        );
+    };
     return (
         <div className={styles.dashboard}>
             <Modal disableBackdrop open={open} handleClose={handleToggleOpen}>
@@ -195,6 +212,7 @@ const Dashboard: React.FC = () => {
                         currentDayIdx={calendar.day}
                         currentMonthIdx={calendar.month}
                         selectedDay={selectedDay}
+                        deleteLog={deleteLog}
                         handleMoveToPrevMonth={handleMoveToPrevMonth}
                         handleMoveToNextMonth={handleMoveToNextMonth}
                         handleSetDay={handleSetDay}

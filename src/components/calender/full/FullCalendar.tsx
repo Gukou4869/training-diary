@@ -17,6 +17,7 @@ interface FullCalendarProps {
     currentDayIdx?: number;
     currentMonthIdx?: number;
     selectedDay: number;
+    deleteLog: (events: IEvents[], logIdx: number, day: number) => void;
     handleMoveToPrevMonth: () => void;
     handleMoveToNextMonth: () => void;
     handleSetDay: (day: Dayjs, monthIdx: number) => void;
@@ -28,6 +29,7 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
     currentDayIdx,
     currentMonthIdx,
     selectedDay,
+    deleteLog,
     handleMoveToPrevMonth,
     handleMoveToNextMonth,
     handleSetDay,
@@ -103,16 +105,26 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
                                     </header>
                                     {events[Number(day.format("D")) - 1] && (
                                         <div className="">
-                                            {events[Number(day.format("D")) - 1].map((item) => (
-                                                <TrainingTag
-                                                    part={item.part}
-                                                    menu={item.menu}
-                                                    weight={item.weight}
-                                                    reps={item.reps}
-                                                    onClick={null}
-                                                    key={item.id}
-                                                />
-                                            ))}
+                                            {events[Number(day.format("D")) - 1].map(
+                                                (item, idx) => (
+                                                    <TrainingTag
+                                                        part={item.part}
+                                                        menu={item.menu}
+                                                        weight={item.weight}
+                                                        reps={item.reps}
+                                                        onClick={(
+                                                            e: React.MouseEvent<HTMLButtonElement>,
+                                                        ) => {
+                                                            deleteLog(
+                                                                events[Number(day.format("D")) - 1],
+                                                                idx,
+                                                                item.day,
+                                                            );
+                                                        }}
+                                                        key={item.id}
+                                                    />
+                                                ),
+                                            )}
                                         </div>
                                     )}
                                 </div>
