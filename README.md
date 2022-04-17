@@ -1,6 +1,6 @@
 # Tralog
 
-トレーニングを記録できるウェブサイトです！
+トレーニングを記録できるウェブサイトです！💪🏼
 
 # DEMO
 
@@ -20,10 +20,11 @@ git clone
 
 # Tech Stack
 
-- React(v18 系)
-- Storybook(component library)
-- Firebase (Auth, Database)
-- Next.js(deployment, page routing)
+-   React
+-   Typescript
+-   Storybook(component library)
+-   Firebase (Auth)
+-   Next.js(deployment, page routing)
 
 # Set Up
 
@@ -46,12 +47,13 @@ yarn storybook
 
 # Note
 
-注意点などがあれば書く
+現在さらに開発を進めています。
+将来的に複数ユーザ間で記録をシェアできるようにしていきたいです。
 
 # Author
 
-- Shota Taniguchi
-- st11121.grtkmch@gmail.com
+-   Shota Taniguchi
+-   st11121.grtkmch@gmail.com
 
 # License
 

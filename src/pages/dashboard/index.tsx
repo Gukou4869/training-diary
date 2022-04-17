@@ -42,9 +42,9 @@ const Dashboard: React.FC = () => {
     // training menu
     const [menu, setMenu] = useState<number | null>(0);
     // training weight
-    const [weight, setWeight] = useState<string | null>(null);
+    const [weight, setWeight] = useState<string | null>("10");
     // training reps
-    const [reps, setReps] = useState<string | null>(null);
+    const [reps, setReps] = useState<string | null>("10");
 
     const handleReset = (): void => {
         dispatch(MonthSet(thisMonth));

@@ -12,7 +12,7 @@ export interface TrainingTagProps {
 }
 
 const TrainingTag: React.VFC<TrainingTagProps> = ({ part, menu, weight, reps, onClick }) => {
-    const name = getTrainingName(part, menu + 1);
+    const name = getTrainingName(part, menu);
     return (
         <div className={`${styles.trainingTag} ${styles[part]}`}>
             <div>{name}</div>
