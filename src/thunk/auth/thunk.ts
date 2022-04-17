@@ -1,15 +1,15 @@
-import { AnyAction } from "redux";
-import { showLoading, hideLoading } from "react-redux-loading-bar";
-import { ThunkAction } from "redux-thunk";
+import { firebaseError } from "@/lib/firebaseError";
+import googleLogin from "@/services/auth/GoogleLogin";
+import login from "@/services/auth/Login";
+import signout from "@/services/auth/Signout";
+import signup from "@/services/auth/Signup";
 import { errorReset, errorSet } from "@/store/error/actions";
 import { IError, IFirebaseError } from "@/store/error/models";
-import { showAuthLoading, hideAuthLoading } from "@/store/loading/actions";
-import { firebaseError } from "@/lib/firebaseError";
-import login from "@/services/auth/Login";
-import signup from "@/services/auth/Signup";
+import { hideAuthLoading, showAuthLoading } from "@/store/loading/actions";
 import { sessionLogout, sessionStatus } from "@/store/session/action";
-import signout from "@/services/auth/Signout";
-import googleLogin from "@/services/auth/GoogleLogin";
+import { hideLoading, showLoading } from "react-redux-loading-bar";
+import { AnyAction } from "redux";
+import { ThunkAction } from "redux-thunk";
 import { RootState } from "../../store/index";
 
 // session login
@@ -89,8 +89,7 @@ export const thunkGoogleAuth =
         try {
             // error reset
             dispatch(errorReset());
-            const user = await googleLogin();
-            console.log("🚀 ~ file: thunk.ts ~ line 96 ~ return ~ user", user);
+            await googleLogin();
         } catch (e) {
             const error = e as IFirebaseError;
             const errorObj: IError = {
