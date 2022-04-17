@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import "@/styles/variables";
 
 .fullCalendar {
     display: grid;
@@ -12,8 +12,9 @@
 .day {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    max-height: calc((100vh - $header-height) / 5);
+    padding: 0 0.125rem;
+    overflow-y: hidden;
     border: 1px solid $gray-300;
 }
 

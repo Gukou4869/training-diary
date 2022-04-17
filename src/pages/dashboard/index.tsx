@@ -36,13 +36,13 @@ const Dashboard: React.FC = () => {
     // training part
     const [part, setPart] = useState<Training>("sholder");
     // training menu
-    const [menu, setMenu] = useState<number | null>(null);
+    const [menu, setMenu] = useState<number | null>(0);
     // training weight
     const [weight, setWeight] = useState<string | null>(null);
     // training reps
     const [reps, setReps] = useState<string | null>(null);
     // calendar events object
-    const [events, setEvents] = useState<Array<null | IEvents>>([]);
+    const [events, setEvents] = useState<Array<null | IEvents[]>>([]);
 
     // auth routing
     useEffect(() => {
@@ -55,7 +55,10 @@ const Dashboard: React.FC = () => {
 
     useEffect(() => {
         const events = localStorage.getItem("events");
-        if (JSON.parse(events)[date]) {
+        if (!events) {
+            localStorage.setItem("events", JSON.stringify({ [date]: createNewEventsArr() }));
+            setEvents(createNewEventsArr());
+        } else if (JSON.parse(events)[date]) {
             setEvents(JSON.parse(events)[date]);
         } else {
             const newEvents = createNewEventsArr();
@@ -132,13 +135,13 @@ const Dashboard: React.FC = () => {
             day: selectedDay,
             id: Date.now(),
         };
-        const newObj: Array<null | IEvents> = events.map((item, index) => {
+        const newObj: Array<null | IEvents[]> = events.map((item, index) => {
             if (index === newEvents.day - 1) {
                 if (item && Array.isArray(item)) {
                     item.push(newEvents);
                     return item;
                 }
-                return newEvents;
+                return [newEvents];
             }
             return item;
         });

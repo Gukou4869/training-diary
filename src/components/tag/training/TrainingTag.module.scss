@@ -2,10 +2,12 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 0.5rem;
-    font-size: 0.75rem;
+    padding: 0.125rem 0.25rem;
+    overflow: hidden;
+    font-size: 0.5rem;
     color: #fff;
-    border-radius: 10px;
+    white-space: nowrap;
+    border-radius: 5px;
 
     &:hover {
         box-shadow: rgb(100 100 111 / 20%) 0 7px 29px 0;

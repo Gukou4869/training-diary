@@ -11,7 +11,7 @@ export interface TrainingTagProps {
 }
 
 const TrainingTag: React.VFC<TrainingTagProps> = ({ part, menu, weight, reps, onClick }) => {
-    const name = getTrainingName(part, menu);
+    const name = getTrainingName(part, menu + 1);
     return (
         <div
             role="button"
@@ -22,8 +22,9 @@ const TrainingTag: React.VFC<TrainingTagProps> = ({ part, menu, weight, reps, on
         >
             <div className="">{name}</div>
             <div className={styles.info}>
-                <div className={styles.weight}>{weight}kg</div>
-                <div className={styles.reps}>{reps} Reps</div>
+                <div className={styles.weight}>
+                    {weight}/{reps}
+                </div>
             </div>
         </div>
     );

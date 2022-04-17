@@ -1,3 +1,4 @@
+import TrainingTag from "@/components/tag/training/TrainingTag";
 import {
     getLastMonthDateClass,
     getSelectedDayClass,
@@ -11,7 +12,7 @@ import React from "react";
 import styles from "./FullCalendar.module.scss";
 
 interface FullCalendarProps {
-    events: Array<null | IEvents>;
+    events: Array<null | IEvents[]>;
     month?: Array<WeekGrid>;
     currentDayIdx?: number;
     currentMonthIdx?: number;
@@ -31,7 +32,6 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
     handleMoveToNextMonth,
     handleSetDay,
 }) => {
-    console.log("🚀 ~ file: FullCalendar.tsx ~ line 34 ~ events", events);
     const handleOnWheel = (e: React.WheelEvent): void => {
         if (e.deltaY > 0) {
             handleMoveToNextMonth();
@@ -101,12 +101,19 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
                                             {day.format("D")}
                                         </p>
                                     </header>
-                                    {events[Number(day.format("D")) + 1] ? (
+                                    {events[Number(day.format("D")) - 1] && (
                                         <div className="">
-                                            {events[Number(day.format("D")) + 1].part}
+                                            {events[Number(day.format("D")) - 1].map((item) => (
+                                                <TrainingTag
+                                                    part={item.part}
+                                                    menu={item.menu}
+                                                    weight={item.weight}
+                                                    reps={item.reps}
+                                                    onClick={null}
+                                                    key={item.id}
+                                                />
+                                            ))}
                                         </div>
-                                    ) : (
-                                        <div className="">これはテストです</div>
                                     )}
                                 </div>
                             ))}
