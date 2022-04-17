@@ -14,8 +14,6 @@ const Template: ComponentStory<typeof ActionButton> = (args) => <ActionButton {.
 
 export const Default = Template.bind({});
 Default.args = {
-    backgroundColor: "#000",
-    color: "#fff",
     label: "Button",
     size: "md",
     float: false,
