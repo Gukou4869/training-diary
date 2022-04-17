@@ -55,22 +55,14 @@ const Dashboard: React.FC = () => {
 
     useEffect(() => {
         const events = localStorage.getItem("events");
-        setEvents(JSON.parse(events)[date]);
-        if (!events) {
-            const result = createNewEventsArr();
-            localStorage.setItem(
-                "events",
-                JSON.stringify({
-                    [date]: result,
-                }),
-            );
-        }
-        if (events) {
-            const result = createNewEventsArr();
-            const newEvents = Object.assign(JSON.parse(events), {
-                [date]: result,
+        if (JSON.parse(events)[date]) {
+            setEvents(JSON.parse(events)[date]);
+        } else {
+            const newEvents = createNewEventsArr();
+            const updatedEvents = Object.assign(JSON.parse(events), {
+                [date]: newEvents,
             });
-            localStorage.setItem("events", JSON.stringify(newEvents));
+            localStorage.setItem("events", JSON.stringify(updatedEvents));
         }
     }, [date]);
 
