@@ -8,13 +8,19 @@ export interface TrainingTagProps {
     menu: number;
     weight: string;
     reps: string;
-    onClick: () => void;
+    onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const TrainingTag: React.VFC<TrainingTagProps> = ({ part, menu, weight, reps, onClick }) => {
     const name = getTrainingName(part, menu + 1);
     return (
-        <div role="button" tabIndex={0} className={`${styles.trainingTag} ${styles[part]}`}>
+        <div
+            role="button"
+            tabIndex={0}
+            className={`${styles.trainingTag} ${styles[part]}`}
+            // onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+            // onKeyPress={(e: React.KeyboardEvent<HTMLDivElement>) => e.stopPropagation()}
+        >
             <div className="">{name}</div>
             <div className={styles.info}>
                 <div className={styles.weight}>

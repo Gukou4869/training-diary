@@ -145,6 +145,9 @@ const Dashboard: React.FC = () => {
                 [date]: logList,
             }),
         );
+        setTimeout(() => {
+            setOpen(false);
+        }, 10);
     };
 
     // auth routing
