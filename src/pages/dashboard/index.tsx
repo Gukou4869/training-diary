@@ -1,33 +1,83 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '@/store/store.d';
-import { getMonth, thisMonth, today, getDate, createNewEventsArr } from '@/lib/date/dateUtils';
-import { IEvents, Training } from '@/lib/training/Training';
-import { DaySet, MonthSet } from '@/store/date/actions';
-import { ICalendarDateState } from '@/store/date/models';
-import { thunkLogout } from '@/thunk/auth/thunk';
-import { sessionStatus } from '@/store/session/action';
-import CalandarHeader from '@/components/header/calendar/CalendarHeader';
-import FullCalendar from '@/components/calender/full/FullCalendar';
-import Sidebar from '@/components/sidebar/Sidebar';
-import styles from '@/styles/Dashboard.module.scss';
-import CreateLogCard from '@/components/card/createLog/CreateLogCard';
-import Modal from '@/components/modal/Modal';
+import FullCalendar from "@/components/calender/full/FullCalendar";
+import CreateLogCard from "@/components/card/createLog/CreateLogCard";
+import CalandarHeader from "@/components/header/calendar/CalendarHeader";
+import Modal from "@/components/modal/Modal";
+import Sidebar from "@/components/sidebar/Sidebar";
+import { createNewEventsArr, getDate, getMonth, thisMonth, today } from "@/lib/date/dateUtils";
+import { IEvents, Training } from "@/lib/training/Training";
+import { DaySet, MonthSet } from "@/store/date/actions";
+import { ICalendarDateState } from "@/store/date/models";
+import { sessionStatus } from "@/store/session/action";
+import { RootState } from "@/store/store.d";
+import styles from "@/styles/Dashboard.module.scss";
+import { thunkLogout } from "@/thunk/auth/thunk";
+import { useRouter } from "next/router";
+import * as React from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-interface DashboardProps {}
-
-const Dashboard: React.FC<DashboardProps> = () => {
-    //router
+const Dashboard: React.FC = () => {
+    // router
     const router = useRouter();
-    //calendar store
+    // calendar store
     const calendar: ICalendarDateState = useSelector((store: RootState) => store.calenderDate);
-    //session store
+    // session store
     const status: boolean = useSelector((store: RootState) => store.session.status);
     const date = getDate(calendar.month);
-    //dispatch
+    // dispatch
     const dispatch = useDispatch();
+
+    // current Month Arr
+    const [currentMonth, setCurrentMonth] = useState(getMonth(null));
+    // selected Day
+    const [selectedDay, setSelectedDay] = useState<number | null>(null);
+    // open create modal
+    const [open, setOpen] = useState(false);
+    // training part
+    const [part, setPart] = useState<Training>("sholder");
+    // training menu
+    const [menu, setMenu] = useState<number | null>(null);
+    // training weight
+    const [weight, setWeight] = useState<string | null>(null);
+    // training reps
+    const [reps, setReps] = useState<string | null>(null);
+    // calendar events object
+    const [events, setEvents] = useState<Array<null | IEvents>>([]);
+
+    // auth routing
+    useEffect(() => {
+        if (localStorage.getItem("status") && !status) {
+            dispatch(sessionStatus({ token: "", status: true }));
+        } else if (!status) {
+            router.replace("/");
+        }
+    }, [status, dispatch, router]);
+
+    useEffect(() => {
+        const events = localStorage.getItem("events");
+        setEvents(JSON.parse(events)[date]);
+        if (!events) {
+            const result = createNewEventsArr();
+            localStorage.setItem(
+                "events",
+                JSON.stringify({
+                    [date]: result,
+                }),
+            );
+        }
+        if (events) {
+            const result = createNewEventsArr();
+            const newEvents = Object.assign(JSON.parse(events), {
+                [date]: result,
+            });
+            localStorage.setItem("events", JSON.stringify(newEvents));
+        }
+    }, [date]);
+
+    // set current month Arr
+    useEffect(() => {
+        setCurrentMonth(getMonth(calendar.month - 1));
+    }, [calendar.month]);
 
     const handleReset = (): void => {
         dispatch(MonthSet(thisMonth));
@@ -46,74 +96,6 @@ const Dashboard: React.FC<DashboardProps> = () => {
     const handleLogout = (): void => {
         dispatch(thunkLogout());
     };
-
-    const handleSetDay = (day: any, monthIdx: number): void => {
-        setSelectedDay(Number(day.format('D')));
-        if (day.format('M') !== monthIdx) {
-            if (day.format('M') < monthIdx) {
-                handleMoveToPrevMonth();
-            } else if (day.format('M') > monthIdx) {
-                handleMoveToNextMonth();
-            }
-        }
-        if (selectedDay === Number(day.format('D'))) {
-            handleToggleOpen();
-        }
-    };
-
-    //auth routing
-    useEffect(() => {
-        if (localStorage.getItem('status') && !status) {
-            dispatch(sessionStatus({ token: '', status: true }));
-        } else {
-            if (!status) {
-                router.replace('/');
-            }
-        }
-    }, [status]);
-
-    useEffect(() => {
-        const events = localStorage.getItem('events');
-        setEvents(JSON.parse(events)[date]);
-        if (!events) {
-            const result = createNewEventsArr();
-            localStorage.setItem(
-                'events',
-                JSON.stringify({
-                    [date]: result,
-                }),
-            );
-        }
-        if (events) {
-            const result = createNewEventsArr();
-            const newEvents = Object.assign(JSON.parse(events), {
-                [date]: result,
-            });
-            localStorage.setItem('events', JSON.stringify(newEvents));
-        }
-    }, []);
-
-    //current Month Arr
-    const [currentMonth, setCurrentMonth] = useState(getMonth(null));
-    //selected Day
-    const [selectedDay, setSelectedDay] = useState<number | null>(null);
-    //open create modal
-    const [open, setOpen] = useState(false);
-    //training part
-    const [part, setPart] = useState<Training>('sholder');
-    //training menu
-    const [menu, setMenu] = useState<number | null>(null);
-    //training weight
-    const [weight, setWeight] = useState<string | null>(null);
-    //training reps
-    const [reps, setReps] = useState<string | null>(null);
-    //calendar events object
-    const [events, setEvents] = useState<Array<null | IEvents>>([]);
-
-    //set current month Arr
-    useEffect(() => {
-        setCurrentMonth(getMonth(calendar.month - 1));
-    }, [calendar.month]);
 
     const handleToggleOpen = (): void => {
         setOpen((prevState) => !prevState);
@@ -135,6 +117,20 @@ const Dashboard: React.FC<DashboardProps> = () => {
         setReps(value);
     };
 
+    const handleSetDay = (day: any, monthIdx: number): void => {
+        setSelectedDay(Number(day.format("D")));
+        if (day.format("M") !== monthIdx) {
+            if (day.format("M") < monthIdx) {
+                handleMoveToPrevMonth();
+            } else if (day.format("M") > monthIdx) {
+                handleMoveToNextMonth();
+            }
+        }
+        if (selectedDay === Number(day.format("D"))) {
+            handleToggleOpen();
+        }
+    };
+
     const onSubmit = (): void => {
         const newEvents: IEvents = {
             part,
@@ -147,25 +143,22 @@ const Dashboard: React.FC<DashboardProps> = () => {
         const newObj: Array<null | IEvents> = events.map((item, index) => {
             if (index === newEvents.day - 1) {
                 if (item && Array.isArray(item)) {
-                    console.log('this ite is array ');
                     item.push(newEvents);
                     return item;
-                } else {
-                    return [newEvents];
                 }
-            } else {
-                return item;
+                return newEvents;
             }
+            return item;
         });
         setEvents(newObj);
-        const storageEvents = JSON.parse(localStorage.getItem('events'));
+        const storageEvents = JSON.parse(localStorage.getItem("events"));
         storageEvents[date] = newObj;
-        localStorage.setItem('events', JSON.stringify(storageEvents));
+        localStorage.setItem("events", JSON.stringify(storageEvents));
         handleToggleOpen();
     };
     return (
         <div className={styles.dashboard}>
-            <Modal disableBackdrop={true} open={open} handleClose={handleToggleOpen}>
+            <Modal disableBackdrop open={open} handleClose={handleToggleOpen}>
                 <CreateLogCard
                     part={part}
                     menu={menu}

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import styles from './Mock.module.scss';
+import * as React from "react";
+import styles from "./Mock.module.scss";
 
 const MockImage: React.VFC = () => (
     <div className={styles.mock}>

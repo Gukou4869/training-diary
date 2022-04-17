@@ -1,9 +1,9 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import BackDrop from './Backdrop';
+import React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import BackDrop from "./Backdrop";
 
 export default {
-    title: 'BackDrop',
+    title: "BackDrop",
     component: BackDrop,
 } as ComponentMeta<typeof BackDrop>;
 

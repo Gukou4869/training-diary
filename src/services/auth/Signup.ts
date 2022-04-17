@@ -1,5 +1,5 @@
-import { createUserWithEmailAndPassword, User, UserCredential } from 'firebase/auth';
-import { auth } from '../../../firebase/firebase';
+import { createUserWithEmailAndPassword, User, UserCredential } from "firebase/auth";
+import { auth } from "../../../firebase/firebase";
 
 async function signup(email: string, password: string): Promise<User> {
     try {
@@ -10,6 +10,7 @@ async function signup(email: string, password: string): Promise<User> {
         );
         return userCredential.user;
     } catch (e) {
+        console.log(e);
         throw e;
     }
 }

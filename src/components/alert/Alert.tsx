@@ -1,11 +1,11 @@
-import React from 'react';
-import { FaTimes } from 'react-icons/fa';
-import { MdOutlineErrorOutline } from 'react-icons/md';
-import { AiOutlineCheckCircle } from 'react-icons/ai';
-import styles from './Alert.module.scss';
+import React from "react";
+import { AiOutlineCheckCircle } from "react-icons/ai";
+import { FaTimes } from "react-icons/fa";
+import { MdOutlineErrorOutline } from "react-icons/md";
+import styles from "./alert.module.scss";
 
 interface AlertProps {
-    type: 'error' | 'success';
+    type: "error" | "success";
     message: string;
     autoClose?: boolean;
     onClose?: () => void;
@@ -13,17 +13,17 @@ interface AlertProps {
 
 const Alert: React.VFC<AlertProps> = ({ type, message, autoClose = false, onClose }) => {
     const alertType = `alert--${type}`;
-    const icons = (alert: 'error' | 'success'): React.ReactElement => {
+    const icons = (alert: "error" | "success"): React.ReactElement => {
         switch (alert) {
-            case 'error':
+            case "error":
                 return (
-                    <div className={`${styles.alert__icon} ${styles['alert__icon--error']}`}>
+                    <div className={`${styles.alert__icon} ${styles["alert__icon--error"]}`}>
                         <MdOutlineErrorOutline />
                     </div>
                 );
-            case 'success':
+            case "success":
                 return (
-                    <div className={`${styles.alert__icon} ${styles['alert__icon--error']}`}>
+                    <div className={`${styles.alert__icon} ${styles["alert__icon--error"]}`}>
                         <AiOutlineCheckCircle />
                     </div>
                 );
@@ -40,9 +40,15 @@ const Alert: React.VFC<AlertProps> = ({ type, message, autoClose = false, onClos
     return (
         <div className={`${styles.alert} ${styles[alertType]}`}>
             {icons(type)}
-            <div className={styles['alert__message']}>{message}</div>
+            <div className={styles.alert__message}>{message}</div>
             {!autoClose && (
-                <div className={styles.alert__close} onClick={onClose} role="button">
+                <div
+                    className={styles.alert__close}
+                    onClick={onClose}
+                    onKeyPress={onClose}
+                    role="button"
+                    tabIndex={0}
+                >
                     <FaTimes />
                 </div>
             )}

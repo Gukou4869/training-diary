@@ -42,14 +42,14 @@ $yiq-contrasted-threshold: 175 !default;
 $theme-colors: () !default;
 $theme-colors: map-merge(
     (
-        'primary': $primary,
-        'secondary': $secondary,
-        'success': $success,
-        'info': $info,
-        'warning': $warning,
-        'danger': $danger,
-        'light': $light,
-        'dark': $dark,
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "light": $light,
+        "dark": $dark,
     ),
     $theme-colors
 );

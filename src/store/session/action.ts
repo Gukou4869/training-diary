@@ -1,6 +1,6 @@
-import * as Models from './models';
+import * as Models from "./models";
 
-//login and update status
+// login and update status
 export function sessionStatus(session: Models.ISession): Models.ISessionStatusAction {
     return {
         type: Models.SessionActionTypes.SESSION_STATUS,
@@ -8,7 +8,7 @@ export function sessionStatus(session: Models.ISession): Models.ISessionStatusAc
     };
 }
 
-//logout
+// logout
 export function sessionLogout(): Models.ISessionLogoutAction {
     return {
         type: Models.SessionActionTypes.SESSION_LOG_OUT,
@@ -16,7 +16,7 @@ export function sessionLogout(): Models.ISessionLogoutAction {
     };
 }
 
-//password reset
+// password reset
 export function passwordResetSuccess(success: boolean): Models.ISessionPasswordResetAction {
     return {
         type: Models.SessionActionTypes.SESSION_PASSWORD_RESET,
@@ -24,7 +24,7 @@ export function passwordResetSuccess(success: boolean): Models.ISessionPasswordR
     };
 }
 
-//password request
+// password request
 export function passwordRequestSuccess(success: boolean): Models.ISessionPasswordRequestAction {
     return {
         type: Models.SessionActionTypes.SESSION_PASSWORD_REQUEST,

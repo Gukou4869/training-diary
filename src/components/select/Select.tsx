@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import styles from './Select.module.scss';
+import { motion } from "framer-motion";
+import * as React from "react";
+import { useState } from "react";
+import styles from "./Select.module.scss";
 
 interface SelectProps {
     options: Array<string>;
@@ -17,23 +17,29 @@ const Select: React.VFC<SelectProps> = ({ options, placeholder, selectedValue, o
     };
     const dropIn = {
         hidden: {
-            y: '-5vh',
+            y: "-5vh",
             x: 0,
             opacity: 0,
-            width: '0px',
+            width: "0px",
         },
         visible: {
-            x: '10px',
-            y: '1vh',
+            x: "10px",
+            y: "1vh",
             opacity: 1,
-            width: '200px',
+            width: "200px",
             transition: {
                 duration: 0.2,
             },
         },
     };
     return (
-        <div className={styles.select} onClick={handleToggleOpen}>
+        <div
+            className={styles.select}
+            onClick={handleToggleOpen}
+            onKeyPress={handleToggleOpen}
+            role="button"
+            tabIndex={0}
+        >
             {selectedValue ? (
                 <div className={styles.selected}>{selectedValue}</div>
             ) : (
@@ -46,20 +52,23 @@ const Select: React.VFC<SelectProps> = ({ options, placeholder, selectedValue, o
                     animate="visible"
                     className={styles.options}
                 >
-                    {options.map((item, i) => {
-                        return (
-                            <div className={styles.optionsItem} key={i.toString()}>
-                                <div
-                                    className={styles.optionsItem}
-                                    onClick={() => {
-                                        onSelect(item);
-                                    }}
-                                >
-                                    {item}
-                                </div>
+                    {options.map((item, i) => (
+                        <div className={styles.optionsItem} key={i.toString()}>
+                            <div
+                                className={styles.optionsItem}
+                                onClick={() => {
+                                    onSelect(item);
+                                }}
+                                onKeyPress={() => {
+                                    onSelect(item);
+                                }}
+                                role="button"
+                                tabIndex={-1}
+                            >
+                                {item}
                             </div>
-                        );
-                    })}
+                        </div>
+                    ))}
                 </motion.div>
             )}
         </div>

@@ -1,6 +1,6 @@
-import React from 'react';
-import { AiOutlineCheck } from 'react-icons/ai';
-import styles from './Checkbox.module.scss';
+import React from "react";
+import { AiOutlineCheck } from "react-icons/ai";
+import styles from "./Checkbox.module.scss";
 
 interface CheckboxProps {
     label?: string;
@@ -14,7 +14,7 @@ const Checkbox: React.VFC<CheckboxProps> = ({ label, checked, onClick }) => (
             role="checkbox"
             aria-checked="true"
             tabIndex={0}
-            className={`${styles.checkbox__circle} ${checked && styles['checkbox__circle--open']}`}
+            className={`${styles.checkbox__circle} ${checked && styles["checkbox__circle--open"]}`}
             onClick={onClick}
             onKeyDown={onClick}
         >

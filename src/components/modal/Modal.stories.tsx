@@ -1,9 +1,9 @@
-import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Modal from './Modal';
+import React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import Modal from "./Modal";
 
 export default {
-    title: 'Modal',
+    title: "Modal",
     component: Modal,
 } as ComponentMeta<typeof Modal>;
 

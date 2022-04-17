@@ -1,13 +1,13 @@
-import React from 'react';
-import TrainingCard from './TrainingCard';
-import benchPress from '../../../assets/benchpress.jpeg';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import TrainingCard from "./TrainingCard";
+import benchPress from "../../../assets/benchpress.jpeg";
 
 export default {
-    title: 'TrainingCard',
+    title: "TrainingCard",
     component: TrainingCard,
     argTypes: {
-        backgroundColor: { control: 'color' },
+        backgroundColor: { control: "color" },
     },
 } as ComponentMeta<typeof TrainingCard>;
 
@@ -17,7 +17,7 @@ export const Default = Template.bind({});
 
 Default.args = {
     training: {
-        name: 'ベンチプレス',
+        name: "ベンチプレス",
         src: benchPress,
     },
 };

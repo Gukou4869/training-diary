@@ -1,15 +1,13 @@
-import { createStore, combineReducers, AnyAction } from 'redux';
-import { loadingBarReducer } from 'react-redux-loading-bar';
-import { adminInfoReducer } from './admin/reducers';
-import { calendarDateReducer } from './date/reducer';
-import { errorReducer } from './error/reducers';
-import { loadingReducer } from './loading/reducers';
-import { sessionReducer } from './session/reducers';
-import middleware from '../middleware';
+import { loadingBarReducer } from "react-redux-loading-bar";
+import { AnyAction, combineReducers, createStore } from "redux";
+import middleware from "../middleware";
+import calendarDateReducer from "./date/reducer";
+import errorReducer from "./error/reducers";
+import loadingReducer from "./loading/reducers";
+import sessionReducer from "./session/reducers";
 // combine reducers
 
 const rootReducer = combineReducers({
-    adminInfo: adminInfoReducer,
     calenderDate: calendarDateReducer,
     error: errorReducer,
     loading: loadingReducer,

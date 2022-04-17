@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import styles from './Input.module.scss';
+import React, { useState } from "react";
+import styles from "./Input.module.scss";
 
 interface InputProps {
     name?: string;
     hasError?: boolean;
     label: string;
-    type: 'number' | 'text' | 'password' | 'email';
+    type: "number" | "text" | "password" | "email";
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -15,10 +15,10 @@ export const Input: React.VFC<InputProps> = ({ name, hasError, label, type, onCh
 
     const togglePasswordVisibility = (): void => {
         const input = document.getElementsByName(name)[0] as HTMLInputElement;
-        if (input.type === 'password') {
-            input.type = 'text';
+        if (input.type === "password") {
+            input.type = "text";
         } else {
-            input.type = 'password';
+            input.type = "password";
         }
         setShow((prevState) => !prevState);
     };
@@ -27,7 +27,7 @@ export const Input: React.VFC<InputProps> = ({ name, hasError, label, type, onCh
         <div className={styles.form}>
             <input
                 className={`${styles.form__input} ${
-                    hasError ? styles['form__input--hasError'] : ''
+                    hasError ? styles["form__input--hasError"] : ""
                 }`}
                 type={type}
                 name={name}
@@ -35,8 +35,10 @@ export const Input: React.VFC<InputProps> = ({ name, hasError, label, type, onCh
                 placeholder=" "
                 onChange={onChange}
             />
-            <label className={styles.form__label}>{label}</label>
-            {type === 'password' ? (
+            <label htmlFor="input" className={styles.form__label}>
+                {label}
+            </label>
+            {type === "password" ? (
                 <span
                     role="checkbox"
                     aria-checked
@@ -45,7 +47,7 @@ export const Input: React.VFC<InputProps> = ({ name, hasError, label, type, onCh
                     onClick={togglePasswordVisibility}
                     onKeyDown={togglePasswordVisibility}
                 >
-                    {show ? '🐵' : '🙈'}
+                    {show ? "🐵" : "🙈"}
                 </span>
             ) : null}
         </div>

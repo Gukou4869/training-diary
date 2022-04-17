@@ -1,8 +1,8 @@
-import * as Models from './models';
+import * as Models from "./models";
 
-export function errorReducer(
-    state = Models.initialErrorState,
+export default function errorReducer(
     action: Models.IErrorSetAction | Models.IErrorResetAction,
+    state = Models.initialErrorState,
 ): Models.IError {
     switch (action.type) {
         case Models.ErrorActionTypes.ERROR_SET:

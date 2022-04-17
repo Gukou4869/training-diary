@@ -1,5 +1,5 @@
-import { signInWithEmailAndPassword, User, UserCredential } from 'firebase/auth';
-import { auth } from '../../../firebase/firebase';
+import { signInWithEmailAndPassword, User, UserCredential } from "firebase/auth";
+import { auth } from "../../../firebase/firebase";
 
 async function login(email: string, password: string): Promise<User> {
     try {
@@ -10,6 +10,7 @@ async function login(email: string, password: string): Promise<User> {
         );
         return userCredential.user;
     } catch (e) {
+        console.log(e);
         throw e;
     }
 }

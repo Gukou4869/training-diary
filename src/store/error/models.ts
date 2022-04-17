@@ -1,10 +1,10 @@
 // action type
 export enum ErrorActionTypes {
-    ERROR_SET = 'error/set',
-    ERROR_RESET = 'error/reset',
+    ERROR_SET = "error/set",
+    ERROR_RESET = "error/reset",
 }
 
-//data
+// data
 
 export interface IFirebaseError {
     code: string;
@@ -17,7 +17,7 @@ export interface IError {
     errorMessage: string;
 }
 
-//action
+// action
 export interface IErrorSetAction {
     type: ErrorActionTypes.ERROR_SET;
     payload: IError;
@@ -28,9 +28,9 @@ export interface IErrorResetAction {
     payload: IError;
 }
 
-//initial state
+// initial state
 export const initialErrorState: IError = {
     hasError: false,
-    errorType: '',
-    errorMessage: '',
+    errorType: "",
+    errorMessage: "",
 };

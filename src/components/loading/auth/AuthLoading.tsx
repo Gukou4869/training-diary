@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { motion } from 'framer-motion';
-import styles from './authLoading.module.scss';
+import * as React from "react";
+import { motion } from "framer-motion";
+import styles from "./authLoading.module.scss";
 
 interface IAuthLoadingProps {
     loading: boolean;
@@ -21,7 +21,7 @@ const AuthLoading: React.VFC<IAuthLoadingProps> = ({ loading }) => {
     };
     const loadingCircleVariants = {
         start: {
-            y: '200%',
+            y: "200%",
             opacity: 0,
         },
         end: {
@@ -32,7 +32,7 @@ const AuthLoading: React.VFC<IAuthLoadingProps> = ({ loading }) => {
     const loadingCircleTransition = {
         duration: 0.7,
         yoyo: Infinity,
-        ease: 'easeInOut',
+        ease: "easeInOut",
     };
     if (!loading) {
         return null;

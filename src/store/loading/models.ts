@@ -1,15 +1,15 @@
-//action type
+// action type
 export enum LoadingActionTypes {
-    LOADING_AUTHORIZATION_SHOW = 'LOADING_AUTHORIZATION_SET',
-    LOADING_AUTHORIZATION_HIDE = 'LOADING_AUTHORIZATION_HIDE_SET',
+    LOADING_AUTHORIZATION_SHOW = "LOADING_AUTHORIZATION_SET",
+    LOADING_AUTHORIZATION_HIDE = "LOADING_AUTHORIZATION_HIDE_SET",
 }
 
-//data
+// data
 export interface ILoadingAuthorization {
     authLoading: boolean;
 }
 
-//action
+// action
 export interface ILoadingAuthorizationShowAction {
     type: LoadingActionTypes.LOADING_AUTHORIZATION_SHOW;
     payload: ILoadingAuthorization;
@@ -20,7 +20,7 @@ export interface ILoadingAuthorizationHideAction {
     payload: ILoadingAuthorization;
 }
 
-//state
+// state
 export const initialLoadingState: ILoadingAuthorization = {
     authLoading: false,
 };

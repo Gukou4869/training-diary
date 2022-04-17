@@ -1,7 +1,7 @@
-import * as React from 'react';
-import CreateEventButton from '../button/createEvent/CreateEventButton';
-import SmallCalendar from '../calender/small/SmallCalendar';
-import styles from './Sidebar.module.scss';
+import * as React from "react";
+import CreateEventButton from "../button/createEvent/CreateEventButton";
+import SmallCalendar from "../calender/small/SmallCalendar";
+import styles from "./Sidebar.module.scss";
 
 interface SidebarProps {
     currentDayIdx: number;
@@ -23,21 +23,19 @@ const Sidebar: React.VFC<SidebarProps> = ({
     handleMoveToPrevMonth,
     handleToggleOpen,
     handleSetDay,
-}) => {
-    return (
-        <aside className={styles.sidebar}>
-            <CreateEventButton onClick={handleToggleOpen} />
-            <SmallCalendar
-                currentDayIdx={currentDayIdx}
-                currentMonthIdx={currentMonthIdx}
-                month={month}
-                selectedDay={selectedDay}
-                handleMoveToNextMonth={handleMoveToNextMonth}
-                handleMoveToPrevMonth={handleMoveToPrevMonth}
-                handleSetDay={handleSetDay}
-            />
-        </aside>
-    );
-};
+}) => (
+    <aside className={styles.sidebar}>
+        <CreateEventButton onClick={handleToggleOpen} />
+        <SmallCalendar
+            currentDayIdx={currentDayIdx}
+            currentMonthIdx={currentMonthIdx}
+            month={month}
+            selectedDay={selectedDay}
+            handleMoveToNextMonth={handleMoveToNextMonth}
+            handleMoveToPrevMonth={handleMoveToPrevMonth}
+            handleSetDay={handleSetDay}
+        />
+    </aside>
+);
 
 export default Sidebar;

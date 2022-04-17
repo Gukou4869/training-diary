@@ -1,12 +1,12 @@
-@import '@/styles/variables.scss';
+@import "@/styles/variables";
 
 .alert {
     position: relative;
     display: flex;
     justify-content: center;
     width: 100%;
-    color: #fff;
     padding: 1rem 0.5rem;
+    color: #fff;
     border-radius: 5px;
 }
 
@@ -31,21 +31,21 @@
     top: 1rem;
     right: 1rem;
     margin: auto;
+    font-size: 1.125rem;
+    color: #fff;
+    cursor: pointer;
     background-color: transparent;
     border: none;
     outline: none;
-    color: #fff;
-    font-size: 1.125rem;
-    cursor: pointer;
 }
 
 .alert__icon {
     position: absolute;
-    display: flex;
-    align-items: center;
     top: 0;
     bottom: 0;
     left: 1rem;
+    display: flex;
+    align-items: center;
     height: 50%;
     margin: auto;
     font-size: 1.75rem;

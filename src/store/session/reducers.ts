@@ -1,24 +1,24 @@
-import * as Models from './models';
+import * as Models from "./models";
 
-export function sessionReducer(
-    state = Models.initialSessionState,
+export default function sessionReducer(
     action:
         | Models.ISessionStatusAction
         | Models.ISessionLogoutAction
         | Models.ISessionPasswordRequestAction
         | Models.ISessionPasswordResetAction,
+    state = Models.initialSessionState,
 ): Models.ISessionState {
     switch (action.type) {
         case Models.SessionActionTypes.SESSION_STATUS:
-            localStorage.setItem('token', action.payload.token);
-            localStorage.setItem('status', action.payload.status.toString());
+            localStorage.setItem("token", action.payload.token);
+            localStorage.setItem("status", action.payload.status.toString());
             return {
                 ...state,
                 ...action.payload,
             };
         case Models.SessionActionTypes.SESSION_LOG_OUT:
-            localStorage.setItem('token', '');
-            localStorage.setItem('token', '');
+            localStorage.setItem("token", "");
+            localStorage.setItem("token", "");
             return {
                 ...state,
                 ...action.payload,

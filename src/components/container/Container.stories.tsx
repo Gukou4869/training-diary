@@ -1,9 +1,9 @@
-import * as React from 'react';
-import Container from './Container';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import * as React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import Container from "./Container";
 
 export default {
-    title: 'Gukou UI/Atoms/Grid/Container',
+    title: "Gukou UI/Atoms/Grid/Container",
 } as ComponentMeta<typeof Container>;
 
 export const Default: ComponentStory<typeof Container> = (args) => (

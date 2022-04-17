@@ -1,12 +1,12 @@
-//action types
+// action types
 export enum SessionActionTypes {
-    SESSION_STATUS = 'session/status',
-    SESSION_LOG_OUT = 'session/logout',
-    SESSION_PASSWORD_RESET = 'session/password-reset',
-    SESSION_PASSWORD_REQUEST = 'session/password-request',
+    SESSION_STATUS = "session/status",
+    SESSION_LOG_OUT = "session/logout",
+    SESSION_PASSWORD_RESET = "session/password-reset",
+    SESSION_PASSWORD_REQUEST = "session/password-request",
 }
 
-//data
+// data
 export interface ISession {
     token: string;
     status: boolean;
@@ -24,7 +24,7 @@ export interface ILoginResponse {
     jti: string;
 }
 
-//password reset
+// password reset
 export interface IPasswordResetSuccess {
     success: boolean;
 }
@@ -37,7 +37,7 @@ export interface IPasswordReset {
     };
 }
 
-//password request
+// password request
 export interface IPasswordRequestSuccess {
     success: boolean;
 }
@@ -48,7 +48,7 @@ export interface IPasswordRequest {
     };
 }
 
-//action
+// action
 export interface ISessionStatusAction {
     type: SessionActionTypes.SESSION_STATUS;
     payload: ISession;
@@ -69,7 +69,7 @@ export interface ISessionPasswordRequestAction {
     payload: IPasswordRequestSuccess;
 }
 
-//state
+// state
 export interface ISessionState {
     token: string;
     status: boolean;
@@ -77,7 +77,7 @@ export interface ISessionState {
 }
 // session storage for initial session state
 const status = false;
-const token = '';
+const token = "";
 
 export const initialSessionState: ISessionState = {
     token,
@@ -86,6 +86,6 @@ export const initialSessionState: ISessionState = {
 };
 
 export const LogoutSession: ISession = {
-    token: '',
+    token: "",
     status: false,
 };

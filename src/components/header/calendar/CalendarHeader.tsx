@@ -1,8 +1,11 @@
-import * as React from 'react';
-import { MdOutlineSettings } from 'react-icons/md';
-import { getYearMonth } from '@/lib/date/dateUtils';
-import { MdOutlineKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-import styles from './CalendarHeader.module.scss';
+import { getYearMonth } from "@/lib/date/dateUtils";
+import * as React from "react";
+import {
+    MdKeyboardArrowRight,
+    MdOutlineKeyboardArrowLeft,
+    MdOutlineSettings,
+} from "react-icons/md";
+import styles from "./CalendarHeader.module.scss";
 
 interface CalandarHeaderProps {
     currentMonthIdx: number;
@@ -18,33 +21,43 @@ const CalanderHeader: React.VFC<CalandarHeaderProps> = ({
     handleMoveToNextMonth,
     handleLogout,
     handleReset,
-}) => {
-    return (
-        <header className={styles.calendarHeader}>
-            <h1 className={styles['calendarHeader__title']}>TRALOG</h1>
-            <button className={styles['calendarHeader__today']} onClick={handleReset}>
-                今日
-            </button>
-            <div className={styles['calendarHeader__arrow']}>
-                <div
-                    className={styles['calendarHeader__arrow__cursor']}
-                    onClick={handleMoveToPrevMonth}
-                >
-                    <MdOutlineKeyboardArrowLeft />
-                </div>
-                <div
-                    className={styles['calendarHeader__arrow__cursor']}
-                    onClick={handleMoveToNextMonth}
-                >
-                    <MdKeyboardArrowRight />
-                </div>
+}) => (
+    <header className={styles.calendarHeader}>
+        <h1 className={styles.calendarHeader__title}>TRALOG</h1>
+        <button type="button" className={styles.calendarHeader__today} onClick={handleReset}>
+            今日
+        </button>
+        <div className={styles.calendarHeader__arrow}>
+            <div
+                className={styles.calendarHeader__arrow__cursor}
+                onClick={handleMoveToPrevMonth}
+                onKeyPress={handleMoveToPrevMonth}
+                role="button"
+                tabIndex={0}
+            >
+                <MdOutlineKeyboardArrowLeft />
             </div>
-            <p className={styles['smallCalendar__header__text']}>{getYearMonth(currentMonthIdx)}</p>
-            <div className={styles['calendarHeader__logout']} onClick={handleLogout}>
-                <MdOutlineSettings />
+            <div
+                className={styles.calendarHeader__arrow__cursor}
+                onClick={handleMoveToNextMonth}
+                onKeyPress={handleMoveToNextMonth}
+                role="button"
+                tabIndex={-1}
+            >
+                <MdKeyboardArrowRight />
             </div>
-        </header>
-    );
-};
+        </div>
+        <p className={styles.smallCalendar__header__text}>{getYearMonth(currentMonthIdx)}</p>
+        <div
+            className={styles.calendarHeader__logout}
+            onClick={handleLogout}
+            onKeyPress={handleLogout}
+            role="button"
+            tabIndex={-2}
+        >
+            <MdOutlineSettings />
+        </div>
+    </header>
+);
 
 export default CalanderHeader;

@@ -1,12 +1,12 @@
-import React from 'react';
-import SwitchCard from './SwitchCard';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import SwitchCard from "./SwitchCard";
 
 export default {
-    title: 'SwitchCard',
+    title: "SwitchCard",
     component: SwitchCard,
     argTypes: {
-        backgroundColor: { control: 'color' },
+        backgroundColor: { control: "color" },
     },
 } as ComponentMeta<typeof SwitchCard>;
 

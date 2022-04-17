@@ -1,4 +1,4 @@
-import initStoryshots from '@storybook/addon-storyshots';
+import initStoryshots from "@storybook/addon-storyshots";
 
-//snap shot
+// snap shot
 initStoryshots();

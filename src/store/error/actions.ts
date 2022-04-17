@@ -1,4 +1,4 @@
-import * as Models from './models';
+import * as Models from "./models";
 
 export function errorSet(error: Models.IError): Models.IErrorSetAction {
     return {
@@ -12,8 +12,8 @@ export function errorReset(): Models.IErrorResetAction {
         type: Models.ErrorActionTypes.ERROR_RESET,
         payload: {
             hasError: false,
-            errorType: '',
-            errorMessage: '',
+            errorType: "",
+            errorMessage: "",
         },
     };
 }

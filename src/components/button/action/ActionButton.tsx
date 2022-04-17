@@ -1,19 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import styles from './ActionButton.module.scss';
+import React from "react";
+import { motion } from "framer-motion";
+import styles from "./ActionButton.module.scss";
 
 interface ActionButtonProps {
     float?: boolean;
     label?: string;
-    size?: 'sm' | 'md' | 'lg';
+    size?: "sm" | "md" | "lg";
     block?: boolean;
     onClick?: () => void;
 }
 
 const ActionButton: React.VFC<ActionButtonProps> = ({ block, float, label, size, onClick }) => {
-    const hasFloat = float ? 'button--float' : '';
-    const buttonSize = size ? `button--${size}` : 'button--md';
-    const buttonWidth = block ? 'button--block' : '';
+    const hasFloat = float ? "button--float" : "";
+    const buttonSize = size ? `button--${size}` : "button--md";
+    const buttonWidth = block ? "button--block" : "";
     return (
         <motion.button
             whileTap={{

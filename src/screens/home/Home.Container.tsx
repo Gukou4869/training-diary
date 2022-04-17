@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
-import { thunkGoogleAuth, thunkLogin, thunkSignup } from '@/thunk/auth/thunk';
-import { errorReset, errorSet } from '@/store/error/actions';
-import { IError } from '@/store/error/models';
-import { RootState } from '@/store/store.d';
-import { LoginInputParams, SignupInputParams } from './Home.Interface';
-import HomeView from './Home.View';
+import * as React from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { thunkGoogleAuth, thunkLogin, thunkSignup } from "@/thunk/auth/thunk";
+import { errorReset, errorSet } from "@/store/error/actions";
+import { IError } from "@/store/error/models";
+import { RootState } from "@/store/store.d";
+import { LoginInputParams, SignupInputParams } from "./Home.Interface";
+import HomeView from "./Home.View";
 
 const HomeContainer: React.FC = () => {
-    //router
+    // router
     const router = useRouter();
     // redux store
     const error: IError = useSelector((state: RootState) => state.error);
@@ -35,23 +35,23 @@ const HomeContainer: React.FC = () => {
 
     // login input params
     const [loginInput, setLoginInput] = useState<LoginInputParams>({
-        email: '',
-        password: '',
+        email: "",
+        password: "",
     });
     // signup input params
     const [signupInput, setSignupInput] = useState<SignupInputParams>({
-        email: '',
-        password: '',
-        confirmed: '',
+        email: "",
+        password: "",
+        confirmed: "",
     });
     // password memorise state
     const [checked, setChecked] = useState(false);
 
     useEffect(() => {
-        if (localStorage.getItem('password')) {
+        if (localStorage.getItem("password")) {
             setLoginInput({
                 ...loginInput,
-                password: localStorage.getItem('password'),
+                password: localStorage.getItem("password"),
             });
             setChecked(true);
         }
@@ -59,7 +59,7 @@ const HomeContainer: React.FC = () => {
 
     useEffect(() => {
         if (sessionStatus) {
-            router.replace('/dashboard');
+            router.replace("/dashboard");
         }
     }, [sessionStatus]);
 
@@ -82,9 +82,7 @@ const HomeContainer: React.FC = () => {
     };
 
     const handleToggleChecked = (): void => {
-        setChecked((prevState: boolean) => {
-            return !prevState;
-        });
+        setChecked((prevState: boolean) => !prevState);
     };
 
     const handleLogin = (): void => {
@@ -95,8 +93,8 @@ const HomeContainer: React.FC = () => {
         if (signupInput.password !== signupInput.confirmed) {
             const errorObj: IError = {
                 hasError: true,
-                errorType: 'invalid password/confirmed',
-                errorMessage: 'パスワードと確認用パスワードが一致しません',
+                errorType: "invalid password/confirmed",
+                errorMessage: "パスワードと確認用パスワードが一致しません",
             };
             handleSetError(errorObj);
         } else {

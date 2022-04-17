@@ -1,5 +1,5 @@
-import * as React from 'react';
-import styles from './Container.module.scss';
+import * as React from "react";
+import styles from "./Container.module.scss";
 
 interface ContainerProps {
     children: React.ReactElement;

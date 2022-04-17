@@ -1,12 +1,12 @@
-import React from 'react';
-import SignupCard from './SignupCard';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import React from "react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
+import SignupCard from "./SignupCard";
 
 export default {
-    title: 'SignUp',
+    title: "SignUp",
     component: SignupCard,
     argTypes: {
-        backgroundColor: { control: 'color' },
+        backgroundColor: { control: "color" },
     },
 } as ComponentMeta<typeof SignupCard>;
 
