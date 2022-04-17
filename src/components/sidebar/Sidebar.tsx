@@ -1,3 +1,5 @@
+import { WeekGrid } from "@/lib/date/dateUtils";
+import { Dayjs } from "dayjs";
 import * as React from "react";
 import CreateEventButton from "../button/createEvent/CreateEventButton";
 import SmallCalendar from "../calender/small/SmallCalendar";
@@ -6,12 +8,12 @@ import styles from "./Sidebar.module.scss";
 interface SidebarProps {
     currentDayIdx: number;
     currentMonthIdx: number;
-    month: Array<any>;
+    month: Array<WeekGrid>;
     selectedDay: number;
     handleMoveToNextMonth: () => void;
     handleMoveToPrevMonth: () => void;
     handleToggleOpen: () => void;
-    handleSetDay: (day: any, monthIdx: number) => void;
+    handleSetDay: (day: Dayjs, monthIdx: number) => void;
 }
 
 const Sidebar: React.VFC<SidebarProps> = ({

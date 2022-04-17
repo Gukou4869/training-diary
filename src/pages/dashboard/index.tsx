@@ -11,6 +11,7 @@ import { sessionStatus } from "@/store/session/action";
 import { RootState } from "@/store/store.d";
 import styles from "@/styles/Dashboard.module.scss";
 import { thunkLogout } from "@/thunk/auth/thunk";
+import { Dayjs } from "dayjs";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -116,12 +117,12 @@ const Dashboard: React.FC = () => {
         setReps(value);
     };
 
-    const handleSetDay = (day: any, monthIdx: number): void => {
+    const handleSetDay = (day: Dayjs, monthIdx: number): void => {
         setSelectedDay(Number(day.format("D")));
-        if (day.format("M") !== monthIdx) {
-            if (day.format("M") < monthIdx) {
+        if (day.format("M") !== monthIdx.toString()) {
+            if (day.format("M") < monthIdx.toString()) {
                 handleMoveToPrevMonth();
-            } else if (day.format("M") > monthIdx) {
+            } else if (day.format("M") > monthIdx.toString()) {
                 handleMoveToNextMonth();
             }
         }

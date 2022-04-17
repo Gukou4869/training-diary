@@ -1,18 +1,24 @@
-import { getLastMonthDateClass, getSelectedDayClass, getTodayClass } from "@/lib/date/dateUtils";
+import {
+    getLastMonthDateClass,
+    getSelectedDayClass,
+    getTodayClass,
+    WeekGrid,
+} from "@/lib/date/dateUtils";
 import { IEvents } from "@/lib/training/Training";
+import { Dayjs } from "dayjs";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 import styles from "./FullCalendar.module.scss";
 
 interface FullCalendarProps {
     events: Array<null | IEvents>;
-    month?: Array<any>;
+    month?: Array<WeekGrid>;
     currentDayIdx?: number;
     currentMonthIdx?: number;
     selectedDay: number;
     handleMoveToPrevMonth: () => void;
     handleMoveToNextMonth: () => void;
-    handleSetDay: (day: any, monthIdx: number) => void;
+    handleSetDay: (day: Dayjs, monthIdx: number) => void;
 }
 
 const FullCalendar: React.VFC<FullCalendarProps> = ({
@@ -25,7 +31,6 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
     handleMoveToNextMonth,
     handleSetDay,
 }) => {
-    console.log("🚀 ~ file: FullCalendar.tsx ~ line 28 ~ events", events);
     const handleOnWheel = (e: React.WheelEvent): void => {
         if (e.deltaY > 0) {
             handleMoveToNextMonth();
@@ -61,7 +66,7 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
                 <div className={styles.fullCalendar}>
                     {month.map((week, weekIdx) => (
                         <React.Fragment key={week.toString()}>
-                            {week.map((day: any, dayIdx: number) => (
+                            {week.map((day: Dayjs, dayIdx: number) => (
                                 <div
                                     className={styles.day}
                                     key={dayIdx.toString()}

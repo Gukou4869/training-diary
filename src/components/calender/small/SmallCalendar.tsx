@@ -3,7 +3,9 @@ import {
     getSelectedDayClass,
     getTodayClass,
     getYearMonth,
+    WeekGrid,
 } from "@/lib/date/dateUtils";
+import { Dayjs } from "dayjs";
 import React, { useEffect, useState } from "react";
 import { MdKeyboardArrowRight, MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import styles from "./SmallCalendar.module.scss";
@@ -11,11 +13,11 @@ import styles from "./SmallCalendar.module.scss";
 interface SmallCalendarProps {
     currentDayIdx: number;
     currentMonthIdx: number;
-    month: Array<any>;
+    month: Array<WeekGrid>;
     selectedDay: number;
     handleMoveToNextMonth: () => void;
     handleMoveToPrevMonth: () => void;
-    handleSetDay: (day: any, monthIdx: number) => void;
+    handleSetDay: (day: Dayjs, monthIdx: number) => void;
 }
 
 interface DeviceSize {
@@ -82,14 +84,14 @@ const SmallCalendar: React.VFC<SmallCalendarProps> = ({
                 className={styles.smallCalendar__body}
                 style={!windowDimensions ? { height: deviceWidth } : null}
             >
-                {month[0].map((day: any, i: number) => (
+                {month[0].map((day: Dayjs, i: number) => (
                     <span key={i.toString()} className={styles.smallCalendar__body__date}>
                         {day.format("dd").charAt(0)}
                     </span>
                 ))}
-                {month.map((row: Array<any>, i: number) => (
+                {month.map((row: Array<Dayjs>, i: number) => (
                     <React.Fragment key={i.toString()}>
-                        {row.map((day: any, idx: number) => (
+                        {row.map((day: Dayjs, idx: number) => (
                             <button
                                 type="button"
                                 key={idx.toString()}

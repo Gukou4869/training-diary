@@ -1,7 +1,10 @@
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
+
+// グリッド
+export type WeekGrid = Array<Dayjs>;
 
 // カレンダーグリッドの作成
-export const getMonth = (month: number = dayjs().month()): Array<any> => {
+export const getMonth = (month: number = dayjs().month()): Array<WeekGrid> => {
     const year = dayjs().year();
     const firstDayOfMonth = dayjs(new Date(year, month, 1)).day();
     let currentMonthCount = 0 - firstDayOfMonth;
@@ -27,12 +30,12 @@ export const getDate = (monthIdx: number): string =>
         new Date(dayjs().year(), monthIdx - 1),
     ).format("M")}`;
 
-export const getTodayClass = (day: any, dayIdx: number): string =>
+export const getTodayClass = (day: Dayjs, dayIdx: number): string =>
     Number(day.format("D")) === dayIdx && Number(day.format("M")) === thisMonth ? "today" : "";
-export const getLastMonthDateClass = (day: any, monthIdx: number): string =>
+export const getLastMonthDateClass = (day: Dayjs, monthIdx: number): string =>
     Number(day.format("M")) !== monthIdx ? "day__lastMonth" : "";
 
-export const getSelectedDayClass = (day: any, selected: number, monthIdx: number): string =>
+export const getSelectedDayClass = (day: Dayjs, selected: number, monthIdx: number): string =>
     selected === Number(day.format("D")) && Number(day.format("M")) === monthIdx ? "selected" : "";
 
 export const createNewEventsArr = (): Array<null> => {
