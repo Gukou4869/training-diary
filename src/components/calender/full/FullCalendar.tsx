@@ -25,6 +25,7 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
     handleMoveToNextMonth,
     handleSetDay,
 }) => {
+    console.log('🚀 ~ file: FullCalendar.tsx ~ line 28 ~ events', events);
     const handleOnWheel = (e: React.WheelEvent): void => {
         if (e.deltaY > 0) {
             handleMoveToNextMonth();
@@ -32,6 +33,7 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
             handleMoveToPrevMonth();
         }
     };
+
     return (
         <AnimatePresence exitBeforeEnter>
             <motion.div
@@ -61,6 +63,7 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
                         return (
                             <React.Fragment key={weekIdx}>
                                 {week.map((day: any, dayIdx: number) => {
+                                    console.log(events[dayIdx]);
                                     return (
                                         <div
                                             className={styles.day}
@@ -97,7 +100,9 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
                                                     {day.format('D')}
                                                 </p>
                                             </header>
-                                            {/* <div className="">{events[dayIdx - 1]}</div> */}
+                                            {events[dayIdx - 1] && (
+                                                <div className="">{events[dayIdx].menu}</div>
+                                            )}
                                         </div>
                                     );
                                 })}
