@@ -1,7 +1,8 @@
 {
-  "extends": ["stylelint-config-standard-scss", "stylelint-config-recess-order"],
-  "rules": {
-    "selector-class-pattern": null,
-    "selector-id-pattern": null
-  }
+    "extends": ["stylelint-config-standard-scss", "stylelint-config-recess-order"],
+    "rules": {
+        "selector-class-pattern": null,
+        "selector-id-pattern": null,
+        "indentation": 4
+    }
 }
