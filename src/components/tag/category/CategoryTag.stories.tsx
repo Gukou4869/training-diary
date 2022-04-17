@@ -1,16 +1,14 @@
-import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { type } from "os";
-import CategoryBadge from "./CategoryTag";
+import CategoryTag from "./CategoryTag";
 
 export default {
-    title: "CategoryBadge",
-    component: CategoryBadge,
+    title: "CategoryTag",
+    component: CategoryTag,
     argTypes: {
         backgroundColor: { control: "color" },
     },
-} as ComponentMeta<typeof CategoryBadge>;
+} as ComponentMeta<typeof CategoryTag>;
 
-const Template: ComponentStory<typeof CategoryBadge> = (args) => <CategoryBadge type="ab" />;
+const Template: ComponentStory<typeof CategoryTag> = (args) => <CategoryTag {...args} />;
 
 export const Default = Template.bind({});

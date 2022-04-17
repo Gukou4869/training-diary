@@ -31,6 +31,7 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
     handleMoveToNextMonth,
     handleSetDay,
 }) => {
+    console.log("🚀 ~ file: FullCalendar.tsx ~ line 34 ~ events", events);
     const handleOnWheel = (e: React.WheelEvent): void => {
         if (e.deltaY > 0) {
             handleMoveToNextMonth();
@@ -100,8 +101,12 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
                                             {day.format("D")}
                                         </p>
                                     </header>
-                                    {events[dayIdx - 1] && (
-                                        <div className="">{events[dayIdx].menu}</div>
+                                    {events[Number(day.format("D")) + 1] ? (
+                                        <div className="">
+                                            {events[Number(day.format("D")) + 1].part}
+                                        </div>
+                                    ) : (
+                                        <div className="">これはテストです</div>
                                     )}
                                 </div>
                             ))}

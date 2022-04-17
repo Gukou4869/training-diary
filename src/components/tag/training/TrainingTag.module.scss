@@ -1,0 +1,52 @@
+.trainingTag {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    color: #fff;
+    border-radius: 10px;
+
+    &:hover {
+        box-shadow: rgb(100 100 111 / 20%) 0 7px 29px 0;
+        transition: all 0.3s;
+        transform: translate3d((0, -2px, 0));
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+}
+
+.weight {
+    padding: 0 0.25rem;
+}
+
+.reps {
+    padding: 0 0.25rem;
+}
+
+.chest {
+    background: linear-gradient(to left top, #f7971e, #ffd200);
+}
+
+.sholder {
+    background: linear-gradient(to left top, #0e5e3d, #0e6c45);
+}
+
+.ab {
+    background: linear-gradient(to left top, #2193b0, #6dd5ed);
+}
+
+.back {
+    background: linear-gradient(to left top, #2193b0, #6dd5ed);
+}
+
+.arm {
+    background: linear-gradient(to left top, #f953c6, #b91d73);
+}
+
+.legs {
+    background: linear-gradient(to left top, #ff416c, #ff4b2b);
+}

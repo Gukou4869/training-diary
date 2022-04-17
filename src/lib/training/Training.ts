@@ -226,3 +226,41 @@ export const getTraining = (type: string): Array<ITraining> => {
             return sholderTrainingList;
     }
 };
+
+export const typeToJP = (text: string): string => {
+    switch (text) {
+        case "sholder":
+            return "肩";
+        case "chest":
+            return "胸";
+        case "ab":
+            return "腹";
+        case "back":
+            return "背中";
+        case "arm":
+            return "腕";
+        case "legs":
+            return "足";
+        default:
+            return "肩";
+    }
+};
+
+export const getTrainingName = (part: Training, menuIdx: number): string => {
+    switch (part) {
+        case "sholder":
+            return sholderTrainingList[menuIdx].name;
+        case "chest":
+            return chestTrainingList[menuIdx].name;
+        case "ab":
+            return abTrainingList[menuIdx].name;
+        case "back":
+            return backTrainingList[menuIdx].name;
+        case "arm":
+            return armsTrainingList[menuIdx].name;
+        case "legs":
+            return legsTrainingList[menuIdx].name;
+        default:
+            return sholderTrainingList[menuIdx].name;
+    }
+};
