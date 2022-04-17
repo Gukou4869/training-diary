@@ -112,9 +112,7 @@ const FullCalendar: React.VFC<FullCalendarProps> = ({
                                                         menu={item.menu}
                                                         weight={item.weight}
                                                         reps={item.reps}
-                                                        onClick={(
-                                                            e: React.MouseEvent<HTMLButtonElement>,
-                                                        ) => {
+                                                        onClick={() => {
                                                             deleteLog(
                                                                 events[Number(day.format("D")) - 1],
                                                                 idx,

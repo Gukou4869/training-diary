@@ -7,25 +7,29 @@ import { createNewEventsArr, getDate, getMonth, thisMonth, today } from "@/lib/d
 import { IEvents, Training } from "@/lib/training/Training";
 import { DaySet, MonthSet } from "@/store/date/actions";
 import { ICalendarDateState } from "@/store/date/models";
+import { setTrainingLogList } from "@/store/log/actions";
 import { sessionStatus } from "@/store/session/action";
 import { RootState } from "@/store/store.d";
 import styles from "@/styles/Dashboard.module.scss";
 import { thunkLogout } from "@/thunk/auth/thunk";
 import { Dayjs } from "dayjs";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Dashboard: React.FC = () => {
     // router
     const router = useRouter();
+    // dispatch
+    const dispatch = useDispatch();
     // calendar store
     const calendar: ICalendarDateState = useSelector((store: RootState) => store.calenderDate);
     // session store
     const status: boolean = useSelector((store: RootState) => store.session.status);
+    // log state
+    const logList: Array<null | IEvents[]> = useSelector((store: RootState) => store.log.list);
+
     const date = getDate(calendar.month);
-    // dispatch
-    const dispatch = useDispatch();
 
     // current Month Arr
     const [currentMonth, setCurrentMonth] = useState(getMonth(null));
@@ -41,38 +45,6 @@ const Dashboard: React.FC = () => {
     const [weight, setWeight] = useState<string | null>(null);
     // training reps
     const [reps, setReps] = useState<string | null>(null);
-    // calendar events object
-    const [events, setEvents] = useState<Array<null | IEvents[]>>([]);
-
-    // auth routing
-    useEffect(() => {
-        if (localStorage.getItem("status") && !status) {
-            dispatch(sessionStatus({ token: "", status: true }));
-        } else if (!status) {
-            router.replace("/");
-        }
-    }, [status, dispatch, router]);
-
-    useEffect(() => {
-        const events = localStorage.getItem("events");
-        if (!events) {
-            localStorage.setItem("events", JSON.stringify({ [date]: createNewEventsArr() }));
-            setEvents(createNewEventsArr());
-        } else if (JSON.parse(events)[date]) {
-            setEvents(JSON.parse(events)[date]);
-        } else {
-            const newEvents = createNewEventsArr();
-            const updatedEvents = Object.assign(JSON.parse(events), {
-                [date]: newEvents,
-            });
-            localStorage.setItem("events", JSON.stringify(updatedEvents));
-        }
-    }, [date]);
-
-    // set current month Arr
-    useEffect(() => {
-        setCurrentMonth(getMonth(calendar.month - 1));
-    }, [calendar.month]);
 
     const handleReset = (): void => {
         dispatch(MonthSet(thisMonth));
@@ -91,6 +63,13 @@ const Dashboard: React.FC = () => {
     const handleLogout = (): void => {
         dispatch(thunkLogout());
     };
+
+    const handleSetLogList = useCallback(
+        (events: Array<null | IEvents[]>): void => {
+            dispatch(setTrainingLogList(events));
+        },
+        [dispatch],
+    );
 
     const handleToggleOpen = (): void => {
         setOpen((prevState) => !prevState);
@@ -135,7 +114,7 @@ const Dashboard: React.FC = () => {
             day: selectedDay,
             id: Date.now(),
         };
-        const newObj: Array<null | IEvents[]> = events.map((item, index) => {
+        const newObj: Array<null | IEvents[]> = logList.map((item, index) => {
             if (index === newEvents.day - 1) {
                 if (item && Array.isArray(item)) {
                     item.push(newEvents);
@@ -145,7 +124,7 @@ const Dashboard: React.FC = () => {
             }
             return item;
         });
-        setEvents(newObj);
+        handleSetLogList(newObj);
         const storageEvents = JSON.parse(localStorage.getItem("events"));
         storageEvents[date] = newObj;
         localStorage.setItem("events", JSON.stringify(storageEvents));
@@ -154,20 +133,50 @@ const Dashboard: React.FC = () => {
 
     const deleteLog = (log: IEvents[], logIdx: number, day: number): void => {
         const updateLog = log.filter((_, idx) => idx !== logIdx);
-        const oldLog = events;
         if (log.length === 1) {
-            oldLog.splice(day - 1, 1, null);
+            logList.splice(day - 1, 1, null);
         } else {
-            oldLog.splice(day - 1, 1, updateLog);
+            logList.splice(day - 1, 1, updateLog);
         }
-        setEvents(oldLog);
+        handleSetLogList(logList);
         localStorage.setItem(
             "events",
             JSON.stringify({
-                [date]: oldLog,
+                [date]: logList,
             }),
         );
     };
+
+    // auth routing
+    useEffect(() => {
+        if (localStorage.getItem("status") && !status) {
+            dispatch(sessionStatus({ token: "", status: true }));
+        } else if (!status) {
+            router.replace("/");
+        }
+    }, [status, dispatch, router]);
+
+    useEffect(() => {
+        const events = localStorage.getItem("events");
+        if (!events) {
+            localStorage.setItem("events", JSON.stringify({ [date]: createNewEventsArr() }));
+            handleSetLogList(createNewEventsArr());
+        } else if (JSON.parse(events)[date]) {
+            dispatch(setTrainingLogList(JSON.parse(events)[date]));
+        } else {
+            const newEvents = createNewEventsArr();
+            const updatedEvents = Object.assign(JSON.parse(events), {
+                [date]: newEvents,
+            });
+            localStorage.setItem("events", JSON.stringify(updatedEvents));
+        }
+    }, [date, dispatch, handleSetLogList]);
+
+    // set current month Arr
+    useEffect(() => {
+        setCurrentMonth(getMonth(calendar.month - 1));
+    }, [calendar.month]);
+
     return (
         <div className={styles.dashboard}>
             <Modal disableBackdrop open={open} handleClose={handleToggleOpen}>
@@ -207,7 +216,7 @@ const Dashboard: React.FC = () => {
                 </div>
                 <div className={styles.calendar}>
                     <FullCalendar
-                        events={events}
+                        events={logList}
                         month={currentMonth}
                         currentDayIdx={calendar.day}
                         currentMonthIdx={calendar.month}

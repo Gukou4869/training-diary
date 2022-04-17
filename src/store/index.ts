@@ -4,6 +4,7 @@ import middleware from "../middleware";
 import calendarDateReducer from "./date/reducers";
 import errorReducer from "./error/reducers";
 import loadingReducer from "./loading/reducers";
+import trainingLogReducer from "./log/reducers";
 import sessionReducer from "./session/reducers";
 // combine reducers
 
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     error: errorReducer,
     loading: loadingReducer,
     loadingBar: loadingBarReducer,
+    log: trainingLogReducer,
     session: sessionReducer,
 });
 
