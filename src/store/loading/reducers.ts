@@ -1,8 +1,8 @@
 import * as Models from "./models";
 
 export default function loadingReducer(
-    action: Models.ILoadingAuthorizationShowAction | Models.ILoadingAuthorizationHideAction,
     state = Models.initialLoadingState,
+    action: Models.ILoadingAuthorizationShowAction | Models.ILoadingAuthorizationHideAction,
 ): Models.ILoadingAuthorization {
     switch (action.type) {
         case Models.LoadingActionTypes.LOADING_AUTHORIZATION_SHOW:

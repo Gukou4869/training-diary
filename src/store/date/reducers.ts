@@ -1,8 +1,8 @@
 import * as Models from "./models";
 
 export default function calendarDateReducer(
-    action: Models.IMonthSetAction | Models.IDaySetAction,
     state = Models.initialDate,
+    action: Models.IMonthSetAction | Models.IDaySetAction,
 ): Models.ICalendarDateState {
     switch (action.type) {
         case Models.CalendarActionTypes.CALENDAR_MONTH_SET:

@@ -1,12 +1,12 @@
 import * as Models from "./models";
 
 export default function sessionReducer(
+    state = Models.initialSessionState,
     action:
         | Models.ISessionStatusAction
         | Models.ISessionLogoutAction
         | Models.ISessionPasswordRequestAction
         | Models.ISessionPasswordResetAction,
-    state = Models.initialSessionState,
 ): Models.ISessionState {
     switch (action.type) {
         case Models.SessionActionTypes.SESSION_STATUS:

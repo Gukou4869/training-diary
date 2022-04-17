@@ -1,7 +1,7 @@
 import { loadingBarReducer } from "react-redux-loading-bar";
 import { AnyAction, combineReducers, createStore } from "redux";
 import middleware from "../middleware";
-import calendarDateReducer from "./date/reducer";
+import calendarDateReducer from "./date/reducers";
 import errorReducer from "./error/reducers";
 import loadingReducer from "./loading/reducers";
 import sessionReducer from "./session/reducers";

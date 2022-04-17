@@ -12,7 +12,6 @@ import { RootState } from "@/store/store.d";
 import styles from "@/styles/Dashboard.module.scss";
 import { thunkLogout } from "@/thunk/auth/thunk";
 import { useRouter } from "next/router";
-import * as React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 

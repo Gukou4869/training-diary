@@ -22,5 +22,6 @@ module.exports = {
         "react/jsx-props-no-spreading": 0,
         "react/jsx-filename-extension": ["error", { extensions: [".jsx", ".tsx"] }],
         "no-shadow": "off",
+        "default-param-last": 0,
     },
 };
