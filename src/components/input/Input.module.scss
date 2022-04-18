@@ -33,11 +33,6 @@
     &:hover {
         border-color: $primary;
     }
-
-    &:focus {
-        border-color: color.adjust($primary, 10%);
-        outline: none;
-    }
 }
 
 .form__label {
