@@ -118,9 +118,9 @@ const LoginCard: React.VFC<LoginCardProps> = ({
                 </Column>
                 <Column xs={6} md={6}>
                     <FlexBox align="center" justify="end">
-                        <p className={styles["loginCard__password-reset"]}>
+                        {/* <p className={styles["loginCard__password-reset"]}>
                             パスワードを忘れましたか？
-                        </p>
+                        </p> */}
                     </FlexBox>
                 </Column>
             </Row>
