@@ -4,7 +4,7 @@
 
 # DEMO
 
-"[サイト](https://en.wikipedia.org/wiki/MIT_License).
+"[サイトはこちらから](https://training-log-puce.vercel.app/).
 
 # Features
 
