@@ -1,11 +1,11 @@
-import * as React from "react";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import { thunkGoogleAuth, thunkLogin, thunkSignup } from "@/thunk/auth/thunk";
 import { errorReset, errorSet } from "@/store/error/actions";
 import { IError } from "@/store/error/models";
 import { RootState } from "@/store/store.d";
+import { thunkGoogleAuth, thunkLogin, thunkSignup } from "@/thunk/auth/thunk";
+import { useRouter } from "next/router";
+import * as React from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { LoginInputParams, SignupInputParams } from "./Home.Interface";
 import HomeView from "./Home.View";
 

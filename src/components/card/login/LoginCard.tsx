@@ -8,7 +8,6 @@ import Row from "@/components/row/Row";
 import { IError } from "@/store/error/models";
 import { AnimatePresence, motion } from "framer-motion";
 import * as React from "react";
-import { FcGoogle } from "react-icons/fc";
 import styles from "./LoginCard.module.scss";
 
 interface LoginCardProps {
@@ -82,7 +81,7 @@ const LoginCard: React.VFC<LoginCardProps> = ({
             }}
         >
             <h1>ログイン 🔏</h1>
-            <motion.button
+            {/* <motion.button
                 type="button"
                 className={styles.loginCard__google}
                 onClick={handleGoogleLogin}
@@ -92,7 +91,7 @@ const LoginCard: React.VFC<LoginCardProps> = ({
                 </span>
                 Login With Google
             </motion.button>
-            <div className={styles.loginCard__divider}> - OR -</div>
+            <div className={styles.loginCard__divider}> - OR -</div> */}
             <div className={styles.loginCard__input}>
                 <TextInput
                     type="email"

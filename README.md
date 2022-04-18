@@ -4,7 +4,10 @@
 
 # DEMO
 
-"[サイトはこちらから](https://training-log-puce.vercel.app/).
+[サイトはこちらから](https://training-log-puce.vercel.app/).
+
+Demo User：gukoutest@test.com
+Demo Password : test123
 
 # Features
 

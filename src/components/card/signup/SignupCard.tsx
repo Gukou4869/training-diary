@@ -4,7 +4,6 @@ import TextInput from "@/components/input/Input";
 import { IError } from "@/store/error/models";
 import { AnimatePresence, motion } from "framer-motion";
 import * as React from "react";
-import { FcGoogle } from "react-icons/fc";
 import styles from "./SignupCard.module.scss";
 
 interface SignupCardProps {
@@ -74,7 +73,7 @@ const SignUpCard: React.VFC<SignupCardProps> = ({
             }}
         >
             <h1>サインアップ 📝</h1>
-            <motion.button
+            {/* <motion.button
                 type="button"
                 className={styles.signupCard__google}
                 onClick={handleGoogleSignup}
@@ -84,7 +83,7 @@ const SignUpCard: React.VFC<SignupCardProps> = ({
                 </span>
                 Sign up With Google
             </motion.button>
-            <div className={styles.signupCard__divider}> - OR -</div>
+            <div className={styles.signupCard__divider}> - OR -</div> */}
             <div className={styles.signupCard__input}>
                 <TextInput type="email" label="Email" name="email" onChange={handleOnChange} />
             </div>
