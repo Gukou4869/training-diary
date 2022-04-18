@@ -1,7 +1,7 @@
-import * as React from "react";
+import { ITraining } from "@/lib/training/Training";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ITraining } from "@/lib/training/Training";
+import * as React from "react";
 import styles from "./TrainingCard.module.scss";
 
 interface TrainingCardProps {
@@ -40,7 +40,13 @@ const TrainingCard: React.VFC<TrainingCardProps> = ({
         onClick={() => handleSetMenu(menuIdx)}
     >
         <div className={styles.title}>{training.name}</div>
-        <Image src={training.src} width="150" height="150" className={styles.image} />
+        <Image
+            src={training.src}
+            width="150"
+            height="150"
+            className={styles.image}
+            alt={training.name}
+        />
     </motion.div>
 );
 

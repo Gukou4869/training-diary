@@ -3,5 +3,5 @@
 @import "bootstrap/scss/mixins";
 
 .row {
-    @include make-row();
+    @include make-row;
 }

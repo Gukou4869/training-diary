@@ -1,7 +1,5 @@
 import * as React from "react";
 import Navbar from "../../navbar/Navbar";
-import Background from "../../background/Background";
-import MockImage from "../../svg/mock/Mock";
 import styles from "./HomeHeader.module.scss";
 
 interface HomeHeaderProps {

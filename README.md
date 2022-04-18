@@ -4,11 +4,11 @@
 
 # DEMO
 
-"hoge"の魅力が直感的に伝えわるデモ動画や図解を載せる
+"[サイト](https://en.wikipedia.org/wiki/MIT_License).
 
 # Features
 
-"hoge"のセールスポイントや差別化などを説明する
+カレンダー形式で自身のトレーニングログの一覧を素早く見ることができます。
 
 # Installation
 
@@ -55,8 +55,6 @@ yarn storybook
 -   Shota Taniguchi
 -   st11121.grtkmch@gmail.com
 
-# License
-
-ライセンスを明示する
+# License d
 
 "Tralog" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).

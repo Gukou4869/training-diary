@@ -1,10 +1,10 @@
-import * as React from "react";
-import { FcGoogle } from "react-icons/fc";
-import { AnimatePresence, motion } from "framer-motion";
-import { IError } from "@/store/error/models";
+import Alert from "@/components/alert/Alert";
 import ActionButton from "@/components/button/action/ActionButton";
 import TextInput from "@/components/input/Input";
-import Alert from "@/components/alert/Alert";
+import { IError } from "@/store/error/models";
+import { AnimatePresence, motion } from "framer-motion";
+import * as React from "react";
+import { FcGoogle } from "react-icons/fc";
 import styles from "./SignupCard.module.scss";
 
 interface SignupCardProps {

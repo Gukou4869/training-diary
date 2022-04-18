@@ -1,19 +1,21 @@
-@import "@/styles/variables.scss";
+@import "@/styles/variables";
 
 .training {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
     width: min(200px, 90%);
     height: 200px;
-    border-radius: 10px;
-    border: 1px solid $gray-300;
+    padding: 1rem;
     cursor: pointer;
+    border: 1px solid $gray-300;
+    border-radius: 10px;
+
     &:hover {
         border: 1px solid $success;
         transition: border 0.3s;
     }
 }
+
 .title {
     flex: 1;
     height: 3rem;

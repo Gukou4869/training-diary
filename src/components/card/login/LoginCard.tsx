@@ -1,14 +1,14 @@
-import * as React from "react";
-import { FcGoogle } from "react-icons/fc";
-import { AnimatePresence, motion } from "framer-motion";
-import { IError } from "@/store/error/models";
-import TextInput from "@/components/input/Input";
-import ActionButton from "@/components/button/action/ActionButton";
 import Alert from "@/components/alert/Alert";
+import ActionButton from "@/components/button/action/ActionButton";
 import Checkbox from "@/components/checkbox/Checkbox";
-import Row from "@/components/row/Row";
 import Column from "@/components/column/Column";
 import FlexBox from "@/components/flexbox/Flexbox";
+import TextInput from "@/components/input/Input";
+import Row from "@/components/row/Row";
+import { IError } from "@/store/error/models";
+import { AnimatePresence, motion } from "framer-motion";
+import * as React from "react";
+import { FcGoogle } from "react-icons/fc";
 import styles from "./LoginCard.module.scss";
 
 interface LoginCardProps {

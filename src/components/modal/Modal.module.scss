@@ -1,22 +1,23 @@
-@import "@/styles/variables.scss";
+@import "@/styles/variables";
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
 .modal {
     position: relative;
-    width: min(700px, 95%);
-    margin: auto;
-    padding: 1.5rem 1.5rem;
-    border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: min(700px, 95%);
+    padding: 1.5rem;
+    margin: auto;
     background-color: #fff;
     border: 1px solid $gray-100;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 8px 10px -6px rgb(0 0 0 / 10%);
+
     @include media-breakpoint-up(xl) {
-        padding: 3rem 3rem;
+        padding: 3rem;
     }
 }
 
@@ -26,13 +27,13 @@
     right: 1.5rem;
     width: 2rem;
     height: 2rem;
-    background-color: $gray-400;
-    color: #fff;
-    border-radius: 50%;
     font-size: 1.25rem;
-    border: none;
-    outline: none;
+    color: #fff;
     cursor: pointer;
+    background-color: $gray-400;
+    border: none;
+    border-radius: 50%;
+    outline: none;
 }
 
 .modal__close__btn {

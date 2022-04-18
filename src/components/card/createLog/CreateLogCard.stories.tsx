@@ -1,6 +1,5 @@
-import React from "react";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Modal from "@/components/modal/Modal";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import CreateLogCard from "./CreateLogCard";
 
 export default {
@@ -17,8 +16,22 @@ export const Default = Template.bind({});
 
 const withModal: ComponentStory<typeof CreateLogCard> = (args) => (
     <Modal open handleClose={null}>
-        <CreateLogCard />
+        <CreateLogCard {...args} />
     </Modal>
 );
 
-export const Default2 = withModal.bind({});
+export const WithModal = withModal.bind({});
+
+WithModal.args = {
+    currentMonth: 1,
+    menu: 0,
+    part: "sholder",
+    weight: "10",
+    reps: "10",
+    selectedDay: 10,
+    handleSetMenu: () => null,
+    handleSetWeight: () => null,
+    handleSetReps: () => null,
+    handleSetTrainingPart: () => null,
+    onSubmit: () => null,
+};

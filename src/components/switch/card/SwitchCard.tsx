@@ -1,8 +1,8 @@
+import { LoginInputParams, SignupInputParams } from "@/screens/home/Home.Interface";
+import { IError } from "@/store/error/models";
+import { AnimatePresence } from "framer-motion";
 import * as React from "react";
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
-import { IError } from "@/store/error/models";
-import { LoginInputParams, SignupInputParams } from "@/screens/home/Home.Interface";
 import LoginCard from "../../card/login/LoginCard";
 import SignupCard from "../../card/signup/SignupCard";
 import styles from "./SwitchCard.module.scss";

@@ -1,6 +1,4 @@
-import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { type } from "os";
 import Select from "./Select";
 
 export default {

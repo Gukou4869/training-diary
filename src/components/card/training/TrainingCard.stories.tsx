@@ -1,7 +1,6 @@
-import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import TrainingCard from "./TrainingCard";
 import benchPress from "../../../assets/benchpress.jpeg";
+import TrainingCard from "./TrainingCard";
 
 export default {
     title: "TrainingCard",

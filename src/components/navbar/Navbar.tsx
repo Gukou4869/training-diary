@@ -5,7 +5,7 @@ interface NavbarProps {
     handleToggleOpen?: () => void;
 }
 
-const Navbar: React.VFC<NavbarProps> = ({ handleToggleOpen }) => (
+const Navbar: React.VFC<NavbarProps> = () => (
     <div className={styles["tralog-navbar"]}>
         <div className={styles["tralog-navbar__container"]}>
             <div className={styles["tralog-header__title"]}>TRALOG!</div>

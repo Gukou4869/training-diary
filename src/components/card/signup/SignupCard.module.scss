@@ -1,4 +1,4 @@
-@import "@/styles/variables.scss";
+@import "@/styles/variables";
 
 .signupCard {
     width: 100%;
@@ -7,16 +7,17 @@
 
 .signupCard__google {
     display: flex;
-    justify-content: center;
     align-items: center;
-    background-color: transparent;
-    outline: none;
-    border: 1px solid gray;
-    padding: 1rem 0.75rem;
+    justify-content: center;
     width: 100%;
+    padding: 1rem 0.75rem;
     font-size: 1.25rem;
-    border-radius: 5px;
     cursor: pointer;
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 5px;
+    outline: none;
+
     &:hover {
         border-color: $primary;
     }
@@ -25,16 +26,16 @@
 .signupCard__google__logo {
     display: flex;
     align-items: center;
-    font-size: 1.5rem;
     margin-right: 1rem;
+    font-size: 1.5rem;
 }
 
 .signupCard__divider {
     display: flex;
     justify-content: center;
+    margin: 1rem auto;
     font-size: 1.25rem;
     font-weight: 500;
-    margin: 1rem auto;
 }
 
 .signupCard__input {
@@ -43,29 +44,33 @@
 
 .signupCard__password-reset {
     cursor: pointer;
+
     &:hover {
         color: $primary;
         transition: all 0.3s ease-in;
     }
 }
+
 .signupCard__password-setting {
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     margin: 1.5rem auto;
 }
 
 .signupCard__footer {
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     margin: 1.5rem auto;
 }
+
 .signupCard__footer__backLogin {
     margin-left: 0.5rem;
     cursor: pointer;
+
     &:hover {
         color: $primary;
         text-decoration: underline 1px $primary;
@@ -74,7 +79,7 @@
 
 .test {
     position: absolute;
-    width: 100%;
-    left: 0;
     top: 0;
+    left: 0;
+    width: 100%;
 }
