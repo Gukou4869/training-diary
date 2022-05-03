@@ -4,7 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import styles from "./alert.module.scss";
 
-interface AlertProps {
+export interface AlertProps {
     type: "error" | "success";
     message: string;
     autoClose?: boolean;
