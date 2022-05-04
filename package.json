@@ -9,7 +9,7 @@
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
         "test-storybook": "test-storybook",
-        "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+        "test": "jest",
         "prettier": "prettier --write src/**/*",
         "lint": "run-p -l -c --aggregate-output lint:*",
         "lint:eslint": "eslint .",

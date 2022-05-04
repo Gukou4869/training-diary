@@ -1,14 +1,11 @@
 module.exports = {
     root: true,
-    plugins: [
-        "strict-dependencies", // 後述
-        "unused-imports", // 後述
-    ],
+    plugins: ["strict-dependencies", "unused-imports"],
     extends: [
         "airbnb",
         "plugin:@typescript-eslint/recommended",
-        "next/core-web-vitals", // 後述
-        "prettier", // 後述
+        "next/core-web-vitals",
+        "prettier",
     ],
     rules: {
         "import/extensions": 0,
